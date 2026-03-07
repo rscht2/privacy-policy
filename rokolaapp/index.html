@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidad y Data Safety de Rokola Digital - Jukebox Musical">
+    <title>Rokola Digital - Política de Privacidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+        
+        h4 {
+            color: #555;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+        
+        p, li {
+            margin-bottom: 12px;
+            color: #555;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .badge-yes {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-no {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .badge-optional {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #ecf0f1;
+            margin: 10px 0;
+        }
+        
+        .last-updated {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Rokola Digital</h1>
+            <p>Política de Privacidad y Data Safety</p>
+        </header>
+        
+        <nav>
+            <a href="#privacidad">Privacidad</a>
+            <a href="#data-safety">Data Safety</a>
+            <a href="#permisos">Permisos</a>
+            <a href="#seguridad">Seguridad</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        
+        <div class="content">
+            <div class="last-updated">
+                📅 Última actualización: 7 de marzo de 2026
+            </div>
+            
+            <!-- POLÍTICA DE PRIVACIDAD -->
+            <section id="privacidad">
+                <h2>Política de Privacidad</h2>
+                
+                <div class="highlight-box">
+                    <strong>Rokola Digital</strong> es una aplicación de jukebox musical que te permite buscar y reproducir música conectándote a tu servidor Rokola personal. Respetamos tu privacidad y nos comprometemos a proteger tus datos personales.
+                </div>
+                
+                <h3>1. Información que Recopilamos</h3>
+                
+                <h4>1.1 Información que Proporcionas</h4>
+                <ul>
+                    <li><strong>Nombre de usuario:</strong> Para identificarte en la aplicación</li>
+                    <li><strong>Servidor URL:</strong> Para conectarte a tu servidor Rokola personal</li>
+                    <li><strong>Dedicatorias de canciones:</strong> Mensajes opcionales que añades a las canciones</li>
+                </ul>
+                
+                <h4>1.2 Información Recopilada Automáticamente</h4>
+                <ul>
+                    <li><strong>Datos de uso:</strong> Firebase Analytics recopila información sobre cómo usas la app</li>
+                    <li><strong>Datos de crashes:</strong> Firebase Crashlytics recopila información sobre errores para mejorar la estabilidad</li>
+                    <li><strong>Datos de rendimiento:</strong> Firebase Performance Monitoring recopila métricas de rendimiento</li>
+                    <li><strong>Identificador de publicidad:</strong> Para mostrar anuncios personalizados (Google AdMob)</li>
+                </ul>
+                
+                <h4>1.3 Permisos de la Aplicación</h4>
+                <ul>
+                    <li><strong>INTERNET:</strong> Para conectarse a tu servidor Rokola local y mostrar anuncios</li>
+                    <li><strong>ACCESS_NETWORK_STATE:</strong> Para verificar la conectividad de red</li>
+                    <li><strong>CAMERA:</strong> Para escanear códigos QR y conectarte rápidamente a servidores (opcional)</li>
+                </ul>
+                
+                <h4>1.4 Servidor Local</h4>
+                <div class="success-box">
+                    <ul>
+                        <li>La app se conecta a un servidor Rokola que <strong>TÚ instalas y controlas</strong></li>
+                        <li>El servidor se ejecuta en tu red local (LAN), no en internet</li>
+                        <li>Tú configuras manualmente la dirección IP del servidor</li>
+                        <li>Los datos de reproducción permanecen en tu red local</li>
+                    </ul>
+                </div>
+                
+                <h3>2. Cómo Usamos tu Información</h3>
+                <ul>
+                    <li><strong>Funcionalidad de la app:</strong> Para reproducir música y gestionar la cola de reproducción</li>
+                    <li><strong>Mejora del servicio:</strong> Analizar el uso y corregir errores</li>
+                    <li><strong>Publicidad:</strong> Mostrar anuncios relevantes mediante Google AdMob</li>
+                    <li><strong>Comunicación:</strong> Enviar notificaciones sobre el estado de reproducción</li>
+                </ul>
+                
+                <h3>3. Compartir Información con Terceros</h3>
+                
+                <h4>3.1 Servicios de Terceros que Usamos</h4>
+                <ul>
+                    <li><strong>Google Firebase:</strong> Analytics, Crashlytics, Performance Monitoring</li>
+                    <li><strong>Google AdMob:</strong> Servicio de publicidad</li>
+                    <li><strong>Google Play Services:</strong> Servicios básicos de Android</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Importante:</strong> No vendemos, alquilamos ni compartimos tu información personal con terceros para fines de marketing.
+                </div>
+                
+                <h3>4. Seguridad de los Datos</h3>
+                
+                <h4>4.1 Comunicación con Servidor Local</h4>
+                <div class="success-box">
+                    <ul>
+                        <li>Tu servidor Rokola se ejecuta en tu red local privada (LAN)</li>
+                        <li><strong>Toda comunicación usa HTTPS (cifrado TLS/SSL)</strong></li>
+                        <li>El servidor usa certificados autofirmados para cifrado</li>
+                        <li>La comunicación entre la app y tu servidor permanece dentro de tu red local</li>
+                        <li>No transmitimos datos de tu servidor a través de internet público</li>
+                    </ul>
+                </div>
+                
+                <h4>4.2 Comunicación con Servicios de Google</h4>
+                <ul>
+                    <li>Usamos HTTPS para todas las comunicaciones con servicios externos</li>
+                    <li>Firebase (Analytics, Crashlytics, Performance)</li>
+                    <li>Google AdMob</li>
+                    <li>Google Play Services</li>
+                </ul>
+                
+                <h4>4.3 Almacenamiento Local</h4>
+                <ul>
+                    <li>Los datos se almacenan localmente en tu dispositivo</li>
+                    <li>No almacenamos información personal en servidores externos</li>
+                    <li>Puedes eliminar todos los datos desinstalando la app</li>
+                </ul>
+                
+                <h3>5. Publicidad y Consentimiento</h3>
+                <ul>
+                    <li>Usamos Google AdMob para mostrar anuncios</li>
+                    <li>Implementamos User Messaging Platform (UMP) para cumplir con GDPR</li>
+                    <li>Puedes gestionar tus preferencias de anuncios en la configuración de tu dispositivo</li>
+                </ul>
+                
+                <h3>6. Tus Derechos</h3>
+                <p>Tienes derecho a:</p>
+                <ul>
+                    <li>Acceder a tu información personal</li>
+                    <li>Solicitar la corrección de datos incorrectos</li>
+                    <li>Solicitar la eliminación de tus datos</li>
+                    <li>Retirar el consentimiento para el procesamiento de datos</li>
+                </ul>
+                
+                <h3>7. Retención de Datos</h3>
+                <ul>
+                    <li>Los datos locales se mantienen hasta que desinstalas la app</li>
+                    <li>Los datos de Firebase se retienen según las políticas de Google Firebase</li>
+                </ul>
+                
+                <h3>8. Cumplimiento Legal</h3>
+                <p>Esta aplicación cumple con:</p>
+                <ul>
+                    <li><strong>GDPR</strong> (Reglamento General de Protección de Datos de la UE)</li>
+                    <li><strong>CCPA</strong> (Ley de Privacidad del Consumidor de California)</li>
+                    <li><strong>Políticas de Google Play Store</strong></li>
+                </ul>
+            </section>
+            
+            <!-- DATA SAFETY -->
+            <section id="data-safety">
+                <h2>Data Safety - Declaración de Datos</h2>
+                
+                <div class="highlight-box">
+                    Esta sección detalla todos los datos que la aplicación recopila, cómo se usan y con quién se comparten, según los requisitos de Google Play Console.
+                </div>
+                
+                <h3>Resumen de Recopilación de Datos</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Dato</th>
+                            <th>¿Se Recopila?</th>
+                            <th>¿Es Opcional?</th>
+                            <th>¿Se Comparte?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nombre de usuario</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td>ID de Publicidad</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-optional">SÍ</span></td>
+                            <td><span class="badge badge-yes">SÍ (AdMob)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Interacciones con la app</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td><span class="badge badge-yes">SÍ (Firebase)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Historial de búsqueda</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                        </tr>
+                        <tr>
+                            <td>Registros de fallos</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td><span class="badge badge-yes">SÍ (Crashlytics)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Datos de rendimiento</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td><span class="badge badge-yes">SÍ (Firebase)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ubicación</td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Contactos</td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Fotos/Videos</td>
+                            <td><span class="badge badge-no">NO</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Propósitos de Recopilación</h3>
+                
+                <h4>Funcionalidad de la App</h4>
+                <ul>
+                    <li>Nombre de usuario para identificación</li>
+                    <li>Historial de búsqueda para funcionalidad de reproducción</li>
+                    <li>Configuración del servidor para conectividad</li>
+                </ul>
+                
+                <h4>Analítica y Mejora</h4>
+                <ul>
+                    <li>Firebase Analytics: Eventos de uso, sesiones</li>
+                    <li>Firebase Crashlytics: Reportes de errores</li>
+                    <li>Firebase Performance: Métricas de rendimiento</li>
+                </ul>
+                
+                <h4>Publicidad</h4>
+                <ul>
+                    <li>Google AdMob: ID de publicidad para anuncios personalizados</li>
+                    <li>User Messaging Platform: Consentimiento GDPR</li>
+                </ul>
+                
+                <h3>Prácticas de Seguridad</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Práctica</th>
+                            <th>Estado</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cifrado en tránsito</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td>HTTPS/TLS para todas las comunicaciones</td>
+                        </tr>
+                        <tr>
+                            <td>Cifrado en reposo</td>
+                            <td><span class="badge badge-optional">Parcial</span></td>
+                            <td>Cifrado del sistema Android</td>
+                        </tr>
+                        <tr>
+                            <td>Eliminación de datos</td>
+                            <td><span class="badge badge-yes">SÍ</span></td>
+                            <td>Desinstalación o solicitud al desarrollador</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- PERMISOS -->
+            <section id="permisos">
+                <h2>Permisos de la Aplicación</h2>
+                
+                <h3>INTERNET</h3>
+                <div class="highlight-box">
+                    <strong>Propósito:</strong> Conectarse a tu servidor Rokola local y servicios de Google (Firebase, AdMob)
+                    <br><strong>Requerido:</strong> Sí
+                    <br><strong>Justificación:</strong> Esencial para la funcionalidad principal de la app
+                </div>
+                
+                <h3>ACCESS_NETWORK_STATE</h3>
+                <div class="highlight-box">
+                    <strong>Propósito:</strong> Verificar si hay conexión de red disponible
+                    <br><strong>Requerido:</strong> Sí
+                    <br><strong>Justificación:</strong> Permite mostrar mensajes apropiados cuando no hay conexión
+                </div>
+                
+                <h3>CAMERA</h3>
+                <div class="highlight-box">
+                    <strong>Propósito:</strong> Escanear códigos QR para conectarse rápidamente a servidores
+                    <br><strong>Requerido:</strong> No (opcional)
+                    <br><strong>Justificación:</strong> Característica de conveniencia. La app funciona sin cámara (configuración manual)
+                    <br><strong>Hardware opcional:</strong> La app no excluye dispositivos sin cámara
+                </div>
+            </section>
+            
+            <!-- SEGURIDAD -->
+            <section id="seguridad">
+                <h2>Seguridad y Cifrado</h2>
+                
+                <h3>Conexión HTTPS con Certificados Autofirmados</h3>
+                <div class="success-box">
+                    <p><strong>Rokola Digital usa HTTPS para todas las conexiones al servidor local.</strong></p>
+                    <ul>
+                        <li>El servidor Rokola usa certificados autofirmados</li>
+                        <li>La app acepta estos certificados para conexiones a redes privadas (LAN)</li>
+                        <li>Toda comunicación está cifrada con TLS/SSL</li>
+                        <li>Los datos no salen de tu red local</li>
+                    </ul>
+                </div>
+                
+                <h3>¿Por qué certificados autofirmados?</h3>
+                <p>Los certificados autofirmados son seguros para servidores locales porque:</p>
+                <ul>
+                    <li>El servidor está en tu red privada (192.168.x.x, 10.x.x.x)</li>
+                    <li>Tú configuras manualmente la dirección IP</li>
+                    <li>Los datos permanecen en tu red local</li>
+                    <li>TLS/SSL protege contra ataques en la LAN</li>
+                </ul>
+                
+                <h3>Servicios Externos</h3>
+                <p>Todas las comunicaciones con servicios de Google usan HTTPS con certificados válidos:</p>
+                <ul>
+                    <li>Firebase Analytics, Crashlytics, Performance</li>
+                    <li>Google AdMob</li>
+                    <li>Google Play Services</li>
+                </ul>
+            </section>
+            
+            <!-- CONTACTO -->
+            <section id="contacto">
+                <h2>Contacto y Soporte</h2>
+                
+                <div class="highlight-box">
+                    <p>Si tienes preguntas sobre esta política de privacidad o necesitas ejercer tus derechos de protección de datos, contáctanos:</p>
+                    <ul>
+                        <li><strong>Email:</strong> [TU_EMAIL_AQUI]</li>
+                        <li><strong>Sitio web:</strong> [TU_SITIO_WEB_AQUI]</li>
+                    </ul>
+                </div>
+                
+                <h3>Solicitudes de Eliminación de Datos</h3>
+                <p>Para eliminar tus datos:</p>
+                <ol>
+                    <li><strong>Datos locales:</strong> Desinstala la aplicación</li>
+                    <li><strong>Datos de Firebase:</strong> Envía un email solicitando la eliminación</li>
+                </ol>
+                
+                <h3>Cambios a esta Política</h3>
+                <p>Podemos actualizar esta política ocasionalmente. Te notificaremos sobre cambios significativos mediante la aplicación o esta página web.</p>
+            </section>
+        </div>
+        
+        <footer>
+            <p><strong>Rokola Digital</strong> - Jukebox Musical</p>
+            <p>Versión 1.0.0</p>
+            <p>© 2026 - Todos los derechos reservados</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                Esta aplicación cumple con GDPR, CCPA y las Políticas de Google Play Store
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
