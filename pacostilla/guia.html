@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <title>📱 Guía de Usuario - Alerta Vial</title>
+  <style>
+    :root {
+      --primary: #4f8ef7;
+      --primary-dark: #2563eb;
+      --accent: #f59e0b;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #273449;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.65; padding-bottom: 40px; }
+    .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 36px 20px 30px; text-align: center; border-bottom: 2px solid var(--primary); }
+    .hero-icon { font-size: 52px; margin-bottom: 10px; }
+    .hero h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+    .hero p { color: var(--text-muted); font-size: 14px; margin-top: 6px; }
+    .index-container { margin: 20px 16px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+    .index-header { background: var(--surface2); padding: 14px 18px; font-weight: 700; font-size: 15px; color: var(--primary); border-bottom: 1px solid var(--border); }
+    .index-list { list-style: none; }
+    .index-list li { border-bottom: 1px solid var(--border); }
+    .index-list li:last-child { border-bottom: none; }
+    .index-list a { display: flex; align-items: center; gap: 12px; padding: 14px 18px; color: var(--text); text-decoration: none; font-size: 15px; transition: background 0.2s; }
+    .index-list a:active { background: var(--surface2); }
+    .index-list .num { min-width: 26px; height: 26px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    .index-list .arrow { margin-left: auto; color: var(--text-muted); font-size: 14px; }
+    section { margin: 20px 16px 0; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+    .section-header { background: linear-gradient(90deg, var(--primary-dark), #1e40af); padding: 16px 18px; display: flex; align-items: center; gap: 10px; }
+    .section-header .icon { font-size: 22px; }
+    .section-header h2 { font-size: 17px; font-weight: 700; color: #fff; }
+    .section-body { padding: 18px; }
+    h3 { font-size: 15px; font-weight: 700; color: var(--primary); margin: 18px 0 10px; padding-left: 10px; border-left: 3px solid var(--primary); }
+    h3:first-child { margin-top: 0; }
+    h4 { font-size: 14px; font-weight: 600; color: var(--accent); margin: 14px 0 8px; }
+    p { font-size: 15px; color: var(--text); margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 20px; margin-bottom: 10px; }
+    li { font-size: 15px; color: var(--text); margin-bottom: 5px; }
+    li:last-child { margin-bottom: 0; }
+    .card { background: var(--surface2); border-radius: var(--radius-sm); padding: 14px; margin: 10px 0; border-left: 4px solid var(--primary); }
+    .card.warning { border-left-color: var(--accent); }
+    .card.danger  { border-left-color: var(--danger); }
+    .card.success { border-left-color: var(--success); }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .badge-green  { background: #166534; color: #bbf7d0; }
+    .badge-red    { background: #7f1d1d; color: #fecaca; }
+    .badge-yellow { background: #78350f; color: #fde68a; }
+    .steps { list-style: none; padding: 0; counter-reset: step; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+    .steps li::before { content: counter(step); min-width: 28px; height: 28px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid-card { background: var(--surface2); border-radius: var(--radius-sm); padding: 12px; border: 1px solid var(--border); }
+    .grid-card .gi { font-size: 24px; margin-bottom: 4px; }
+    .grid-card p { font-size: 13px; color: var(--text-muted); margin: 0; }
+    .grid-card strong { font-size: 14px; color: var(--text); display: block; margin-bottom: 3px; }
+    .level-bar { display: flex; align-items: center; gap: 10px; background: var(--surface2); border-radius: var(--radius-sm); padding: 10px 14px; margin: 6px 0; }
+    .level-icon { font-size: 22px; }
+    .level-info { flex: 1; }
+    .level-name { font-weight: 700; font-size: 14px; }
+    .level-pts { font-size: 12px; color: var(--text-muted); }
+    .level-bar .pts-badge { background: var(--primary-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .faq-item { background: var(--surface2); border-radius: var(--radius-sm); margin: 10px 0; overflow: hidden; }
+    .faq-q { padding: 14px 16px; font-weight: 600; font-size: 14px; color: var(--primary); display: flex; align-items: flex-start; gap: 8px; }
+    .faq-q span { font-size: 16px; flex-shrink: 0; }
+    .faq-a { padding: 0 16px 14px 16px; font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .faq-a ol, .faq-a ul { font-size: 14px; color: var(--text-muted); }
+    .changelog-version { background: var(--surface2); border-radius: var(--radius-sm); padding: 14px; margin: 10px 0; }
+    .changelog-version h4 { margin: 0 0 8px; color: var(--accent); }
+    .changelog-version li { font-size: 14px; color: var(--text-muted); }
+    .back-top { display: block; text-align: center; margin: 14px 0 4px; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 8px; }
+    .welcome-card { background: linear-gradient(135deg, #0f3460, #16213e); border-radius: var(--radius); padding: 24px 20px; margin: 20px 16px 0; text-align: center; border: 1px solid var(--primary); }
+    .welcome-card h2 { font-size: 20px; color: #fff; margin-bottom: 12px; }
+    .welcome-card p { color: var(--text-muted); font-size: 14px; }
+    .welcome-list { list-style: none; padding: 0; margin: 14px 0 0; }
+    .welcome-list li { font-size: 15px; color: var(--text); padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .welcome-list li:last-child { border-bottom: none; }
+    footer { text-align: center; padding: 20px 16px; color: var(--text-muted); font-size: 12px; margin-top: 20px; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    strong { color: var(--text); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-icon">🚨</div>
+  <h1>Guía Completa del Usuario</h1>
+  <p>Alerta Vial · v1.4 · Marzo 2026</p>
+</div>
+
+<!-- ÍNDICE -->
+<div class="index-container">
+  <div class="index-header">📋 Índice de Contenidos</div>
+  <ul class="index-list">
+    <li><a href="#que-es"><span class="num">1</span>¿Qué es esta app?<span class="arrow">›</span></a></li>
+    <li><a href="#para-que"><span class="num">2</span>¿Para qué sirve?<span class="arrow">›</span></a></li>
+    <li><a href="#caracteristicas"><span class="num">3</span>Características principales<span class="arrow">›</span></a></li>
+    <li><a href="#instalacion"><span class="num">4</span>Instalación y configuración<span class="arrow">›</span></a></li>
+    <li><a href="#como-usar"><span class="num">5</span>Cómo usar la app<span class="arrow">›</span></a></li>
+    <li><a href="#reputacion"><span class="num">6</span>Sistema de reputación<span class="arrow">›</span></a></li>
+    <li><a href="#cuenta"><span class="num">7</span>Gestión de cuenta<span class="arrow">›</span></a></li>
+    <li><a href="#faq"><span class="num">8</span>Preguntas frecuentes<span class="arrow">›</span></a></li>
+    <li><a href="#consejos"><span class="num">9</span>Consejos y buenas prácticas<span class="arrow">›</span></a></li>
+    <li><a href="#changelog"><span class="num">10</span>Registro de cambios<span class="arrow">›</span></a></li>
+  </ul>
+</div>
+
+<!-- SECCIÓN 1 -->
+<section id="que-es">
+  <div class="section-header"><span class="icon">🎯</span><h2>¿Qué es esta app?</h2></div>
+  <div class="section-body">
+    <p>Es una aplicación <strong>colaborativa</strong> que permite reportar y visualizar en tiempo real la ubicación de puntos de control policial, alcabalas, retenes y otros eventos viales en tu ciudad.</p>
+    <h3>Tipos de Puntos de Control</h3>
+    <div class="grid2">
+      <div class="grid-card"><div class="gi">🚨</div><strong>Alcabala / Retén</strong><p>Control policial</p></div>
+      <div class="grid-card"><div class="gi">🚨</div><strong>Control de Velocidad</strong><p>Radar en vía</p></div>
+      <div class="grid-card"><div class="gi">🚨</div><strong>Policía de Tránsito</strong><p>Operativo activo</p></div>
+      <div class="grid-card"><div class="gi">🚨</div><strong>Alcoholemia</strong><p>Prueba de aliento</p></div>
+      <div class="grid-card"><div class="gi">⚠️</div><strong>Accidente en Vía</strong><p>Emergencia vial</p></div>
+      <div class="grid-card"><div class="gi">🚧</div><strong>Cierre / Desvío</strong><p>Vía bloqueada</p></div>
+      <div class="grid-card"><div class="gi">🔧</div><strong>Revisión Técnico-Mecánica</strong><p>Inspección vehicular</p></div>
+      <div class="grid-card"><div class="gi">🎯</div><strong>Otro</strong><p>Evento vial</p></div>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 2 -->
+<section id="para-que">
+  <div class="section-header"><span class="icon">💡</span><h2>¿Para qué sirve?</h2></div>
+  <div class="section-body">
+    <h3>Beneficios para ti</h3>
+    <ol class="steps">
+      <li><span><strong>Estar preparado:</strong> Saber dónde hay controles antes de llegar.</span></li>
+      <li><span><strong>Ahorrar tiempo:</strong> Evitar rutas con demoras o cierres.</span></li>
+      <li><span><strong>Conducir tranquilo:</strong> Tener tus documentos listos cuando sea necesario.</span></li>
+      <li><span><strong>Ayudar a otros:</strong> Compartir información útil con la comunidad.</span></li>
+      <li><span><strong>Información en tiempo real:</strong> Reportes actualizados por usuarios como tú.</span></li>
+    </ol>
+    <h3>¿Es legal?</h3>
+    <div class="card success">
+      <p>✅ <strong>SÍ.</strong> Esta app <strong>NO</strong> ayuda a evadir la ley. Su propósito es informar sobre situaciones viales y promover la conducción responsable.</p>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 3 -->
+<section id="caracteristicas">
+  <div class="section-header"><span class="icon">✨</span><h2>Características Principales</h2></div>
+  <div class="section-body">
+    <h3>🗺️ Mapa en Tiempo Real</h3>
+    <ul>
+      <li>Visualiza todos los puntos activos dentro de tu radio</li>
+      <li>Toca un marcador para ver detalles completos</li>
+      <li>Botón de centrar en tu ubicación actual</li>
+      <li>Transiciones suaves entre pantallas</li>
+    </ul>
+    <h3>📢 Reportar Puntos</h3>
+    <ul>
+      <li>Reporta en segundos con ubicación automática o manual</li>
+      <li>8 tipos de control disponibles</li>
+      <li>Agrega tiempo de espera y comentarios</li>
+      <li>Opción de reporte anónimo</li>
+    </ul>
+    <h3>✅ Verificación Comunitaria</h3>
+    <ul>
+      <li><strong>👍 Sí está:</strong> Confirma que el punto sigue activo</li>
+      <li><strong>👎 No está:</strong> Reporta que ya no existe</li>
+      <li>Cooldown de 30 minutos entre votos al mismo punto</li>
+      <li>Con 5+ negaciones el punto se desactiva automáticamente</li>
+      <li>Los botones permanecen visibles tras votar</li>
+    </ul>
+    <h3>💬 Chat por Punto con Fotos</h3>
+    <ul>
+      <li>Chat específico para cada punto de control</li>
+      <li>El reportante puede subir hasta <strong>3 fotos</strong> (cámara o galería)</li>
+      <li>Las fotos aparecen fijas en la parte superior del chat, siempre visibles</li>
+      <li>Toca una foto para verla en pantalla completa y desliza para ver las demás</li>
+      <li>Mensajes de hasta 200 caracteres</li>
+    </ul>
+    <h3>🔔 Notificaciones Inteligentes</h3>
+    <ul>
+      <li>Alertas cuando hay un punto nuevo dentro de tu radio</li>
+      <li>Título: tipo de control · Cuerpo: nombre del lugar</li>
+      <li>Incluye tiempo de espera y comentario si fueron reportados</li>
+      <li>4 tipos de sonido: Sirena policial, Alerta urgente, Estándar, Silencioso</li>
+      <li>Respeta el modo No Molestar del dispositivo</li>
+    </ul>
+    <h3>🗑️ Eliminación de Cuenta</h3>
+    <ul>
+      <li>Puedes eliminar tu cuenta y todos tus datos en cualquier momento</li>
+      <li>La eliminación es permanente e incluye perfil, fotos y historial</li>
+      <li>Tus reportes activos se desactivan y se eliminan automáticamente en 7 días</li>
+    </ul>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 4 -->
+<section id="instalacion">
+  <div class="section-header"><span class="icon">🚀</span><h2>Instalación y Configuración</h2></div>
+  <div class="section-body">
+    <h3>Paso 1: Instalar la App</h3>
+    <ol class="steps">
+      <li><span>Descarga desde Google Play Store o instala el APK</span></li>
+      <li><span>Abre la aplicación</span></li>
+      <li><span>Acepta los permisos solicitados</span></li>
+    </ol>
+    <h3>Paso 2: Permisos Necesarios</h3>
+    <h4>📍 Ubicación (REQUERIDO)</h4>
+    <div class="card">
+      <p><strong>¿Para qué?</strong> Mostrar puntos cercanos y calcular distancias</p>
+      <p><strong>Privacidad:</strong> Tu ubicación NO se comparte con otros usuarios</p>
+    </div>
+    <h4>🔔 Notificaciones (RECOMENDADO)</h4>
+    <div class="card">
+      <p><strong>¿Para qué?</strong> Alertarte sobre puntos de control en tu área</p>
+    </div>
+    <h4>📷 Cámara y Galería (OPCIONAL)</h4>
+    <div class="card">
+      <p><strong>¿Para qué?</strong> Subir fotos al chat de un punto que reportaste</p>
+      <p><strong>¿Quién puede?</strong> Solo el usuario que creó el reporte, máximo 3 fotos</p>
+    </div>
+    <h3>Paso 3: Cuenta de Usuario</h3>
+    <h4>Sin cuenta (Modo Invitado)</h4>
+    <div class="card success">
+      <strong>✅ Puedes:</strong>
+      <ul>
+        <li>Ver el mapa y todos los puntos activos</li>
+        <li>Ver la lista de puntos</li>
+        <li>Leer el chat de cada punto</li>
+        <li>Ver fotos del chat</li>
+      </ul>
+    </div>
+    <div class="card danger">
+      <strong>❌ No puedes:</strong>
+      <ul>
+        <li>Reportar nuevos puntos</li>
+        <li>Votar "Sí está" / "No está"</li>
+        <li>Enviar mensajes en el chat</li>
+        <li>Subir fotos</li>
+      </ul>
+    </div>
+    <h4>Con cuenta Google (Recomendado)</h4>
+    <ol class="steps">
+      <li><span>Toca el ícono 👤 en la barra superior</span></li>
+      <li><span>Selecciona <strong>"Iniciar sesión con Google"</strong></span></li>
+      <li><span>Elige tu cuenta</span></li>
+      <li><span>¡Acceso completo activado!</span></li>
+    </ol>
+    <div class="card success">
+      <p>✅ <strong>Sincronización automática:</strong> Tu configuración (radio, ubicación fija, tipos de alerta) se guarda en la nube y se restaura al iniciar sesión en otro dispositivo.</p>
+    </div>
+    <h3>Paso 4: Configurar Radio y Ubicación</h3>
+    <h4>📏 Radio de Interés</h4>
+    <div class="card warning">
+      <p>El radio controla qué puntos ves en el mapa, en la lista y qué notificaciones recibes. Por defecto: <strong>15 km</strong>.</p>
+    </div>
+    <ul>
+      <li><strong>1–5 km:</strong> Solo puntos muy cercanos</li>
+      <li><strong>15 km:</strong> Recomendado para ciudad (por defecto)</li>
+      <li><strong>30 km:</strong> Áreas metropolitanas</li>
+      <li><strong>50 km:</strong> Rutas intermunicipales</li>
+    </ul>
+    <h4>📍 Ubicación Fija (Recomendado)</h4>
+    <ol class="steps">
+      <li><span>Ve a <strong>Configuración → Ubicación fija</strong></span></li>
+      <li><span>Toca <strong>"Seleccionar en el mapa"</strong></span></li>
+      <li><span>Mueve el mapa al centro de tu zona</span></li>
+      <li><span>Dale un nombre y confirma</span></li>
+    </ol>
+    <h4>📱 Ubicación Dinámica (GPS)</h4>
+    <p>Usa tu posición GPS en tiempo real. Se actualiza automáticamente si te mueves más de 500 metros. Ideal para conductores que viajan por diferentes zonas.</p>
+    <h4>🚨 Tipos de Alerta</h4>
+    <p>Activa o desactiva notificaciones por tipo de control desde <strong>Configuración</strong>.</p>
+    <h4>🔊 Sonido de Notificación</h4>
+    <ul>
+      <li>🚨 <strong>Sirena Policial</strong> (por defecto)</li>
+      <li>⚠️ <strong>Alerta Urgente</strong></li>
+      <li>🔔 <strong>Estándar del sistema</strong></li>
+      <li>🔕 <strong>Silencioso</strong> (solo vibración)</li>
+    </ul>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 5 -->
+<section id="como-usar">
+  <div class="section-header"><span class="icon">📖</span><h2>Cómo Usar la App</h2></div>
+  <div class="section-body">
+    <h3>🗺️ Ver el Mapa</h3>
+    <ol class="steps">
+      <li><span>La app abre en la lista de puntos activos</span></li>
+      <li><span>Toca <strong>Mapa</strong> en la barra inferior para ver el mapa</span></li>
+      <li><span>Los marcadores muestran puntos dentro de tu radio</span></li>
+      <li><span>Toca un marcador para ver el panel de acciones</span></li>
+      <li><span>Toca el mapa para cerrar el panel</span></li>
+    </ol>
+    <h4>Panel de Acciones del Punto</h4>
+    <p>Al tocar un marcador aparece un panel en la parte superior con:</p>
+    <div class="card success"><p>👍 <strong>Sí está</strong> — Confirma que el punto sigue activo <span class="badge badge-green">+5 pts</span></p></div>
+    <div class="card danger"><p>👎 <strong>No está</strong> — Reporta que ya no existe <span class="badge badge-green">+5 pts</span></p></div>
+    <div class="card"><p>💬 <strong>Chat</strong> — Abre el chat de ese punto específico</p></div>
+    <div class="card warning"><p>⏳ Cooldown de <strong>30 minutos</strong> entre votos al mismo punto. Los botones permanecen visibles después de votar.</p></div>
+    <hr/>
+    <h3>📢 Reportar un Punto</h3>
+    <h4>Requisitos</h4>
+    <ul><li>✅ Sesión iniciada con Google</li></ul>
+    <ol class="steps">
+      <li><span>Toca el botón <strong>"+"</strong> en la barra inferior</span></li>
+      <li><span>Selecciona ubicación: <em>Mi ubicación actual</em> o <em>Marcar en mapa</em></span></li>
+      <li><span>Completa nombre del lugar y dirección</span></li>
+      <li><span>Selecciona el tipo de control</span></li>
+      <li><span>Agrega tiempo de espera y comentario (opcionales)</span></li>
+      <li><span>Toca <strong>"Publicar Reporte"</strong></span></li>
+    </ol>
+    <div class="card">
+      <p>💡 <strong>Ciclo de vida de un reporte:</strong></p>
+      <ul>
+        <li>✅ <strong>Activo:</strong> Visible en mapa y lista</li>
+        <li>⏱️ <strong>6 horas:</strong> Se marca INACTIVO automáticamente</li>
+        <li>🗑️ <strong>7 días:</strong> Se elimina completamente (Firestore + fotos en Storage)</li>
+      </ul>
+    </div>
+    <hr/>
+    <h3>💬 Chat del Punto con Fotos</h3>
+    <ol class="steps">
+      <li><span>Toca un marcador en el mapa</span></li>
+      <li><span>Toca el botón <strong>"Chat"</strong></span></li>
+      <li><span>Las fotos del reportante aparecen fijas en la parte superior</span></li>
+      <li><span>Toca una foto para verla en pantalla completa</span></li>
+      <li><span>Desliza horizontalmente para ver las demás fotos</span></li>
+      <li><span>Escribe y envía mensajes en la parte inferior</span></li>
+    </ol>
+    <h4>📸 Subir Fotos (Solo el Reportante)</h4>
+    <ol class="steps">
+      <li><span>Toca el ícono 📷 en la barra superior del chat</span></li>
+      <li><span>Elige <strong>Cámara</strong> o <strong>Galería</strong></span></li>
+      <li><span>La foto aparece en el banner superior del chat</span></li>
+    </ol>
+    <div class="card warning">
+      <p>⚠️ Máximo <strong>3 fotos</strong> por punto. El ícono desaparece al alcanzar el límite. Las fotos se eliminan junto con el punto a los 7 días.</p>
+    </div>
+    <hr/>
+    <h3>🔔 Notificaciones</h3>
+    <p>Recibirás una alerta cuando alguien reporte un punto dentro de tu radio. La notificación muestra el tipo de control, el nombre del lugar, y si fue reportado: tiempo de espera y comentario.</p>
+    <div class="card">
+      <p>Ejemplo: <strong>🚨 Alcabala / Retén</strong><br/>Barrio Centro · ⏱️ Espera 5-15 min · 💬 Mucho tráfico</p>
+    </div>
+    <hr/>
+    <h3>👤 Perfil de Usuario</h3>
+    <ol class="steps">
+      <li><span>Toca el ícono 👤 en la barra superior</span></li>
+      <li><span>Edita tu foto tocando el ícono de cámara</span></li>
+      <li><span>Edita tu nombre tocando el ícono de lápiz</span></li>
+      <li><span>Ve tus estadísticas: puntos, nivel, confiabilidad, reportes</span></li>
+    </ol>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 6 -->
+<section id="reputacion">
+  <div class="section-header"><span class="icon">⭐</span><h2>Sistema de Reputación</h2></div>
+  <div class="section-body">
+    <h3>Niveles de Usuario</h3>
+    <div class="level-bar"><span class="level-icon">🥉</span><div class="level-info"><div class="level-name">Bronce</div><div class="level-pts">Nivel inicial</div></div><span class="pts-badge">0 pts</span></div>
+    <div class="level-bar"><span class="level-icon">🥈</span><div class="level-info"><div class="level-name">Plata</div><div class="level-pts">Usuario activo</div></div><span class="pts-badge">100 pts</span></div>
+    <div class="level-bar"><span class="level-icon">🥇</span><div class="level-info"><div class="level-name">Oro</div><div class="level-pts">Colaborador frecuente</div></div><span class="pts-badge">500 pts</span></div>
+    <div class="level-bar"><span class="level-icon">💎</span><div class="level-info"><div class="level-name">Platino</div><div class="level-pts">Colaborador experto</div></div><span class="pts-badge">1500 pts</span></div>
+    <div class="level-bar"><span class="level-icon">👑</span><div class="level-info"><div class="level-name">Leyenda</div><div class="level-pts">Referente de la comunidad</div></div><span class="pts-badge">3000 pts</span></div>
+    <h3>Cómo Ganar y Perder Puntos</h3>
+    <div class="card success"><p>✅ <strong>+10 pts</strong> — Publicar un nuevo reporte</p></div>
+    <div class="card success"><p>✅ <strong>+5 pts</strong> — Votar "Sí está" o "No está" en un punto</p></div>
+    <div class="card success"><p>✅ <strong>+50 pts</strong> — Reporte verificado: 5 confirmaciones en los primeros 30 min</p></div>
+    <div class="card danger"><p>❌ <strong>-25 pts</strong> — Reporte falso: 5 negaciones en los primeros 30 min</p></div>
+    <h3>Confiabilidad del Usuario</h3>
+    <p>Cada usuario tiene un porcentaje de confiabilidad (0–100%) que refleja la precisión histórica de sus reportes. Empieza en 100% y se ajusta según la verificación comunitaria de tus reportes.</p>
+    <div class="card warning">
+      <p>⚠️ La ventana de verificación es de <strong>30 minutos</strong> desde el momento del reporte. Solo los votos dentro de ese período afectan tu reputación.</p>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 7 -->
+<section id="cuenta">
+  <div class="section-header"><span class="icon">👤</span><h2>Gestión de Cuenta</h2></div>
+  <div class="section-body">
+    <h3>Cerrar Sesión</h3>
+    <p>Cierra tu sesión sin eliminar ningún dato. Puedes volver a iniciar sesión en cualquier momento y recuperar tu perfil, puntos y configuración.</p>
+    <ol class="steps">
+      <li><span>Ve a <strong>Mi Perfil</strong> tocando el ícono 👤</span></li>
+      <li><span>Toca <strong>"Cerrar Sesión"</strong></span></li>
+      <li><span>La app continúa funcionando en modo invitado</span></li>
+    </ol>
+
+    <hr/>
+
+    <h3>Eliminar Cuenta y Datos</h3>
+    <p>Si deseas eliminar permanentemente tu cuenta y todos tus datos personales, puedes hacerlo desde tu perfil.</p>
+    <div class="card danger">
+      <p>⚠️ <strong>Esta acción es irreversible.</strong> Una vez eliminada la cuenta no es posible recuperar los datos.</p>
+    </div>
+    <h4>¿Qué se elimina?</h4>
+    <ul>
+      <li>Tu perfil: nombre de usuario y foto de perfil</li>
+      <li>Tu historial de notificaciones</li>
+      <li>Tus puntos, nivel y estadísticas de reputación</li>
+      <li>Tu cuenta de acceso (no podrás iniciar sesión con ese Google)</li>
+    </ul>
+    <h4>¿Qué pasa con tus reportes?</h4>
+    <div class="card warning">
+      <p>Tus reportes activos se <strong>desactivan inmediatamente</strong> y se eliminan de forma automática a los 7 días, junto con sus fotos y mensajes de chat.</p>
+    </div>
+    <h4>Cómo eliminar tu cuenta</h4>
+    <ol class="steps">
+      <li><span>Ve a <strong>Mi Perfil</strong> tocando el ícono 👤</span></li>
+      <li><span>Desplázate hasta el final de la pantalla</span></li>
+      <li><span>Toca <strong>"Eliminar mi cuenta y datos"</strong></span></li>
+      <li><span>Lee el resumen de lo que se eliminará</span></li>
+      <li><span>Confirma tocando <strong>"Sí, eliminar mi cuenta"</strong></span></li>
+    </ol>
+    <div class="card success">
+      <p>✅ El proceso es automático y se ejecuta en el servidor. No necesitas hacer nada más después de confirmar.</p>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 8 -->
+<section id="faq">
+  <div class="section-header"><span class="icon">❓</span><h2>Preguntas Frecuentes</h2></div>
+  <div class="section-body">
+    <div class="faq-item">
+      <div class="faq-q"><span>🔔</span>¿Por qué no me llegan notificaciones?</div>
+      <div class="faq-a">
+        <ol>
+          <li>Verifica que el permiso de notificaciones esté activado en Ajustes del sistema</li>
+          <li>Asegúrate de tener una ubicación configurada (fija o GPS)</li>
+          <li>Revisa que el radio de interés no sea demasiado pequeño</li>
+          <li>Confirma que los tipos de alerta que te interesan estén activados en Configuración</li>
+        </ol>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>📍</span>¿Cuál es la diferencia entre ubicación fija y GPS?</div>
+      <div class="faq-a">La ubicación fija es un punto que defines manualmente (ideal si siempre estás en la misma zona). La ubicación GPS usa tu posición real y se actualiza automáticamente si te mueves más de 500 metros.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>🗑️</span>¿Cuándo desaparece un punto del mapa?</div>
+      <div class="faq-a">Un punto se marca como inactivo automáticamente a las 6 horas. Se elimina completamente (incluyendo fotos y mensajes del chat) a los 7 días.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>📸</span>¿Por qué no puedo subir fotos?</div>
+      <div class="faq-a">Solo el usuario que creó el reporte puede subir fotos, con un máximo de 3 por punto. Si no eres el reportante o ya se alcanzó el límite, el ícono de cámara no aparecerá.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>👍</span>¿Puedo votar varias veces en el mismo punto?</div>
+      <div class="faq-a">Hay un cooldown de 30 minutos entre votos al mismo punto. Los botones permanecen visibles para que puedas ver el estado actual, pero no podrás votar de nuevo hasta que pase el tiempo.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>🔒</span>¿Mis datos están seguros?</div>
+      <div class="faq-a">Tu ubicación nunca se comparte con otros usuarios. Solo se usa para calcular qué puntos están dentro de tu radio. La autenticación es mediante Google y los datos se almacenan en Firebase con reglas de seguridad.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>📵</span>¿Funciona con la pantalla apagada?</div>
+      <div class="faq-a">Sí. Las notificaciones llegan aunque la pantalla esté apagada o la app en segundo plano, siempre que el sistema no haya matado el proceso. Se recomienda excluir la app de la optimización de batería para mayor confiabilidad.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>🗑️</span>Si elimino mi cuenta, ¿se borran mis reportes de inmediato?</div>
+      <div class="faq-a">Tus reportes activos se desactivan inmediatamente (dejan de aparecer en el mapa) pero se eliminan definitivamente del servidor a los 7 días, junto con sus fotos y mensajes de chat.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>↩️</span>¿Puedo recuperar mi cuenta después de eliminarla?</div>
+      <div class="faq-a">No. La eliminación es permanente e irreversible. Si vuelves a iniciar sesión con el mismo Google, se creará una cuenta nueva desde cero sin ningún dato anterior.</div>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 9 -->
+<section id="consejos">
+  <div class="section-header"><span class="icon">💡</span><h2>Consejos y Buenas Prácticas</h2></div>
+  <div class="section-body">
+    <h3>Para Reportar Mejor</h3>
+    <ul>
+      <li>Reporta solo cuando estés seguro de lo que viste</li>
+      <li>Usa el nombre del lugar más reconocible (barrio, avenida, referencia)</li>
+      <li>Agrega el tiempo de espera si lo conoces — es muy útil para otros</li>
+      <li>Si puedes, toma una foto del punto para dar más contexto</li>
+    </ul>
+    <h3>Para Votar Correctamente</h3>
+    <ul>
+      <li>Vota "Sí está" solo si pasaste por el lugar y el punto sigue activo</li>
+      <li>Vota "No está" si pasaste y ya no hay nada</li>
+      <li>No votes si no tienes información de primera mano</li>
+    </ul>
+    <h3>Para Recibir Mejores Alertas</h3>
+    <ul>
+      <li>Configura una ubicación fija en el centro de tu zona habitual</li>
+      <li>Ajusta el radio según tu área: 15 km para ciudad, 30–50 km para rutas</li>
+      <li>Activa solo los tipos de alerta que te interesan para reducir ruido</li>
+      <li>Usa el sonido de sirena para no perderte alertas importantes</li>
+    </ul>
+    <div class="card warning">
+      <p>⚠️ Nunca uses el teléfono mientras conduces. Configura la app antes de salir o pide a un acompañante que la maneje.</p>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 10 -->
+<section id="changelog">
+  <div class="section-header"><span class="icon">📝</span><h2>Registro de Cambios</h2></div>
+  <div class="section-body">
+    <div class="changelog-version">
+      <h4>v1.4 — Marzo 2026</h4>
+      <ul>
+        <li>Eliminación de cuenta: el usuario puede borrar su cuenta y todos sus datos desde el perfil</li>
+        <li>La eliminación incluye perfil, foto, notificaciones, puntos y acceso a la cuenta</li>
+        <li>Los reportes activos se desactivan al eliminar la cuenta y se borran en 7 días</li>
+      </ul>
+    </div>
+    <div class="changelog-version">
+      <h4>v1.3 — Marzo 2026</h4>
+      <ul>
+        <li>Fotos en el chat: el reportante puede subir hasta 3 fotos (cámara o galería)</li>
+        <li>Visor de fotos a pantalla completa con deslizamiento horizontal</li>
+        <li>Fotos fijas en la parte superior del chat, siempre visibles</li>
+        <li>Notificaciones con contenido completo: tipo + nombre del lugar</li>
+        <li>Botones de votación permanecen visibles tras votar</li>
+        <li>Transiciones suaves entre pantallas</li>
+        <li>2 nuevos tipos de punto: Revisión Técnico-Mecánica y Otro</li>
+        <li>Limpieza automática incluye fotos en Storage al eliminar puntos</li>
+      </ul>
+    </div>
+    <div class="changelog-version">
+      <h4>v1.2</h4>
+      <ul>
+        <li>Sistema de reputación con niveles y puntos</li>
+        <li>Ubicación dinámica GPS con actualización automática</li>
+        <li>Sincronización de preferencias en la nube</li>
+        <li>4 opciones de sonido para notificaciones</li>
+        <li>Cooldown de 30 minutos entre votos</li>
+      </ul>
+    </div>
+    <div class="changelog-version">
+      <h4>v1.1</h4>
+      <ul>
+        <li>Chat por punto de control</li>
+        <li>Verificación comunitaria con desactivación automática</li>
+        <li>Ubicación fija configurable</li>
+        <li>Filtro por tipo de alerta</li>
+      </ul>
+    </div>
+    <div class="changelog-version">
+      <h4>v1.0</h4>
+      <ul>
+        <li>Lanzamiento inicial</li>
+        <li>Mapa en tiempo real con marcadores</li>
+        <li>Reportes con 6 tipos de control</li>
+        <li>Notificaciones push básicas</li>
+        <li>Autenticación con Google</li>
+      </ul>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- WELCOME CARD -->
+<div class="welcome-card">
+  <h2>🚨 ¡Bienvenido a Alerta Vial!</h2>
+  <p>Juntos hacemos las vías más seguras e informadas para todos.</p>
+  <ul class="welcome-list">
+    <li>📍 Configura tu ubicación y radio</li>
+    <li>🔔 Activa las notificaciones</li>
+    <li>🗺️ Explora el mapa</li>
+    <li>📢 Reporta lo que ves</li>
+    <li>✅ Verifica los reportes de otros</li>
+  </ul>
+</div>
+
+<footer>
+  <p>Alerta Vial v1.4 · Marzo 2026</p>
+  <p style="margin-top:6px;">Hecho con ❤️ para la comunidad vial</p>
+</footer>
+
+</body>
+</html>
