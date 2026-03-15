@@ -43,6 +43,7 @@
   <li><strong>Ubicación:</strong> Coordenadas GPS para mostrar puntos cercanos y enviar notificaciones relevantes. Tu ubicación <strong>no se comparte</strong> con otros usuarios.</li>
   <li><strong>Token FCM:</strong> Identificador de dispositivo para el envío de notificaciones push.</li>
   <li><strong>Datos de uso:</strong> Estadísticas de reportes, votos y nivel de reputación dentro de la app.</li>
+  <li><strong>Datos de rendimiento:</strong> Métricas técnicas anónimas (tiempos de respuesta, errores) recopiladas por Firebase Performance Monitoring para mejorar la estabilidad de la app.</li>
 </ul>
 
 <h3>1.3 Información de autenticación</h3>
@@ -73,6 +74,7 @@
   <li><strong>Google Firebase (Firestore, Storage, Authentication, Cloud Messaging):</strong> Almacenamiento de datos, autenticación y notificaciones push. <a href="https://firebase.google.com/support/privacy" target="_blank">Política de privacidad de Firebase</a></li>
   <li><strong>Google Maps SDK:</strong> Visualización del mapa. <a href="https://policies.google.com/privacy" target="_blank">Política de privacidad de Google</a></li>
   <li><strong>Google AdMob:</strong> Publicidad dentro de la app. <a href="https://policies.google.com/privacy" target="_blank">Política de privacidad de Google</a></li>
+  <li><strong>Firebase Performance Monitoring:</strong> Recopila métricas de rendimiento de la app (tiempos de carga, latencia de red) de forma anónima y agregada. <a href="https://firebase.google.com/support/privacy" target="_blank">Política de privacidad de Firebase</a></li>
 </ul>
 
 <p>Los datos que publicas voluntariamente (reportes, mensajes de chat, fotos) son visibles para todos los usuarios de la aplicación.</p>
@@ -98,6 +100,8 @@
   <tr><td>Cámara</td><td>Tomar fotos para el chat de un punto reportado</td><td>No (opcional)</td></tr>
   <tr><td>Galería / Imágenes</td><td>Seleccionar fotos existentes para el chat</td><td>No (opcional)</td></tr>
   <tr><td>Internet</td><td>Comunicación con Firebase y Google Maps</td><td>Sí</td></tr>
+  <tr><td>Vibración</td><td>Vibrar el dispositivo al recibir alertas de puntos de control</td><td>No (opcional)</td></tr>
+  <tr><td>Wake Lock</td><td>Mantener el procesador activo brevemente para entregar notificaciones en tiempo real</td><td>Sí</td></tr>
 </table>
 
 <h2>6. Seguridad</h2>
