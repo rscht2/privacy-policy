@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Cada Paso Admin</title>
+  <style>
+    :root {
+      --primary: #1565C0;
+      --primary-light: #E3F2FD;
+      --text: #212121;
+      --muted: #616161;
+      --border: #E0E0E0;
+      --bg: #FAFAFA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.8rem; font-weight: 700; }
+    header p  { margin-top: 8px; opacity: .85; font-size: .95rem; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .8rem;
+      margin-top: 12px;
+    }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    section { margin-bottom: 36px; }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      margin-bottom: 14px;
+    }
+    p { margin-bottom: 12px; color: var(--text); }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: var(--primary-light);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      font-size: .95rem;
+    }
+    .highlight strong { color: var(--primary); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: .9rem;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--primary-light); }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: .82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      table, thead, tbody, th, td, tr { display: block; }
+      th { display: none; }
+      td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        display: block;
+        color: var(--primary);
+        margin-bottom: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Política de Privacidad</h1>
+  <p>Cada Paso Admin — Aplicación de administración de guías biomédicas</p>
+  <span class="badge">Última actualización: marzo 2026</span>
+</header>
+
+<main>
+
+  <section>
+    <h2>1. Información general</h2>
+    <p>
+      Cada Paso Admin es una aplicación Android de uso personal y exclusivo del técnico biomédico
+      responsable del sistema. No está destinada al público general ni a múltiples usuarios.
+      Esta política describe qué datos se procesan, con qué finalidad y cómo se protegen.
+    </p>
+    <div class="highlight">
+      <strong>Uso restringido:</strong> el acceso a esta aplicación está limitado a una única
+      cuenta de Google autorizada. Ningún otro usuario puede iniciar sesión ni acceder al contenido
+      de administración.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Datos que recopilamos</h2>
+    <table>
+      <thead>
+        <tr><th>Dato</th><th>Finalidad</th><th>Almacenamiento</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Dato">Correo electrónico (Google)</td>
+          <td data-label="Finalidad">Autenticación y control de acceso</td>
+          <td data-label="Almacenamiento">Firebase Authentication</td>
+        </tr>
+        <tr>
+          <td data-label="Dato">Fotografías tomadas con la cámara</td>
+          <td data-label="Finalidad">Ilustrar pasos de guías de equipos médicos</td>
+          <td data-label="Almacenamiento">Firebase Storage (nube)</td>
+        </tr>
+        <tr>
+          <td data-label="Dato">Imágenes seleccionadas de la galería</td>
+          <td data-label="Finalidad">Ilustrar pasos de guías de equipos médicos</td>
+          <td data-label="Almacenamiento">Firebase Storage (nube)</td>
+        </tr>
+        <tr>
+          <td data-label="Dato">Datos de equipos y guías (texto)</td>
+          <td data-label="Finalidad">Contenido de la base de conocimiento biomédica</td>
+          <td data-label="Almacenamiento">Firebase Firestore (nube)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      No se recopilan datos de ubicación, contactos, historial de navegación ni ningún otro
+      dato personal más allá de los indicados.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Permisos de la aplicación</h2>
+    <ul>
+      <li><strong>CAMERA:</strong> necesario para tomar fotografías de los pasos de cada guía directamente desde la app.</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE:</strong> necesario para seleccionar imágenes existentes en la galería del dispositivo.</li>
+      <li><strong>INTERNET:</strong> necesario para sincronizar el contenido con Firebase (Firestore y Storage).</li>
+    </ul>
+    <p>
+      Ninguno de estos permisos se usa para fines distintos a los descritos. Las imágenes
+      se comprimen y se suben directamente a Firebase Storage; no se almacenan copias locales
+      permanentes en el dispositivo.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Uso de servicios de terceros</h2>
+    <p>La aplicación utiliza los siguientes servicios de Google / Firebase:</p>
+    <ul>
+      <li><strong>Firebase Authentication:</strong> gestión del inicio de sesión con Google.</li>
+      <li><strong>Firebase Firestore:</strong> base de datos en la nube para equipos y guías.</li>
+      <li><strong>Firebase Storage:</strong> almacenamiento de imágenes de los pasos.</li>
+    </ul>
+    <p>
+      Estos servicios están sujetos a la
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.
+      No se comparten datos con ningún otro tercero.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Seguridad de los datos</h2>
+    <ul>
+      <li>Toda la comunicación con Firebase se realiza mediante HTTPS (TLS). La app bloquea explícitamente el tráfico HTTP.</li>
+      <li>Las reglas de seguridad de Firestore y Storage permiten escritura únicamente al usuario autenticado y autorizado.</li>
+      <li>El backup automático de Android está deshabilitado para evitar exposición de datos de sesión.</li>
+      <li>El código de producción está ofuscado con R8/ProGuard.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Retención y eliminación de datos</h2>
+    <p>
+      Los datos (equipos, guías, imágenes) permanecen en Firebase mientras el administrador
+      no los elimine manualmente desde la aplicación. Al eliminar una guía o un paso, las
+      imágenes asociadas se borran también de Firebase Storage.
+    </p>
+    <p>
+      Para eliminar completamente todos los datos, el administrador puede borrar el proyecto
+      de Firebase desde la consola de Firebase.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Derechos del usuario</h2>
+    <p>
+      Como único usuario de esta aplicación, tienes control total sobre todos los datos:
+      puedes crear, editar y eliminar cualquier contenido en cualquier momento desde la propia app.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Cambios en esta política</h2>
+    <p>
+      Cualquier actualización a esta política se reflejará en esta página con una nueva fecha
+      de actualización. Se recomienda revisarla periódicamente.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Contacto</h2>
+    <p>
+      Para cualquier consulta relacionada con la privacidad de esta aplicación, puedes
+      escribir a: <strong>ricardo2charris@gmail.com</strong>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Cada Paso Admin · Todos los derechos reservados
+</footer>
+
+</body>
+</html>
