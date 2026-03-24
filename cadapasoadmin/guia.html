@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Usuario — Cada Paso Admin</title>
+  <style>
+    :root {
+      --primary: #1565C0;
+      --primary-light: #E3F2FD;
+      --accent: #0288D1;
+      --success: #2E7D32;
+      --success-light: #E8F5E9;
+      --warning: #E65100;
+      --warning-light: #FFF3E0;
+      --text: #212121;
+      --muted: #616161;
+      --border: #E0E0E0;
+      --bg: #FAFAFA;
+      --card: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 800; }
+    header p  { margin-top: 10px; opacity: .9; font-size: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .8rem;
+      margin-top: 14px;
+    }
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+    nav a {
+      display: block;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    section { margin-bottom: 52px; scroll-margin-top: 60px; }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      width: 36px; height: 36px;
+      background: var(--primary-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 10px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 7px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .step-list { counter-reset: steps; list-style: none; padding: 0; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      min-width: 30px; height: 30px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tip {
+      background: var(--success-light);
+      border-left: 4px solid var(--success);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-size: .92rem;
+    }
+    .tip strong { color: var(--success); }
+    .warn {
+      background: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-size: .92rem;
+    }
+    .warn strong { color: var(--warning); }
+    .info {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-size: .92rem;
+    }
+    .info strong { color: var(--primary); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .feature-card .emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .feature-card strong { display: block; margin-bottom: 4px; }
+    .feature-card p { font-size: .85rem; color: var(--muted); margin: 0; }
+    kbd {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: .85rem;
+      font-family: monospace;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: .82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cada Paso Admin</h1>
+  <p>Guía completa para gestionar equipos biomédicos y sus guías de procedimientos y fallas</p>
+  <span class="badge">Versión 1.0 · Técnico biomédico</span>
+</header>
+
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#equipos">Equipos</a>
+  <a href="#guias">Guías</a>
+  <a href="#pasos">Pasos</a>
+  <a href="#filtros">Filtros</a>
+  <a href="#tips">Consejos</a>
+</nav>
+
+<main>
+
+  <!-- INICIO DE SESIÓN -->
+  <section id="inicio">
+    <h2><span class="icon">🔐</span> Inicio de sesión</h2>
+    <div class="card">
+      <ol class="step-list">
+        <li>Abre la app <strong>Cada Paso Admin</strong> en tu dispositivo Android.</li>
+        <li>Toca el botón <strong>"Continuar con Google"</strong>.</li>
+        <li>Selecciona la cuenta de Google autorizada (<kbd>ricardo2charris@gmail.com</kbd>).</li>
+        <li>La app te llevará directamente a la pantalla principal.</li>
+      </ol>
+    </div>
+    <div class="warn">
+      <strong>⚠️ Acceso restringido:</strong> solo la cuenta autorizada puede iniciar sesión.
+      Cualquier otro correo recibirá un mensaje de "Acceso no autorizado".
+    </div>
+    <div class="tip">
+      <strong>✅ Sesión persistente:</strong> una vez que inicias sesión, la app recuerda tu cuenta.
+      No necesitas volver a autenticarte cada vez que abres la app.
+    </div>
+  </section>
+
+  <!-- GESTIÓN DE EQUIPOS -->
+  <section id="equipos">
+    <h2><span class="icon">🏥</span> Gestión de equipos</h2>
+
+    <h3>Agregar un equipo nuevo</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>En la pantalla principal, toca el botón <strong>"+ Nuevo equipo"</strong> (esquina inferior derecha).</li>
+        <li>Completa los campos obligatorios: <strong>Equipo</strong>, <strong>Marca</strong> y <strong>Modelo</strong>.</li>
+        <li>Opcionalmente agrega <strong>Área</strong> (el campo sugiere áreas ya registradas) y <strong>Descripción</strong>.</li>
+        <li>Toca <strong>"Guardar equipo"</strong>. El equipo queda disponible de inmediato en la nube.</li>
+      </ol>
+    </div>
+    <div class="info">
+      <strong>ℹ️ Campo Área:</strong> al escribir en el campo Área, la app sugiere las áreas que ya
+      tienes registradas en otros equipos (UCI, Urgencias, etc.). Puedes escribir una nueva o
+      seleccionar una existente.
+    </div>
+
+    <h3>Editar un equipo</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Localiza el equipo usando los filtros de la pantalla principal.</li>
+        <li>En la tarjeta del equipo, toca el ícono de <strong>lápiz ✏️</strong>.</li>
+        <li>Modifica los campos que necesites.</li>
+        <li>Toca <strong>"Guardar equipo"</strong>.</li>
+      </ol>
+    </div>
+
+    <h3>Eliminar un equipo</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>En la tarjeta del equipo, toca el ícono de <strong>papelera 🗑️</strong>.</li>
+        <li>Confirma la eliminación en el diálogo que aparece.</li>
+      </ol>
+    </div>
+    <div class="warn">
+      <strong>⚠️ Importante:</strong> eliminar un equipo no elimina automáticamente sus guías.
+      Elimina primero las guías asociadas antes de borrar el equipo.
+    </div>
+  </section>
+
+  <!-- GESTIÓN DE GUÍAS -->
+  <section id="guias">
+    <h2><span class="icon">📋</span> Gestión de guías</h2>
+
+    <h3>Acceder a las guías de un equipo</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Filtra y localiza el equipo en la pantalla principal.</li>
+        <li>Toca el botón <strong>"Guías"</strong> en la tarjeta del equipo.</li>
+        <li>Verás dos secciones: <strong>Procedimientos</strong> y <strong>Fallas</strong>.</li>
+      </ol>
+    </div>
+
+    <h3>Crear una guía nueva</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>En la pantalla de guías, toca <strong>"+ Nueva guía"</strong>.</li>
+        <li>Escribe el <strong>Título</strong> de la guía (ej: "Tomar electrocardiograma").</li>
+        <li>Selecciona el <strong>Tipo</strong>: Procedimiento o Falla.</li>
+        <li>Indica la <strong>Duración estimada</strong> (ej: "10 min") y el <strong>Nivel</strong> (Básico / Intermedio / Avanzado).</li>
+        <li>Agrega los pasos (ver sección siguiente).</li>
+        <li>Toca <strong>"Publicar guía"</strong>.</li>
+      </ol>
+    </div>
+
+    <h3>Editar una guía existente</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>En la lista de guías, toca <strong>"Editar"</strong> en la guía que deseas modificar.</li>
+        <li>Se cargarán todos los datos y pasos existentes.</li>
+        <li>Modifica lo que necesites — puedes cambiar texto, reemplazar imágenes o agregar/eliminar pasos.</li>
+        <li>Toca <strong>"Guardar cambios"</strong>.</li>
+      </ol>
+    </div>
+
+    <h3>Eliminar una guía</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>En la lista de guías, toca <strong>"Eliminar"</strong>.</li>
+        <li>Confirma en el diálogo. Se borran el documento de Firestore y todas las imágenes de Storage.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GESTIÓN DE PASOS -->
+  <section id="pasos">
+    <h2><span class="icon">👣</span> Gestión de pasos</h2>
+
+    <h3>Agregar el primer paso</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Al crear una guía nueva, toca <strong>"Agregar primer paso"</strong>.</li>
+        <li>Aparecerá la tarjeta del Paso 1.</li>
+      </ol>
+    </div>
+
+    <h3>Agregar un paso en medio de la guía</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Desplázate hasta el paso después del cual quieres insertar uno nuevo.</li>
+        <li>Toca <strong>"Agregar paso después de este"</strong> al final de esa tarjeta.</li>
+        <li>El nuevo paso se inserta en la posición correcta y los siguientes se renumeran automáticamente.</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <strong>✅ Ejemplo:</strong> si tienes 5 pasos y agregas uno después del paso 3,
+      el nuevo será el paso 4 y los anteriores pasos 4 y 5 pasan a ser 5 y 6.
+    </div>
+
+    <h3>Completar un paso</h3>
+    <div class="card">
+      <ul>
+        <li><strong>Título del paso</strong> (obligatorio): descripción corta de la acción.</li>
+        <li><strong>Descripción</strong> (opcional): detalle adicional del paso.</li>
+        <li><strong>Imagen</strong> (opcional): toca <kbd>Galería</kbd> para seleccionar una foto existente o <kbd>Cámara</kbd> para tomar una nueva. La imagen se comprime automáticamente antes de subirse.</li>
+        <li><strong>Advertencia</strong> (opcional): activa el checkbox y escribe el texto de alerta (ej: "Verificar conexión a tierra").</li>
+      </ul>
+    </div>
+
+    <h3>Tomar foto con la cámara</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Toca el botón <strong>"Cámara"</strong> en la tarjeta del paso.</li>
+        <li>Si es la primera vez, acepta el permiso de cámara.</li>
+        <li>Toma la foto. La app corrige automáticamente la rotación y la comprime.</li>
+        <li>Verás una barra de progreso mientras se sube a Firebase Storage.</li>
+        <li>Al terminar, la imagen aparece en la tarjeta del paso.</li>
+      </ol>
+    </div>
+    <div class="info">
+      <strong>ℹ️ Compresión automática:</strong> todas las imágenes se reducen a máximo 1024px
+      y se comprimen al 75% de calidad JPEG antes de subirse. Esto ahorra cuota de Firebase
+      y acelera la carga en la app Viewer.
+    </div>
+
+    <h3>Eliminar un paso</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Toca el ícono <strong>✕</strong> en la esquina superior derecha de la tarjeta del paso.</li>
+        <li>El paso se elimina y si tenía imagen, esta se borra también de Firebase Storage.</li>
+        <li>Los pasos restantes se renumeran automáticamente.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section id="filtros">
+    <h2><span class="icon">🔍</span> Filtros de búsqueda</h2>
+    <p>
+      La pantalla principal tiene tres filtros en cascada para localizar equipos rápidamente:
+    </p>
+    <div class="card">
+      <ol class="step-list">
+        <li><strong>Equipo:</strong> selecciona el tipo de equipo (ej: Electrocardiógrafo). Se muestran todos los equipos registrados con ese nombre.</li>
+        <li><strong>Marca:</strong> se activa al seleccionar un equipo. Muestra solo las marcas disponibles para ese equipo.</li>
+        <li><strong>Modelo:</strong> se activa al seleccionar una marca. Muestra los modelos disponibles.</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <strong>✅ Comportamiento:</strong> desde que seleccionas el primer filtro (Equipo), ya se
+      muestran resultados. Los filtros siguientes van reduciendo la lista. Para limpiar un filtro,
+      toca la <strong>✕</strong> dentro del campo.
+    </div>
+  </section>
+
+  <!-- CONSEJOS -->
+  <section id="tips">
+    <h2><span class="icon">💡</span> Consejos y buenas prácticas</h2>
+
+    <div class="grid-2">
+      <div class="feature-card">
+        <span class="emoji">📸</span>
+        <strong>Fotos en campo</strong>
+        <p>Toma las fotos con buena iluminación y enfocando el elemento clave del paso.</p>
+      </div>
+      <div class="feature-card">
+        <span class="emoji">✍️</span>
+        <strong>Títulos cortos</strong>
+        <p>Usa títulos de paso concisos: "Encender equipo", "Seleccionar modo ECG".</p>
+      </div>
+      <div class="feature-card">
+        <span class="emoji">⚠️</span>
+        <strong>Usa advertencias</strong>
+        <p>Marca los pasos críticos con advertencia para que el operador los identifique rápido.</p>
+      </div>
+      <div class="feature-card">
+        <span class="emoji">🔄</span>
+        <strong>Actualiza sin reinstalar</strong>
+        <p>Cualquier cambio que publiques se refleja en la app Viewer de inmediato.</p>
+      </div>
+    </div>
+
+    <h3>Flujo de trabajo recomendado en campo</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Llega al hospital y localiza el equipo nuevo.</li>
+        <li>Abre <strong>Cada Paso Admin</strong> y crea el equipo con su nombre, marca y modelo.</li>
+        <li>Crea una guía de tipo <strong>Procedimiento</strong> para la función principal.</li>
+        <li>Opera el equipo paso a paso, tomando foto en cada acción importante.</li>
+        <li>Publica la guía. Queda disponible para todos los operadores al instante.</li>
+        <li>Si encuentras una falla común, crea una guía de tipo <strong>Falla</strong> con los pasos de diagnóstico.</li>
+      </ol>
+    </div>
+
+    <h3>Cerrar sesión</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Toca el ícono de salida <strong>→</strong> en la barra superior.</li>
+        <li>Confirma en el diálogo "¿Seguro que quieres salir?".</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Cada Paso Admin · Guía de usuario v1.0
+</footer>
+
+</body>
+</html>
