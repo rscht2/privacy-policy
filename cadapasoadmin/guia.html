@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1565C0" />
   <title>Guía de Usuario — Cada Paso Admin</title>
   <style>
     :root {
@@ -21,19 +22,21 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: system-ui, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
     }
     header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
       color: #fff;
-      padding: 48px 24px 40px;
+      padding: clamp(28px, 7vw, 48px) clamp(16px, 5vw, 40px);
       text-align: center;
     }
-    header h1 { font-size: 2rem; font-weight: 800; }
-    header p  { margin-top: 10px; opacity: .9; font-size: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    header h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 800; }
+    header p  { margin-top: 10px; opacity: .88; max-width: 560px; margin-left: auto; margin-right: auto; }
     .badge {
       display: inline-block;
       background: rgba(255,255,255,.2);
@@ -45,37 +48,41 @@
     nav {
       background: var(--card);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
+      padding: 0 clamp(12px, 4vw, 24px);
       position: sticky;
       top: 0;
       z-index: 100;
       display: flex;
-      gap: 4px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    nav::-webkit-scrollbar { display: none; }
     nav a {
-      display: block;
-      padding: 14px 16px;
+      padding: 14px clamp(10px, 3vw, 16px);
       text-decoration: none;
       color: var(--muted);
-      font-size: .85rem;
+      font-size: clamp(.78rem, 3vw, .85rem);
       font-weight: 600;
       white-space: nowrap;
       border-bottom: 3px solid transparent;
       transition: color .2s, border-color .2s;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
     }
-    nav a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+    nav a:hover, nav a:focus { color: var(--primary); border-bottom-color: var(--primary); }
     main {
       max-width: 820px;
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: clamp(24px, 5vw, 40px) clamp(16px, 5vw, 24px) 80px;
     }
-    section { margin-bottom: 52px; scroll-margin-top: 60px; }
+    section { margin-bottom: clamp(36px, 8vw, 52px); scroll-margin-top: 60px; }
     h2 {
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 4.5vw, 1.35rem);
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -89,19 +96,19 @@
       flex-shrink: 0;
     }
     h3 {
-      font-size: 1rem;
+      font-size: clamp(.95rem, 3.5vw, 1rem);
       font-weight: 700;
       color: var(--text);
       margin: 20px 0 10px;
     }
     p { margin-bottom: 12px; }
-    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+    ul, ol { padding-left: 20px; margin-bottom: 14px; }
     li { margin-bottom: 7px; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px 24px;
+      padding: clamp(14px, 4vw, 20px) clamp(14px, 4vw, 24px);
       margin-bottom: 16px;
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
@@ -109,64 +116,32 @@
     .step-list li {
       counter-increment: steps;
       display: flex;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 16px;
       align-items: flex-start;
     }
     .step-list li::before {
       content: counter(steps);
-      min-width: 30px; height: 30px;
+      min-width: 28px; height: 28px;
       background: var(--primary);
       color: #fff;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: .85rem;
+      font-weight: 700; font-size: .82rem;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 3px;
     }
-    .tip {
-      background: var(--success-light);
-      border-left: 4px solid var(--success);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      font-size: .92rem;
-    }
+    .tip  { background: var(--success-light); border-left: 4px solid var(--success); border-radius: 0 8px 8px 0; padding: 12px 14px; margin-bottom: 14px; font-size: clamp(.88rem, 3.5vw, .92rem); }
     .tip strong { color: var(--success); }
-    .warn {
-      background: var(--warning-light);
-      border-left: 4px solid var(--warning);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      font-size: .92rem;
-    }
+    .warn { background: var(--warning-light); border-left: 4px solid var(--warning); border-radius: 0 8px 8px 0; padding: 12px 14px; margin-bottom: 14px; font-size: clamp(.88rem, 3.5vw, .92rem); }
     .warn strong { color: var(--warning); }
-    .info {
-      background: var(--primary-light);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      font-size: .92rem;
-    }
+    .info { background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 0 8px 8px 0; padding: 12px 14px; margin-bottom: 14px; font-size: clamp(.88rem, 3.5vw, .92rem); }
     .info strong { color: var(--primary); }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      text-align: center;
-    }
-    .feature-card .emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
-    .feature-card strong { display: block; margin-bottom: 4px; }
-    .feature-card p { font-size: .85rem; color: var(--muted); margin: 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: clamp(12px, 3vw, 16px); text-align: center; }
+    .feature-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+    .feature-card strong { display: block; margin-bottom: 4px; font-size: clamp(.88rem, 3.5vw, 1rem); }
+    .feature-card p { font-size: clamp(.8rem, 3vw, .85rem); color: var(--muted); margin: 0; }
     kbd {
       background: #f0f0f0;
       border: 1px solid #ccc;
@@ -175,16 +150,11 @@
       font-size: .85rem;
       font-family: monospace;
     }
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: .82rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
+    footer { text-align: center; padding: 24px 16px; font-size: .82rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 480px) {
+      body { font-size: 15px; }
       .grid-2 { grid-template-columns: 1fr; }
+      ul, ol { padding-left: 16px; }
     }
   </style>
 </head>
@@ -201,20 +171,20 @@
   <a href="#equipos">Equipos</a>
   <a href="#guias">Guías</a>
   <a href="#pasos">Pasos</a>
+  <a href="#solicitudes">Solicitudes</a>
   <a href="#filtros">Filtros</a>
   <a href="#tips">Consejos</a>
 </nav>
 
 <main>
 
-  <!-- INICIO DE SESIÓN -->
   <section id="inicio">
     <h2><span class="icon">🔐</span> Inicio de sesión</h2>
     <div class="card">
       <ol class="step-list">
         <li>Abre la app <strong>Cada Paso Admin</strong> en tu dispositivo Android.</li>
         <li>Toca el botón <strong>"Continuar con Google"</strong>.</li>
-        <li>Selecciona la cuenta de Google autorizada (<kbd>ricardo2charris@gmail.com</kbd>).</li>
+        <li>Selecciona la cuenta de Google autorizada.</li>
         <li>La app te llevará directamente a la pantalla principal.</li>
       </ol>
     </div>
@@ -228,7 +198,6 @@
     </div>
   </section>
 
-  <!-- GESTIÓN DE EQUIPOS -->
   <section id="equipos">
     <h2><span class="icon">🏥</span> Gestión de equipos</h2>
 
@@ -252,8 +221,7 @@
       <ol class="step-list">
         <li>Localiza el equipo usando los filtros de la pantalla principal.</li>
         <li>En la tarjeta del equipo, toca el ícono de <strong>lápiz ✏️</strong>.</li>
-        <li>Modifica los campos que necesites.</li>
-        <li>Toca <strong>"Guardar equipo"</strong>.</li>
+        <li>Modifica los campos que necesites y toca <strong>"Guardar equipo"</strong>.</li>
       </ol>
     </div>
 
@@ -270,7 +238,6 @@
     </div>
   </section>
 
-  <!-- GESTIÓN DE GUÍAS -->
   <section id="guias">
     <h2><span class="icon">📋</span> Gestión de guías</h2>
 
@@ -287,9 +254,9 @@
     <div class="card">
       <ol class="step-list">
         <li>En la pantalla de guías, toca <strong>"+ Nueva guía"</strong>.</li>
-        <li>Escribe el <strong>Título</strong> de la guía (ej: "Tomar electrocardiograma").</li>
+        <li>Escribe el <strong>Título</strong> de la guía.</li>
         <li>Selecciona el <strong>Tipo</strong>: Procedimiento o Falla.</li>
-        <li>Indica la <strong>Duración estimada</strong> (ej: "10 min") y el <strong>Nivel</strong> (Básico / Intermedio / Avanzado).</li>
+        <li>Indica la <strong>Duración estimada</strong> y el <strong>Nivel</strong> (Básico / Intermedio / Avanzado).</li>
         <li>Agrega los pasos (ver sección siguiente).</li>
         <li>Toca <strong>"Publicar guía"</strong>.</li>
       </ol>
@@ -300,8 +267,7 @@
       <ol class="step-list">
         <li>En la lista de guías, toca <strong>"Editar"</strong> en la guía que deseas modificar.</li>
         <li>Se cargarán todos los datos y pasos existentes.</li>
-        <li>Modifica lo que necesites — puedes cambiar texto, reemplazar imágenes o agregar/eliminar pasos.</li>
-        <li>Toca <strong>"Guardar cambios"</strong>.</li>
+        <li>Modifica lo que necesites y toca <strong>"Guardar cambios"</strong>.</li>
       </ol>
     </div>
 
@@ -314,23 +280,14 @@
     </div>
   </section>
 
-  <!-- GESTIÓN DE PASOS -->
   <section id="pasos">
     <h2><span class="icon">👣</span> Gestión de pasos</h2>
 
-    <h3>Agregar el primer paso</h3>
+    <h3>Agregar pasos</h3>
     <div class="card">
       <ol class="step-list">
         <li>Al crear una guía nueva, toca <strong>"Agregar primer paso"</strong>.</li>
-        <li>Aparecerá la tarjeta del Paso 1.</li>
-      </ol>
-    </div>
-
-    <h3>Agregar un paso en medio de la guía</h3>
-    <div class="card">
-      <ol class="step-list">
-        <li>Desplázate hasta el paso después del cual quieres insertar uno nuevo.</li>
-        <li>Toca <strong>"Agregar paso después de este"</strong> al final de esa tarjeta.</li>
+        <li>Para insertar un paso en medio, toca <strong>"Agregar paso después de este"</strong> en la tarjeta correspondiente.</li>
         <li>El nuevo paso se inserta en la posición correcta y los siguientes se renumeran automáticamente.</li>
       </ol>
     </div>
@@ -344,9 +301,24 @@
       <ul>
         <li><strong>Título del paso</strong> (obligatorio): descripción corta de la acción.</li>
         <li><strong>Descripción</strong> (opcional): detalle adicional del paso.</li>
-        <li><strong>Imagen</strong> (opcional): toca <kbd>Galería</kbd> para seleccionar una foto existente o <kbd>Cámara</kbd> para tomar una nueva. La imagen se comprime automáticamente antes de subirse.</li>
-        <li><strong>Advertencia</strong> (opcional): activa el checkbox y escribe el texto de alerta (ej: "Verificar conexión a tierra").</li>
+        <li><strong>✨ Mejorar con IA:</strong> toca este botón para que la IA mejore automáticamente el título y la descripción con terminología técnica biomédica.</li>
+        <li><strong>Imagen</strong> (opcional): toca <kbd>Galería</kbd> o <kbd>Cámara</kbd>. La imagen se comprime automáticamente antes de subirse.</li>
+        <li><strong>Advertencia</strong> (opcional): activa el checkbox y escribe el texto de alerta.</li>
       </ul>
+    </div>
+
+    <h3>Mejorar texto con IA</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Escribe la descripción del paso (puede ser un borrador).</li>
+        <li>Toca el botón <strong>"✨ Mejorar con IA"</strong>.</li>
+        <li>La IA genera un título conciso y una descripción técnica mejorada.</li>
+        <li>El texto se actualiza automáticamente en los campos. Puedes editarlo si lo deseas.</li>
+      </ol>
+    </div>
+    <div class="info">
+      <strong>ℹ️ Requiere internet:</strong> la mejora con IA necesita conexión activa.
+      El botón se deshabilita si la descripción está vacía.
     </div>
 
     <h3>Tomar foto con la cámara</h3>
@@ -356,46 +328,78 @@
         <li>Si es la primera vez, acepta el permiso de cámara.</li>
         <li>Toma la foto. La app corrige automáticamente la rotación y la comprime.</li>
         <li>Verás una barra de progreso mientras se sube a Firebase Storage.</li>
-        <li>Al terminar, la imagen aparece en la tarjeta del paso.</li>
       </ol>
     </div>
     <div class="info">
-      <strong>ℹ️ Compresión automática:</strong> todas las imágenes se reducen a máximo 1024px
-      y se comprimen al 75% de calidad JPEG antes de subirse. Esto ahorra cuota de Firebase
-      y acelera la carga en la app Viewer.
+      <strong>ℹ️ Compresión automática:</strong> las imágenes se reducen a máximo 1024px
+      y se comprimen al 75% JPEG antes de subirse.
     </div>
 
     <h3>Eliminar un paso</h3>
     <div class="card">
       <ol class="step-list">
         <li>Toca el ícono <strong>✕</strong> en la esquina superior derecha de la tarjeta del paso.</li>
-        <li>El paso se elimina y si tenía imagen, esta se borra también de Firebase Storage.</li>
+        <li>El paso se elimina junto con su imagen en Firebase Storage.</li>
         <li>Los pasos restantes se renumeran automáticamente.</li>
       </ol>
     </div>
   </section>
 
-  <!-- FILTROS -->
-  <section id="filtros">
-    <h2><span class="icon">🔍</span> Filtros de búsqueda</h2>
+  <section id="solicitudes">
+    <h2><span class="icon">&#128276;</span> Solicitudes de guías</h2>
     <p>
-      La pantalla principal tiene tres filtros en cascada para localizar equipos rápidamente:
+      Los operadores pueden enviarte solicitudes desde la app Cada Paso cuando no encuentran
+      el equipo que necesitan. Recibes estas solicitudes en tiempo real.
     </p>
+
+    <h3>Ver solicitudes pendientes</h3>
     <div class="card">
       <ol class="step-list">
-        <li><strong>Equipo:</strong> selecciona el tipo de equipo (ej: Electrocardiógrafo). Se muestran todos los equipos registrados con ese nombre.</li>
-        <li><strong>Marca:</strong> se activa al seleccionar un equipo. Muestra solo las marcas disponibles para ese equipo.</li>
+        <li>En la barra superior de la pantalla principal, aparece un ícono de <strong>campana con un número</strong> cuando hay solicitudes pendientes.</li>
+        <li>Toca la campana para abrir la pantalla de solicitudes.</li>
+        <li>Verás las solicitudes con nombre del equipo, marca, modelo, área, descripción y foto si la adjuntaron.</li>
+      </ol>
+    </div>
+
+    <h3>Atender una solicitud</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li>Revisa los datos de la solicitud para identificar el equipo.</li>
+        <li>Registra el equipo y su guía en la app (ver secciones Equipos y Guías).</li>
+        <li>Vuelve a la pantalla de solicitudes y toca <strong>"Marcar atendida"</strong> en la tarjeta correspondiente.</li>
+        <li>El operador verá automáticamente que su solicitud fue atendida y podrá buscar el equipo.</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <strong>Diferencia entre Marcar atendida y Eliminar:</strong>
+      <ul style="margin-top:8px;">
+        <li><strong>Marcar atendida</strong> — la solicitud queda en el historial y el operador recibe confirmación.</li>
+        <li><strong>Eliminar</strong> — borra la solicitud completamente. Útil para duplicados o errores.</li>
+      </ul>
+    </div>
+
+    <h3>Filtrar solicitudes</h3>
+    <div class="card">
+      <p>Usa el chip <strong>"Pendientes / Todas"</strong> en la barra superior de la pantalla de solicitudes para alternar entre ver solo las pendientes o el historial completo.</p>
+    </div>
+  </section>
+
+  <section id="filtros">
+    <h2><span class="icon">🔍</span> Filtros de búsqueda</h2>
+    <p>La pantalla principal tiene tres filtros en cascada para localizar equipos rápidamente:</p>
+    <div class="card">
+      <ol class="step-list">
+        <li><strong>Equipo:</strong> selecciona el tipo de equipo. Se muestran todos los equipos registrados con ese nombre.</li>
+        <li><strong>Marca:</strong> se activa al seleccionar un equipo. Muestra solo las marcas disponibles.</li>
         <li><strong>Modelo:</strong> se activa al seleccionar una marca. Muestra los modelos disponibles.</li>
       </ol>
     </div>
     <div class="tip">
-      <strong>✅ Comportamiento:</strong> desde que seleccionas el primer filtro (Equipo), ya se
-      muestran resultados. Los filtros siguientes van reduciendo la lista. Para limpiar un filtro,
+      <strong>✅ Desde el primer filtro ya ves resultados.</strong> Para limpiar un filtro,
       toca la <strong>✕</strong> dentro del campo.
     </div>
   </section>
 
-  <!-- CONSEJOS -->
   <section id="tips">
     <h2><span class="icon">💡</span> Consejos y buenas prácticas</h2>
 
@@ -406,9 +410,9 @@
         <p>Toma las fotos con buena iluminación y enfocando el elemento clave del paso.</p>
       </div>
       <div class="feature-card">
-        <span class="emoji">✍️</span>
-        <strong>Títulos cortos</strong>
-        <p>Usa títulos de paso concisos: "Encender equipo", "Seleccionar modo ECG".</p>
+        <span class="emoji">✨</span>
+        <strong>Usa la IA</strong>
+        <p>Escribe un borrador rápido y deja que la IA lo mejore con terminología técnica.</p>
       </div>
       <div class="feature-card">
         <span class="emoji">⚠️</span>
@@ -429,15 +433,15 @@
         <li>Abre <strong>Cada Paso Admin</strong> y crea el equipo con su nombre, marca y modelo.</li>
         <li>Crea una guía de tipo <strong>Procedimiento</strong> para la función principal.</li>
         <li>Opera el equipo paso a paso, tomando foto en cada acción importante.</li>
+        <li>Usa <strong>✨ Mejorar con IA</strong> para pulir los textos rápidamente.</li>
         <li>Publica la guía. Queda disponible para todos los operadores al instante.</li>
-        <li>Si encuentras una falla común, crea una guía de tipo <strong>Falla</strong> con los pasos de diagnóstico.</li>
       </ol>
     </div>
 
     <h3>Cerrar sesión</h3>
     <div class="card">
       <ol class="step-list">
-        <li>Toca el ícono de salida <strong>→</strong> en la barra superior.</li>
+        <li>Toca el ícono de salida en la barra superior derecha.</li>
         <li>Confirma en el diálogo "¿Seguro que quieres salir?".</li>
       </ol>
     </div>
