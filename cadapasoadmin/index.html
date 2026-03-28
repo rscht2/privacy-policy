@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1565C0" />
   <title>Política de Privacidad — Cada Paso Admin</title>
   <style>
     :root {
@@ -15,19 +16,21 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
     }
     header {
       background: var(--primary);
       color: #fff;
-      padding: 40px 24px 32px;
+      padding: clamp(24px, 6vw, 40px) clamp(16px, 5vw, 24px) clamp(20px, 5vw, 32px);
       text-align: center;
     }
-    header h1 { font-size: 1.8rem; font-weight: 700; }
-    header p  { margin-top: 8px; opacity: .85; font-size: .95rem; }
+    header h1 { font-size: clamp(1.3rem, 5vw, 1.8rem); font-weight: 700; }
+    header p  { margin-top: 8px; opacity: .85; font-size: clamp(.85rem, 3.5vw, .95rem); }
     .badge {
       display: inline-block;
       background: rgba(255,255,255,.2);
@@ -39,11 +42,11 @@
     main {
       max-width: 780px;
       margin: 0 auto;
-      padding: 32px 24px 64px;
+      padding: clamp(20px, 5vw, 32px) clamp(16px, 5vw, 24px) 64px;
     }
-    section { margin-bottom: 36px; }
+    section { margin-bottom: clamp(24px, 6vw, 36px); }
     h2 {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 4vw, 1.15rem);
       font-weight: 700;
       color: var(--primary);
       border-left: 4px solid var(--primary);
@@ -56,44 +59,30 @@
     .highlight {
       background: var(--primary-light);
       border-radius: 8px;
-      padding: 16px 20px;
+      padding: 14px 16px;
       margin-bottom: 12px;
-      font-size: .95rem;
+      font-size: clamp(.88rem, 3.5vw, .95rem);
     }
     .highlight strong { color: var(--primary); }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 12px;
-      font-size: .9rem;
-    }
-    th {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 14px;
-      text-align: left;
-    }
-    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; border-radius: 8px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: clamp(.82rem, 3vw, .9rem); min-width: 420px; }
+    th { background: var(--primary); color: #fff; padding: 10px 14px; text-align: left; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: var(--primary-light); }
+
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 24px 16px;
       font-size: .82rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
     }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.4rem; }
-      table, thead, tbody, th, td, tr { display: block; }
-      th { display: none; }
-      td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        display: block;
-        color: var(--primary);
-        margin-bottom: 2px;
-      }
+
+    @media (max-width: 480px) {
+      body { font-size: 15px; }
+      ul { padding-left: 16px; }
     }
   </style>
 </head>
@@ -123,33 +112,40 @@
 
   <section>
     <h2>2. Datos que recopilamos</h2>
-    <table>
-      <thead>
-        <tr><th>Dato</th><th>Finalidad</th><th>Almacenamiento</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Dato">Correo electrónico (Google)</td>
-          <td data-label="Finalidad">Autenticación y control de acceso</td>
-          <td data-label="Almacenamiento">Firebase Authentication</td>
-        </tr>
-        <tr>
-          <td data-label="Dato">Fotografías tomadas con la cámara</td>
-          <td data-label="Finalidad">Ilustrar pasos de guías de equipos médicos</td>
-          <td data-label="Almacenamiento">Firebase Storage (nube)</td>
-        </tr>
-        <tr>
-          <td data-label="Dato">Imágenes seleccionadas de la galería</td>
-          <td data-label="Finalidad">Ilustrar pasos de guías de equipos médicos</td>
-          <td data-label="Almacenamiento">Firebase Storage (nube)</td>
-        </tr>
-        <tr>
-          <td data-label="Dato">Datos de equipos y guías (texto)</td>
-          <td data-label="Finalidad">Contenido de la base de conocimiento biomédica</td>
-          <td data-label="Almacenamiento">Firebase Firestore (nube)</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Dato</th><th>Finalidad</th><th>Almacenamiento</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Correo electrónico (Google)</td>
+            <td>Autenticación y control de acceso</td>
+            <td>Firebase Authentication</td>
+          </tr>
+          <tr>
+            <td>Fotografías tomadas con la cámara</td>
+            <td>Ilustrar pasos de guías de equipos médicos</td>
+            <td>Firebase Storage (nube)</td>
+          </tr>
+          <tr>
+            <td>Imágenes seleccionadas de la galería</td>
+            <td>Ilustrar pasos de guías de equipos médicos</td>
+            <td>Firebase Storage (nube)</td>
+          </tr>
+          <tr>
+            <td>Datos de equipos y guías (texto)</td>
+            <td>Contenido de la base de conocimiento biomédica</td>
+            <td>Firebase Firestore (nube)</td>
+          </tr>
+          <tr>
+            <td>Solicitudes de guías de operadores</td>
+            <td>Recibir y gestionar peticiones de registro de equipos</td>
+            <td>Firebase Firestore y Storage (nube)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p>
       No se recopilan datos de ubicación, contactos, historial de navegación ni ningún otro
       dato personal más allá de los indicados.
@@ -175,8 +171,9 @@
     <p>La aplicación utiliza los siguientes servicios de Google / Firebase:</p>
     <ul>
       <li><strong>Firebase Authentication:</strong> gestión del inicio de sesión con Google.</li>
-      <li><strong>Firebase Firestore:</strong> base de datos en la nube para equipos y guías.</li>
-      <li><strong>Firebase Storage:</strong> almacenamiento de imágenes de los pasos.</li>
+      <li><strong>Firebase Firestore:</strong> base de datos en la nube para equipos, guías y solicitudes de operadores.</li>
+      <li><strong>Firebase Storage:</strong> almacenamiento de imágenes de pasos y fotos de solicitudes.</li>
+      <li><strong>Google Gemini API:</strong> mejora automática de textos de pasos con inteligencia artificial. Solo se envía el texto del paso, sin datos personales.</li>
     </ul>
     <p>
       Estos servicios están sujetos a la
