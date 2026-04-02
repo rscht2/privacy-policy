@@ -98,7 +98,7 @@
 <div class="hero" id="top">
   <div class="hero-icon">🚨</div>
   <h1>Guía Completa del Usuario</h1>
-  <p>Alerta Vial · v1.4 · Marzo 2026</p>
+  <p>Alerta Vial · v1.5 · Abril 2026</p>
 </div>
 
 <!-- ÍNDICE -->
@@ -110,11 +110,13 @@
     <li><a href="#caracteristicas"><span class="num">3</span>Características principales<span class="arrow">›</span></a></li>
     <li><a href="#instalacion"><span class="num">4</span>Instalación y configuración<span class="arrow">›</span></a></li>
     <li><a href="#como-usar"><span class="num">5</span>Cómo usar la app<span class="arrow">›</span></a></li>
-    <li><a href="#reputacion"><span class="num">6</span>Sistema de reputación<span class="arrow">›</span></a></li>
-    <li><a href="#cuenta"><span class="num">7</span>Gestión de cuenta<span class="arrow">›</span></a></li>
-    <li><a href="#faq"><span class="num">8</span>Preguntas frecuentes<span class="arrow">›</span></a></li>
-    <li><a href="#consejos"><span class="num">9</span>Consejos y buenas prácticas<span class="arrow">›</span></a></li>
-    <li><a href="#changelog"><span class="num">10</span>Registro de cambios<span class="arrow">›</span></a></li>
+    <li><a href="#estado-vias"><span class="num">6</span>Estado de Vías<span class="arrow">›</span></a></li>
+    <li><a href="#moderacion"><span class="num">7</span>Moderación y normas<span class="arrow">›</span></a></li>
+    <li><a href="#reputacion"><span class="num">8</span>Sistema de reputación<span class="arrow">›</span></a></li>
+    <li><a href="#cuenta"><span class="num">9</span>Gestión de cuenta<span class="arrow">›</span></a></li>
+    <li><a href="#faq"><span class="num">10</span>Preguntas frecuentes<span class="arrow">›</span></a></li>
+    <li><a href="#consejos"><span class="num">11</span>Consejos y buenas prácticas<span class="arrow">›</span></a></li>
+    <li><a href="#changelog"><span class="num">12</span>Registro de cambios<span class="arrow">›</span></a></li>
   </ul>
 </div>
 
@@ -374,6 +376,69 @@
 </section>
 
 <!-- SECCIÓN 6 -->
+<section id="estado-vias">
+  <div class="section-header"><span class="icon">🛣️</span><h2>Estado de Vías</h2></div>
+  <div class="section-body">
+    <p>La pantalla <strong>Vías</strong> (última pestaña del menú) muestra un registro en texto de rutas reportadas como despejadas por la comunidad.</p>
+    <h3>¿Cómo funciona?</h3>
+    <ul>
+      <li>Un usuario crea una ruta con nombre (ej: "Bogotá → Zipaquirá") y marca un punto en el mapa</li>
+      <li>La ruta aparece como <strong>✅ Sin novedad</strong> para todos los usuarios dentro del mismo radio</li>
+      <li>Cualquier usuario puede tocar <strong>"Confirmar"</strong> para refrescar el estado</li>
+      <li>Si nadie confirma en <strong>4 horas</strong>, la ruta desaparece automáticamente</li>
+    </ul>
+    <h3>Reportar un problema en una ruta</h3>
+    <ol class="steps">
+      <li><span>Toca <strong>"⚠️ Problema"</strong> en la ruta afectada</span></li>
+      <li><span>Se abre el formulario de reporte normal</span></li>
+      <li><span>Completa el reporte del obstáculo</span></li>
+      <li><span>Al publicar, la ruta desaparece de la pantalla de vías</span></li>
+    </ol>
+    <div class="card warning">
+      <p>⚠️ Para reportar un problema en una ruta <strong>es obligatorio</strong> crear un reporte real del obstáculo. No se puede cuestionar el estado sin aportar información.</p>
+    </div>
+    <h3>Crear una nueva ruta</h3>
+    <ol class="steps">
+      <li><span>Toca el botón <strong>"+"</strong> en la pantalla de Vías</span></li>
+      <li><span>Escribe el nombre de la ruta (ej: "Ciudad → Pueblo A")</span></li>
+      <li><span>Toca <strong>"Seleccionar punto"</strong></span></li>
+      <li><span>Marca cualquier punto de la vía en el mapa</span></li>
+      <li><span>Confirma en el diálogo que aparece</span></li>
+    </ol>
+    <div class="card">
+      <p>💡 Solo el creador de la ruta puede eliminarla. Las rutas con más de 7 días sin actividad se eliminan automáticamente.</p>
+    </div>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 7 -->
+<section id="moderacion">
+  <div class="section-header"><span class="icon">🛡️</span><h2>Moderación y Normas</h2></div>
+  <div class="section-body">
+    <h3>Moderación automática</h3>
+    <p>Todos los mensajes y fotos son analizados automáticamente antes de publicarse:</p>
+    <ul>
+      <li><strong>Texto:</strong> Cloud Natural Language API detecta contenido ofensivo, sexual, violento o amenazante</li>
+      <li><strong>Imágenes:</strong> Cloud Vision API SafeSearch detecta contenido adulto o violento</li>
+      <li><strong>Filtro de palabras:</strong> Lista de términos bloqueados como defensa adicional</li>
+      <li><strong>Rate limiting:</strong> Máximo 10 mensajes por minuto por usuario</li>
+    </ul>
+    <h3>Sistema de sanciones escalonado</h3>
+    <div class="card warning"><p>⚠️ <strong>1ra - 2da violación:</strong> Mensaje rechazado, advertencia</p></div>
+    <div class="card warning"><p>⏳ <strong>3ra violación:</strong> Cuenta suspendida 7 días</p></div>
+    <div class="card danger"><p>🔒 <strong>4ta violación:</strong> Cuenta suspendida 30 días</p></div>
+    <div class="card danger"><p>❌ <strong>5ta+ violación:</strong> Suspensión permanente</p></div>
+    <p style="margin-top:12px;">Las suspensiones temporales se levantan automáticamente al vencer el plazo.</p>
+    <h3>Reportar contenido inapropiado</h3>
+    <p>Si ves un mensaje inapropiado en el chat, toca el botón <strong>"🚩 Reportar"</strong> debajo del mensaje. Con 3 reportes de diferentes usuarios el mensaje se oculta automáticamente.</p>
+    <h3>Términos de uso</h3>
+    <p>Al iniciar sesión por primera vez se muestran los términos de uso que debes aceptar. El incumplimiento puede resultar en la suspensión de tu cuenta.</p>
+    <a class="back-top" href="#top">↑ Volver al índice</a>
+  </div>
+</section>
+
+<!-- SECCIÓN 8 (antes 6) -->
 <section id="reputacion">
   <div class="section-header"><span class="icon">⭐</span><h2>Sistema de Reputación</h2></div>
   <div class="section-body">
@@ -397,7 +462,7 @@
   </div>
 </section>
 
-<!-- SECCIÓN 7 -->
+<!-- SECCIÓN 9 (antes 7) -->
 <section id="cuenta">
   <div class="section-header"><span class="icon">👤</span><h2>Gestión de Cuenta</h2></div>
   <div class="section-body">
@@ -438,11 +503,14 @@
     <div class="card success">
       <p>✅ El proceso es automático y se ejecuta en el servidor. No necesitas hacer nada más después de confirmar.</p>
     </div>
+    <div class="card">
+      <p>📄 También puedes solicitar la eliminación desde: <a href="https://rscht2.github.io/privacy-policy/pacostilla/delete-account.html" style="color: var(--primary);">Página de eliminación de cuenta</a></p>
+    </div>
     <a class="back-top" href="#top">↑ Volver al índice</a>
   </div>
 </section>
 
-<!-- SECCIÓN 8 -->
+<!-- SECCIÓN 10 (antes 8) -->
 <section id="faq">
   <div class="section-header"><span class="icon">❓</span><h2>Preguntas Frecuentes</h2></div>
   <div class="section-body">
@@ -493,7 +561,7 @@
   </div>
 </section>
 
-<!-- SECCIÓN 9 -->
+<!-- SECCIÓN 11 (antes 9) -->
 <section id="consejos">
   <div class="section-header"><span class="icon">💡</span><h2>Consejos y Buenas Prácticas</h2></div>
   <div class="section-body">
@@ -524,10 +592,23 @@
   </div>
 </section>
 
-<!-- SECCIÓN 10 -->
+<!-- SECCIÓN 12 (antes 10) -->
 <section id="changelog">
   <div class="section-header"><span class="icon">📝</span><h2>Registro de Cambios</h2></div>
   <div class="section-body">
+    <div class="changelog-version">
+      <h4>v1.5 — Abril 2026</h4>
+      <ul>
+        <li>Nueva pantalla <strong>Estado de Vías</strong>: reporta rutas despejadas con nombre y punto en el mapa</li>
+        <li>Las rutas expiran automáticamente a las 4 horas sin confirmación</li>
+        <li>Moderación automática de mensajes con Cloud Natural Language API</li>
+        <li>Moderación automática de imágenes con Cloud Vision API SafeSearch</li>
+        <li>Sistema de sanciones escalonado: 7 días → 30 días → permanente</li>
+        <li>Botón "🚩 Reportar" en cada mensaje del chat</li>
+        <li>Términos de uso al iniciar sesión por primera vez</li>
+        <li>Mensajes con 3+ reportes se ocultan automáticamente</li>
+      </ul>
+    </div>
     <div class="changelog-version">
       <h4>v1.4 — Marzo 2026</h4>
       <ul>
@@ -596,7 +677,7 @@
 </div>
 
 <footer>
-  <p>Alerta Vial v1.4 · Marzo 2026</p>
+  <p>Alerta Vial v1.5 · Abril 2026</p>
   <p style="margin-top:6px;">Hecho con ❤️ para la comunidad vial</p>
 </footer>
 
