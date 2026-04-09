@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - HospitalAPP</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+        h1 { color: #1a73e8; }
+        h2 { color: #1a73e8; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+        h3 { color: #444; }
+        .highlight { background: #f0f7ff; border-left: 4px solid #1a73e8; padding: 10px 16px; margin: 12px 0; }
+        ul { padding-left: 20px; }
+        a { color: #1a73e8; }
+    </style>
+</head>
+<body>
+
+<h1>Política de Privacidad — HospitalAPP</h1>
+<p><strong>Última actualización:</strong> 8 de Abril, 2026<br>
+<strong>Vigente desde:</strong> 10 de Marzo, 2026</p>
+
+<div class="highlight">
+    <strong>Resumen:</strong> HospitalAPP recopila datos de mantenimiento de equipos médicos ingresados por el usuario y los sincroniza con Google Drive mediante OAuth. También usa un Identificador de Publicidad para mostrar anuncios. No recopilamos información personal identificable de pacientes.
+</div>
+
+<h2>1. Introducción</h2>
+<p>Esta Política de Privacidad describe cómo HospitalAPP recopila, usa y protege la información cuando utiliza nuestra aplicación móvil. HospitalAPP es una herramienta para consulta de manuales técnicos y registro de mantenimiento correctivo de equipos médicos hospitalarios, diseñada para profesionales técnicos.</p>
+
+<h2>2. Información que Recopilamos</h2>
+
+<h3>2.1 Información que NO recopilamos</h3>
+<ul>
+    <li>Nombres o información de identificación personal de pacientes</li>
+    <li>Información de salud o médica de pacientes</li>
+    <li>Números de teléfono o direcciones de correo electrónico</li>
+    <li>Información de ubicación geográfica del dispositivo</li>
+    <li>Contactos del dispositivo</li>
+</ul>
+
+<h3>2.2 Información que SÍ recopilamos</h3>
+
+<h4>2.2.1 Registros de Mantenimiento Correctivo</h4>
+<p>Cuando un usuario administrador registra un correctivo, la app almacena localmente y sincroniza con Google Drive:</p>
+<ul>
+    <li>Nombre del equipo, marca, modelo, serie e inventario</li>
+    <li>ESE (institución) y ubicación del equipo</li>
+    <li>Descripción de falla, diagnóstico y trabajo realizado</li>
+    <li>Nombre del técnico responsable</li>
+    <li>Fecha del servicio</li>
+    <li>Estado final del equipo</li>
+</ul>
+<p>Estos datos se almacenan en el dispositivo (base de datos local) y se sincronizan con Google Drive de la cuenta autorizada por el administrador.</p>
+
+<h4>2.2.2 Credenciales OAuth de Google</h4>
+<p>Para la sincronización con Google Drive, la app solicita autorización OAuth 2.0 con la cuenta Google del administrador. Se almacena un token de acceso de forma segura en el dispositivo. Este token solo se usa para subir archivos CSV a Google Drive y no se comparte con terceros distintos a Google.</p>
+
+<h4>2.2.3 Identificador de Publicidad (Advertising ID)</h4>
+<ul>
+    <li><strong>Qué es:</strong> Identificador único proporcionado por Google para mostrar anuncios</li>
+    <li><strong>Propósito:</strong> Mostrar anuncios a través de Google AdMob</li>
+    <li><strong>Control:</strong> Puede restablecerlo en Configuración &gt; Google &gt; Anuncios</li>
+</ul>
+
+<h2>3. Cómo Usamos la Información</h2>
+<ul>
+    <li><strong>Funcionalidad principal:</strong> Registrar y consultar historial de mantenimiento de equipos médicos</li>
+    <li><strong>Sincronización:</strong> Subir reportes CSV a Google Drive del administrador para acceso centralizado</li>
+    <li><strong>Publicidad:</strong> Mostrar anuncios relevantes mediante Google AdMob</li>
+    <li><strong>Mejora de la app:</strong> Identificar errores y mejorar el rendimiento</li>
+</ul>
+
+<h2>4. Compartir Información con Terceros</h2>
+
+<h3>4.1 Google Drive</h3>
+<p>Los registros de mantenimiento se sincronizan con Google Drive de la cuenta autorizada por el administrador. Los archivos CSV quedan almacenados en la carpeta configurada por el administrador. Google gestiona estos datos según su <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad</a>.</p>
+
+<h3>4.2 Google AdMob</h3>
+<p>Compartimos el Identificador de Publicidad con Google AdMob para mostrar anuncios. Ver <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google</a>.</p>
+
+<h3>4.3 Otros Terceros</h3>
+<p>NO compartimos información con ningún otro tercero.</p>
+
+<h2>5. Seguridad de los Datos</h2>
+<ul>
+    <li><strong>Cifrado en tránsito:</strong> Todas las comunicaciones usan HTTPS/TLS</li>
+    <li><strong>Almacenamiento local:</strong> Base de datos Room cifrada en el dispositivo</li>
+    <li><strong>Acceso restringido:</strong> Sistema de claves de acceso — solo administradores pueden registrar correctivos</li>
+    <li><strong>OAuth seguro:</strong> Tokens almacenados en SharedPreferences privadas del dispositivo</li>
+</ul>
+
+<h2>6. Retención de Datos</h2>
+<ul>
+    <li><strong>Datos locales:</strong> Se mantienen hasta que el usuario borre los datos de la app o la desinstale</li>
+    <li><strong>Datos en Google Drive:</strong> Se mantienen según la configuración de la cuenta Google del administrador</li>
+    <li><strong>Advertising ID:</strong> Gestionado por Google según sus políticas</li>
+</ul>
+
+<h2>7. Eliminación de Datos</h2>
+<p id="eliminacion-datos">Los usuarios pueden solicitar la eliminación de sus datos de las siguientes formas:</p>
+
+<h3>7.1 Datos locales del dispositivo</h3>
+<ol>
+    <li>Vaya a <strong>Configuración de Android</strong></li>
+    <li>Seleccione <strong>Aplicaciones &gt; HospitalAPP</strong></li>
+    <li>Toque <strong>"Borrar datos"</strong></li>
+</ol>
+<p>Esto elimina todos los registros locales, tokens OAuth y configuración de la app.</p>
+
+<h3>7.2 Datos en Google Drive</h3>
+<ol>
+    <li>Acceda a <a href="https://drive.google.com" target="_blank">drive.google.com</a> con la cuenta administradora</li>
+    <li>Localice la carpeta <strong>REPORTES_APP</strong></li>
+    <li>Elimine los archivos CSV o carpetas que desee borrar</li>
+</ol>
+
+<h3>7.3 Solicitud por correo</h3>
+<p>Para solicitar eliminación de datos, contacte a: <a href="mailto:appmultiservicio@gmail.com">appmultiservicio@gmail.com</a><br>
+Tiempo de respuesta: 48 horas hábiles.</p>
+
+<h2>8. Derechos del Usuario</h2>
+<ul>
+    <li>Restablecer o desactivar el Advertising ID en Configuración &gt; Google &gt; Anuncios</li>
+    <li>Revocar el acceso OAuth en <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a></li>
+    <li>Solicitar copia o eliminación de sus datos por correo</li>
+</ul>
+
+<h2>9. Privacidad de Menores</h2>
+<p>HospitalAPP está dirigida exclusivamente a mayores de 18 años — profesionales técnicos hospitalarios. No recopilamos intencionalmente información de menores.</p>
+
+<h2>10. Uso Profesional</h2>
+<p>HospitalAPP está diseñada para ingenieros biomédicos, técnicos de mantenimiento hospitalario y administradores de equipos médicos. La información técnica proporcionada NO constituye consejo médico, diagnóstico ni tratamiento.</p>
+
+<h2>11. Cambios a Esta Política</h2>
+<p>Notificaremos cambios significativos actualizando la fecha en la parte superior de este documento.</p>
+
+<h2>12. Contacto</h2>
+<p>
+    <strong>Email:</strong> <a href="mailto:appmultiservicio@gmail.com">appmultiservicio@gmail.com</a><br>
+    <strong>Tiempo de respuesta:</strong> 48 horas hábiles
+</p>
+
+<h2>13. Consentimiento</h2>
+<p>Al usar HospitalAPP, usted acepta esta Política de Privacidad. Si no está de acuerdo, por favor no use la aplicación.</p>
+
+</body>
+</html>
