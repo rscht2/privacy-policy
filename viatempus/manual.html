@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Uso - Viatempus</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+        h1 { color: #6750A4; }
+        h2 { color: #4a3780; margin-top: 30px; border-bottom: 2px solid #6750A4; padding-bottom: 5px; }
+        h3 { color: #555; }
+        .step { background: #f5f3ff; border-left: 4px solid #6750A4; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+        .tip { background: #e8f5e9; border-left: 4px solid #4CAF50; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+        .warning { background: #fff3e0; border-left: 4px solid #FF9800; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .icon { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>📱 Manual de Uso - Viatempus</h1>
+    <p>Viatempus es una aplicación de cronometraje de rutas por GPS. Te permite crear rutas con puntos de control y medir automáticamente el tiempo que tardas en recorrerlas.</p>
+
+    <h2>1. Pantalla Principal - Mis Rutas</h2>
+    <p>Al abrir la app verás la lista de todas tus rutas creadas. Cada ruta muestra su nombre, cantidad de puntos y un color identificativo.</p>
+    
+    <h3>Acciones disponibles:</h3>
+    <ul>
+        <li><strong>Tocar una ruta:</strong> Ver sus detalles y puntos de control.</li>
+        <li><strong>Mantener pulsada una ruta:</strong> Cambiar su color identificativo.</li>
+        <li><strong>Botón +:</strong> Crear nueva ruta, importar por QR o por texto.</li>
+        <li><strong>Botón de exportar:</strong> Exportar rutas a archivo JSON.</li>
+        <li><strong>Botón de importar:</strong> Importar rutas desde archivo JSON.</li>
+        <li><strong>Botón de selección:</strong> Activar modo de selección múltiple.</li>
+    </ul>
+
+    <h2>2. Crear una Ruta</h2>
+    
+    <div class="step">
+        <strong>Paso 1:</strong> Toca el botón <strong>+</strong> y selecciona "Crear nueva ruta".
+    </div>
+    <div class="step">
+        <strong>Paso 2:</strong> Escribe el nombre de la ruta.
+    </div>
+    <div class="step">
+        <strong>Paso 3:</strong> Selecciona un color para identificarla fácilmente.
+    </div>
+    <div class="step">
+        <strong>Paso 4:</strong> Agrega puntos de control de dos formas:
+        <ul>
+            <li><strong>En el mapa:</strong> Toca "Seleccionar en Mapa" y marca los puntos tocando el mapa o buscando ubicaciones.</li>
+            <li><strong>Manualmente:</strong> Ingresa nombre y coordenadas (latitud, longitud).</li>
+        </ul>
+    </div>
+    <div class="step">
+        <strong>Paso 5:</strong> Toca el botón ✓ para guardar la ruta.
+    </div>
+
+    <div class="tip">
+        <strong>💡 Consejo:</strong> El primer punto se marca automáticamente como "Inicio" y el último como "Meta". Los demás son puntos intermedios.
+    </div>
+
+    <h2>3. Seleccionar Puntos en el Mapa</h2>
+    <ul>
+        <li><strong>Buscar ubicación:</strong> Usa la barra de búsqueda en la parte superior. Presiona la lupa del teclado para buscar.</li>
+        <li><strong>Ir al punto:</strong> En los resultados, toca "Ir al punto" para mover la cámara.</li>
+        <li><strong>Agregar punto:</strong> Toca "Agregar" en los resultados o toca directamente el mapa.</li>
+        <li><strong>Mi ubicación:</strong> Usa el botón flotante para centrar el mapa en tu posición actual.</li>
+        <li><strong>Confirmar:</strong> Toca el botón ✓ cuando hayas terminado de agregar puntos.</li>
+    </ul>
+
+    <h2>4. Iniciar una Ruta</h2>
+    
+    <div class="step">
+        <strong>Paso 1:</strong> Abre la ruta que deseas recorrer.
+    </div>
+    <div class="step">
+        <strong>Paso 2:</strong> Toca el botón ▶ (Play) para iniciar.
+    </div>
+    <div class="step">
+        <strong>Paso 3:</strong> Concede los permisos de ubicación cuando se soliciten.
+    </div>
+    <div class="step">
+        <strong>Paso 4:</strong> Acércate al punto de <strong>Inicio</strong>. El cronómetro comenzará automáticamente cuando entres en el radio de detección.
+    </div>
+    <div class="step">
+        <strong>Paso 5:</strong> Recorre la ruta. Cada punto de control se marcará automáticamente al pasar cerca.
+    </div>
+    <div class="step">
+        <strong>Paso 6:</strong> Al llegar a la <strong>Meta</strong>, el cronómetro se detendrá y podrás ver el resumen.
+    </div>
+
+    <div class="warning">
+        <strong>⚠️ Importante:</strong> Mantén la app con permisos de ubicación "Siempre" para que funcione en segundo plano. Si solo permites "Mientras se usa", los puntos podrían no detectarse con la pantalla apagada.
+    </div>
+
+    <h2>5. Durante el Recorrido</h2>
+    <p>La pantalla del cronómetro muestra:</p>
+    <ul>
+        <li><strong>Tiempo transcurrido:</strong> Cronómetro en tiempo real.</li>
+        <li><strong>Distancia al siguiente punto:</strong> En metros.</li>
+        <li><strong>Puntos completados:</strong> Lista de checkpoints con tiempos parciales y totales.</li>
+        <li><strong>Notificación:</strong> El servicio muestra una notificación con el progreso.</li>
+    </ul>
+
+    <h3>Controles:</h3>
+    <ul>
+        <li><strong>Detener (■):</strong> Cancela el recorrido y guarda el progreso parcial.</li>
+        <li><strong>Ver resumen:</strong> Disponible al completar la ruta.</li>
+    </ul>
+
+    <h2>6. Resumen de Ruta</h2>
+    <p>Al completar una ruta verás:</p>
+    <ul>
+        <li>Tiempo total del recorrido.</li>
+        <li>Hora de inicio y fin.</li>
+        <li>Distancia total recorrida.</li>
+        <li>Velocidad promedio.</li>
+        <li>Tiempo promedio por segmento.</li>
+        <li>Segmento más rápido y más lento.</li>
+        <li>Tabla detallada de cada punto de control.</li>
+    </ul>
+
+    <div class="tip">
+        <strong>💡 Consejo:</strong> Puedes compartir el resumen como PDF tocando el botón de compartir.
+    </div>
+
+    <h2>7. Estadísticas</h2>
+    <p>Desde el detalle de una ruta, toca el botón de estadísticas para ver:</p>
+    <ul>
+        <li>Historial de todos los recorridos.</li>
+        <li>Comparativa de tiempos entre recorridos.</li>
+        <li>Mejor tiempo, peor tiempo y promedio.</li>
+    </ul>
+
+    <h2>8. Importar y Exportar Rutas</h2>
+    
+    <h3>Exportar:</h3>
+    <ul>
+        <li>Toca el botón de exportar (↓) en la pantalla principal.</li>
+        <li>Se genera un archivo JSON con todas las rutas (o las seleccionadas).</li>
+    </ul>
+
+    <h3>Importar:</h3>
+    <ul>
+        <li><strong>Desde archivo:</strong> Toca el botón de importar y selecciona un archivo JSON.</li>
+        <li><strong>Por QR:</strong> Escanea un código QR generado por otra instalación de Viatempus.</li>
+        <li><strong>Por texto:</strong> Pega el JSON directamente.</li>
+    </ul>
+
+    <h2>9. Configuración</h2>
+    <p>Accede desde el botón ⚙️ en la pantalla principal:</p>
+    <ul>
+        <li><strong>Tema:</strong> Claro, oscuro o seguir el sistema.</li>
+        <li><strong>Modo de tracking:</strong> Configuración predeterminada o personalizada.</li>
+        <li><strong>Radio de detección:</strong> Distancia en metros para detectar un punto de control (5-100m).</li>
+        <li><strong>Intervalo GPS:</strong> Frecuencia de actualización de ubicación (1-10 segundos).</li>
+        <li><strong>Notificaciones:</strong> Sonido y vibración al pasar por puntos.</li>
+    </ul>
+
+    <h2>10. Consejos y Solución de Problemas</h2>
+    
+    <div class="tip">
+        <strong>💡 Radio de detección:</strong> Si los puntos no se detectan, aumenta el radio en Configuración. En zonas urbanas con edificios altos, un radio de 25-50m funciona mejor.
+    </div>
+
+    <div class="tip">
+        <strong>💡 Batería:</strong> El tracking GPS consume batería. Asegúrate de tener suficiente carga antes de iniciar una ruta larga.
+    </div>
+
+    <div class="warning">
+        <strong>⚠️ Permisos:</strong> Si la app no detecta puntos en segundo plano, ve a Configuración del dispositivo → Apps → Viatempus → Permisos → Ubicación → "Permitir siempre".
+    </div>
+
+    <div class="warning">
+        <strong>⚠️ Ahorro de batería:</strong> Algunos dispositivos cierran apps en segundo plano agresivamente. Desactiva la optimización de batería para Viatempus en la configuración del dispositivo.
+    </div>
+</body>
+</html>
