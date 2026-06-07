@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - Rokola Admin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #202124;
+            margin-top: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-bottom: 15px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Política de Privacidad</h1>
+        <p>Última actualización: 7 de junio de 2026</p>
+
+        <p>Esta Política de Privacidad describe cómo <strong>Rokola Admin</strong> recopila, utiliza y protege su información cuando utiliza nuestra aplicación móvil.</p>
+
+        <h2>1. Información que Recopilamos</h2>
+        <p>La aplicación Rokola Admin está diseñada para ser una herramienta de gestión administrativa. Recopilamos la mínima información necesaria para su funcionamiento:</p>
+        <ul>
+            <li><strong>Configuración del Servidor:</strong> Almacenamos la URL del servidor al que se conecta la aplicación para gestionar la Rokola.</li>
+            <li><strong>Identificación del Establecimiento:</strong> Almacenamos el nombre del establecimiento configurado por el administrador.</li>
+        </ul>
+
+        <h2>2. Uso de Permisos</h2>
+        <p>Para proporcionar sus funciones, la aplicación requiere los siguientes permisos:</p>
+        <ul>
+            <li><strong>Cámara:</strong> Utilizada exclusivamente para escanear códigos QR que contienen la configuración de conexión al servidor. No capturamos ni almacenamos fotos o videos.</li>
+            <li><strong>Internet:</strong> Necesario para comunicarse con el servidor de la Rokola y realizar las tareas de administración.</li>
+            <li><strong>Estado de Red:</strong> Utilizado para verificar si el dispositivo tiene conexión antes de intentar realizar operaciones.</li>
+        </ul>
+
+        <h2>3. Seguridad de los Datos</h2>
+        <p>Nos comprometemos a proteger su información. La configuración almacenada se guarda localmente en el dispositivo y solo se utiliza para la comunicación directa con el servidor que usted mismo ha configurado.</p>
+
+        <h2>4. Cambios en esta Política</h2>
+        <p>Podemos actualizar nuestra Política de Privacidad periódicamente. Se le notificará de cualquier cambio publicando la nueva Política de Privacidad en esta página.</p>
+
+        <h2>5. Contacto</h2>
+        <p>Si tiene alguna pregunta sobre esta Política de Privacidad, puede contactarnos a través de los canales oficiales de soporte de Rokola.</p>
+
+        <div class="footer">
+            &copy; 2026 Rokola Admin. Todos los derechos reservados.
+        </div>
+    </div>
+</body>
+</html>
