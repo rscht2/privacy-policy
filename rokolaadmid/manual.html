@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Rokola Admin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #1a73e8;
+            border-left: 4px solid #1a73e8;
+            padding-left: 15px;
+            margin-top: 35px;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .step-number {
+            background: #1a73e8;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex-grow: 1;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #1a73e8;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Manual de Usuario</h1>
+            <p>Guía de uso para la aplicación <strong>Rokola Admin</strong></p>
+        </header>
+
+        <h2>Introducción</h2>
+        <p>Rokola Admin es la herramienta definitiva para los propietarios y administradores de Rokolas. Permite gestionar de forma remota la configuración del sistema, mensajes en pantalla y el estado general de la unidad.</p>
+
+        <h2>Configuración Inicial</h2>
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <p><span class="highlight">Conexión al Servidor:</span> Al abrir la aplicación por primera vez, navegue a la sección de <strong>Ajustes</strong> y seleccione la opción <strong>Escanear QR</strong>. Apunte la cámara al código QR proporcionado por su sistema Rokola para configurar automáticamente la conexión.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <p><span class="highlight">Verificación de Estado:</span> Una vez configurado, el indicador de conexión en la parte superior deberá mostrarse en <span style="color: green; font-weight: bold;">Verde (Conectado)</span>.</p>
+            </div>
+        </div>
+
+        <h2>Funciones Principales</h2>
+        
+        <h3>Gestión de Mensajes</h3>
+        <p>Puede cambiar el mensaje que aparece en la marquesina de la Rokola en tiempo real. Escriba el nuevo mensaje en el campo correspondiente en Ajustes y presione <strong>Guardar Cambios</strong>.</p>
+
+        <h3>Nombre del Establecimiento</h3>
+        <p>Personalice el nombre que se muestra en la interfaz de la Rokola para que coincida con su negocio.</p>
+
+        <h3>Control de Reproducción</h3>
+        <p>Desde la pantalla principal (Home), podrá visualizar la canción que se está reproduciendo actualmente y realizar acciones de control si el servidor lo permite.</p>
+
+        <div class="note">
+            <strong>Nota importante:</strong> Asegúrese de que su dispositivo móvil tenga acceso a Internet para que los cambios se sincronicen correctamente con la Rokola.
+        </div>
+
+        <h2>Solución de Problemas</h2>
+        <ul>
+            <li><strong>No se conecta:</strong> Verifique que la URL del servidor sea correcta y que la Rokola esté encendida y conectada a la red.</li>
+            <li><strong>El escáner QR no funciona:</strong> Asegúrese de haber otorgado permisos de cámara a la aplicación.</li>
+            <li><strong>Los cambios no se guardan:</strong> Verifique su conexión a Internet.</li>
+        </ul>
+
+        <div class="footer">
+            &copy; 2026 Rokola Admin - Guía Oficial de Administración.
+        </div>
+    </div>
+</body>
+</html>
