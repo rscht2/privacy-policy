@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - ¿Cuál Manual?</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.7;
+        }
+        header {
+            background: linear-gradient(135deg, #1565C0, #0D47A1);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { font-size: 1rem; opacity: 0.85; }
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        nav {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        nav a {
+            color: #1565C0;
+            text-decoration: none;
+            font-size: 0.88rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: #e3f2fd;
+        }
+        nav a:hover { background: #1565C0; color: white; }
+        .container {
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 0 20px 40px;
+        }
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            padding: 36px;
+            margin-bottom: 28px;
+        }
+        h2 {
+            color: #1565C0;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .icon { font-size: 1.5rem; }
+        h3 {
+            color: #333;
+            font-size: 1rem;
+            margin: 20px 0 8px;
+            font-weight: 600;
+        }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 8px 0 12px 20px; }
+        li { margin-bottom: 6px; }
+        .step-box {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: #f8f9ff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .step-num {
+            background: #1565C0;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+        .tip {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid #FF9800;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .feature-card {
+            background: #f0f4ff;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+        .feature-card .emoji { font-size: 2rem; margin-bottom: 8px; }
+        .feature-card h4 { color: #1565C0; margin-bottom: 4px; }
+        .feature-card p { font-size: 0.88rem; color: #555; margin: 0; }
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 14px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q { font-weight: 600; color: #1565C0; margin-bottom: 6px; }
+        .contact-box {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .contact-box a { color: #1565C0; font-weight: 600; }
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .section { padding: 24px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>¿Cuál Manual?</h1>
+    <p>Manual de Usuario</p>
+    <div class="version-badge">Versión 1.0 &nbsp;|&nbsp; RJ&amp;JR Soluciones</div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#intro">Inicio</a></li>
+        <li><a href="#funciones">Funciones</a></li>
+        <li><a href="#busqueda">Búsqueda</a></li>
+        <li><a href="#filtros">Filtros</a></li>
+        <li><a href="#manuales">Ver manuales</a></li>
+        <li><a href="#guias">Guías rápidas</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- INTRODUCCIÓN -->
+    <div class="section" id="intro">
+        <h2><span class="icon">📖</span> ¿Qué es ¿Cuál Manual?</h2>
+        <p>
+            <strong>¿Cuál Manual?</strong> es una aplicación Android desarrollada por <strong>RJ&amp;JR Soluciones</strong>
+            que le permite buscar y consultar manuales técnicos e instructivos de equipos de laboratorio
+            y otros dispositivos, de forma rápida y sin necesidad de registrarse.
+        </p>
+        <p>
+            Los manuales están almacenados en Google Drive y se accede a ellos directamente desde la app,
+            sin descargas ni instalaciones adicionales.
+        </p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="emoji">🔍</div>
+                <h4>Búsqueda rápida</h4>
+                <p>Encuentra manuales por nombre, marca o modelo</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🎛️</div>
+                <h4>Filtros avanzados</h4>
+                <p>Filtra por tipo de equipo, marca y modelo</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">📄</div>
+                <h4>Manuales PDF</h4>
+                <p>Visualiza los manuales directamente en tu navegador</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">⚡</div>
+                <h4>Guías rápidas</h4>
+                <p>Accede a instructivos cortos con un switch</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- REQUISITOS -->
+    <div class="section" id="funciones">
+        <h2><span class="icon">📱</span> Requisitos</h2>
+        <ul>
+            <li>Android 7.0 (API 24) o superior</li>
+            <li>Conexión a internet activa</li>
+            <li>No requiere cuenta ni registro</li>
+        </ul>
+        <div class="tip">
+            💡 <strong>Tip:</strong> La app carga los manuales en tiempo real desde la nube.
+            Para mejor experiencia use una conexión WiFi o datos móviles estables.
+        </div>
+    </div>
+
+    <!-- BÚSQUEDA -->
+    <div class="section" id="busqueda">
+        <h2><span class="icon">🔍</span> Cómo buscar un manual</h2>
+
+        <div class="step-box">
+            <div class="step-num">1</div>
+            <div>
+                <strong>Abra la aplicación.</strong> Verá la pantalla principal con el título
+                <em>"¿Cuál manual?"</em> y el campo de búsqueda.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">2</div>
+            <div>
+                <strong>Asegúrese de que el switch "Modo filtros" esté apagado.</strong>
+                Cuando está apagado, verá el cuadro de búsqueda por texto.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">3</div>
+            <div>
+                <strong>Escriba en el campo de búsqueda</strong> el nombre del equipo, la marca o el modelo.
+                Por ejemplo: <em>"agitador"</em>, <em>"BOECO"</em> o <em>"OS-20"</em>.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">4</div>
+            <div>
+                <strong>Los resultados aparecerán automáticamente</strong> mientras escribe.
+                Cada tarjeta muestra el nombre del manual.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">5</div>
+            <div>
+                <strong>Toque la tarjeta del manual</strong> para abrirlo.
+                Se mostrará un anuncio breve y luego se abrirá el manual en su navegador.
+            </div>
+        </div>
+
+        <div class="tip">
+            💡 Para limpiar la búsqueda, toque la <strong>X</strong> que aparece al lado derecho del campo de texto.
+        </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="section" id="filtros">
+        <h2><span class="icon">🎛️</span> Usar los filtros</h2>
+        <p>
+            El modo filtros le permite encontrar manuales navegando por categorías
+            en lugar de escribir texto.
+        </p>
+
+        <div class="step-box">
+            <div class="step-num">1</div>
+            <div>
+                <strong>Active el switch "Modo filtros"</strong> en la parte superior.
+                Aparecerán tres menús desplegables.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">2</div>
+            <div>
+                <strong>Seleccione el Tipo de Equipo</strong> (ej: Agitador, Centrifuga, Balanza).
+                Los otros filtros se actualizarán automáticamente.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">3</div>
+            <div>
+                <strong>Seleccione la Marca</strong> entre las disponibles para ese tipo de equipo.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">4</div>
+            <div>
+                <strong>Seleccione el Modelo</strong> específico si lo conoce.
+                Los resultados se mostrarán al instante.
+            </div>
+        </div>
+
+        <div class="tip">
+            💡 Puede seleccionar solo el Tipo de Equipo o solo la Marca sin necesidad de completar todos los filtros.
+        </div>
+        <div class="warning">
+            ⚠️ Al desactivar el modo filtros, los filtros seleccionados se limpian automáticamente.
+        </div>
+    </div>
+
+    <!-- VER MANUALES -->
+    <div class="section" id="manuales">
+        <h2><span class="icon">📄</span> Ver un manual</h2>
+        <p>
+            Al tocar una tarjeta de resultado, la app mostrará brevemente un anuncio intersticial
+            (pantalla completa) y luego abrirá el manual PDF en su navegador predeterminado
+            a través de Google Drive Viewer.
+        </p>
+
+        <h3>Desde el visor de Google Drive puede:</h3>
+        <ul>
+            <li>Hacer zoom para leer el contenido</li>
+            <li>Desplazarse por las páginas</li>
+            <li>Descargar el PDF usando el ícono de descarga</li>
+            <li>Compartir el enlace del manual</li>
+        </ul>
+
+        <div class="tip">
+            💡 Si el manual no abre, verifique su conexión a internet e intente de nuevo.
+        </div>
+    </div>
+
+    <!-- GUÍAS RÁPIDAS -->
+    <div class="section" id="guias">
+        <h2><span class="icon">⚡</span> Guías rápidas</h2>
+        <p>
+            La app tiene acceso a dos colecciones de documentos:
+        </p>
+        <ul>
+            <li><strong>Manuales:</strong> documentación técnica completa de equipos</li>
+            <li><strong>Guías rápidas:</strong> instructivos cortos y resumidos</li>
+        </ul>
+
+        <div class="step-box">
+            <div class="step-num">1</div>
+            <div>
+                Para cambiar entre colecciones, use el switch <strong>"Buscar: Manuales / Guías rápidas"</strong>.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-num">2</div>
+            <div>
+                Cuando está activado, el título cambia a <em>"¿Cuál guía?"</em>
+                y verá los instructivos cortos disponibles.
+            </div>
+        </div>
+
+        <div class="tip">
+            💡 Los resultados se cargan en caché — si ya cargó la lista una vez,
+            cambiar entre colecciones es instantáneo.
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+        <h2><span class="icon">❓</span> Preguntas frecuentes</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Necesito crear una cuenta para usar la app?</div>
+            <p>No. La aplicación no requiere registro ni inicio de sesión.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Por qué aparece un anuncio antes de abrir el manual?</div>
+            <p>
+                Los anuncios permiten mantener la app gratuita. El anuncio dura unos segundos
+                y puede cerrarse tocando la X que aparece en la esquina.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Los manuales se descargan en mi teléfono?</div>
+            <p>
+                No automáticamente. Los manuales se abren en línea desde Google Drive.
+                Si desea guardarlos, use el botón de descarga dentro del visor de Drive.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Por qué no carga ningún manual?</div>
+            <p>
+                Verifique su conexión a internet. Si el problema persiste, toque el botón
+                <strong>"Reintentar"</strong> que aparece en la pantalla de error.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Puedo usar la app sin internet?</div>
+            <p>
+                No. La app requiere conexión para consultar los manuales desde Google Drive.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Con qué frecuencia se actualizan los manuales?</div>
+            <p>
+                Los manuales se actualizan directamente en Google Drive por el administrador.
+                La app siempre muestra la versión más reciente disponible.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">¿Cómo solicito que se agregue un manual?</div>
+            <p>
+                Envíenos un correo a <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a>
+                indicando el equipo, marca y modelo.
+            </p>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="section" id="contacto">
+        <h2><span class="icon">✉️</span> Contacto y soporte</h2>
+        <div class="contact-box">
+            <p style="font-size:1.1rem; font-weight:600; margin-bottom:12px;">RJ&amp;JR Soluciones</p>
+            <p>📧 <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a></p>
+            <p style="margin-top:10px; color:#555; font-size:0.9rem;">
+                Respondemos consultas en un plazo de 1 a 3 días hábiles.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 RJ&amp;JR Soluciones &nbsp;|&nbsp; ¿Cuál Manual? v1.0 &nbsp;|&nbsp; Colombia
+</footer>
+
+</body>
+</html>
