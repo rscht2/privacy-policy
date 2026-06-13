@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - ¿Cuál Manual?</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.7;
+        }
+        header {
+            background: #1565C0;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { font-size: 0.95rem; opacity: 0.85; }
+        .container {
+            max-width: 860px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h2 {
+            color: #1565C0;
+            font-size: 1.2rem;
+            margin: 32px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        h2:first-child { margin-top: 0; }
+        p { margin-bottom: 12px; }
+        ul { margin: 8px 0 12px 20px; }
+        li { margin-bottom: 6px; }
+        .highlight {
+            background: #e3f2fd;
+            border-left: 4px solid #1565C0;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        .contact-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .contact-box a { color: #1565C0; text-decoration: none; }
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Política de Privacidad</h1>
+    <p>¿Cuál Manual? &nbsp;|&nbsp; RJ&amp;JR Soluciones</p>
+</header>
+
+<div class="container">
+
+    <div class="highlight">
+        <strong>Última actualización:</strong> Junio 2026<br>
+        Esta política describe cómo la aplicación <strong>¿Cuál Manual?</strong> trata la información relacionada con su uso.
+    </div>
+
+    <h2>1. Información general</h2>
+    <p>
+        <strong>¿Cuál Manual?</strong> es una aplicación desarrollada por <strong>RJ&amp;JR Soluciones</strong>,
+        con sede en Colombia. La app permite a los usuarios buscar y consultar manuales técnicos e instructivos
+        almacenados en Google Drive, de acceso público.
+    </p>
+
+    <h2>2. Datos que la aplicación NO recopila</h2>
+    <p>La aplicación <strong>no recopila, almacena ni transmite</strong> ninguno de los siguientes datos:</p>
+    <ul>
+        <li>Nombre, apellido o datos de identidad del usuario</li>
+        <li>Correo electrónico o número de teléfono</li>
+        <li>Ubicación geográfica</li>
+        <li>Contraseñas o credenciales</li>
+        <li>Fotos, contactos ni archivos del dispositivo</li>
+        <li>Historial de búsquedas (no se guarda localmente ni en servidores)</li>
+    </ul>
+    <p>No se requiere registro ni inicio de sesión para usar la aplicación.</p>
+
+    <h2>3. Permisos utilizados</h2>
+    <ul>
+        <li><strong>INTERNET:</strong> necesario para consultar los manuales desde Google Drive y cargar los anuncios.</li>
+        <li><strong>ACCESS_NETWORK_STATE:</strong> permite verificar si hay conexión a internet antes de realizar consultas.</li>
+    </ul>
+    <p>La aplicación no solicita permisos de cámara, micrófono, ubicación, almacenamiento ni contactos.</p>
+
+    <h2>4. Servicios de terceros</h2>
+
+    <p><strong>4.1 Google Drive API</strong></p>
+    <p>
+        La app consume la API pública de Google Drive para listar y mostrar archivos PDF e imágenes
+        de carpetas de acceso público. No se accede a archivos privados del usuario ni se requiere
+        autenticación de Google. Las solicitudes se envían directamente a los servidores de Google.
+        Consulte la <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google</a>.
+    </p>
+
+    <p><strong>4.2 Google AdMob</strong></p>
+    <p>
+        La aplicación muestra anuncios publicitarios a través de <strong>Google AdMob</strong>.
+        AdMob puede recopilar información del dispositivo para personalizar anuncios, incluyendo:
+    </p>
+    <ul>
+        <li>Identificador de publicidad del dispositivo (Advertising ID)</li>
+        <li>Dirección IP aproximada</li>
+        <li>Información sobre el dispositivo (modelo, sistema operativo, idioma)</li>
+        <li>Interacciones con los anuncios mostrados</li>
+    </ul>
+    <p>
+        Esta recopilación es realizada por Google, no por RJ&amp;JR Soluciones.
+        Consulte la <a href="https://policies.google.com/technologies/ads" target="_blank">Política de publicidad de Google</a>.
+        El usuario puede limitar la personalización de anuncios desde
+        <strong>Ajustes del dispositivo → Google → Anuncios</strong>.
+    </p>
+
+    <h2>5. Seguridad</h2>
+    <p>
+        No almacenamos datos personales en nuestros servidores porque simplemente no los recopilamos.
+        Las comunicaciones con la API de Google Drive se realizan mediante HTTPS.
+    </p>
+
+    <h2>6. Menores de edad</h2>
+    <p>
+        La aplicación no está dirigida a menores de 13 años y no recopila conscientemente
+        información de menores. Si usted es padre o tutor y cree que su hijo ha proporcionado
+        información personal, contáctenos para eliminarla.
+    </p>
+
+    <h2>7. Cambios en esta política</h2>
+    <p>
+        Podemos actualizar esta política ocasionalmente. Los cambios se publicarán en esta misma página
+        con la fecha de actualización. El uso continuado de la aplicación después de los cambios
+        implica la aceptación de la política actualizada.
+    </p>
+
+    <h2>8. Contacto</h2>
+    <div class="contact-box">
+        <p>Si tiene preguntas sobre esta política de privacidad, contáctenos:</p>
+        <p><strong>RJ&amp;JR Soluciones</strong></p>
+        <p>📧 <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a></p>
+        <p>🌍 Colombia</p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 RJ&amp;JR Soluciones &nbsp;|&nbsp; ¿Cuál Manual? &nbsp;|&nbsp; Todos los derechos reservados
+</footer>
+
+</body>
+</html>
