@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="robots" content="index, follow">
+<title>Política de Privacidad — Botoogle</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text: #1b1f24;
+    --text-muted: #5b6470;
+    --accent: #4f46e5;
+    --accent-soft: #eef0ff;
+    --border: #e4e6eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --card-bg: #171a21;
+      --text: #eceef1;
+      --text-muted: #9aa3af;
+      --accent: #8b85ff;
+      --accent-soft: #232342;
+      --border: #2a2e37;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 18px 56px;
+  }
+  header {
+    text-align: center;
+    padding: 8px 0 20px;
+  }
+  header .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), #7c74ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 26px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .updated {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 18px 4px;
+    margin-bottom: 16px;
+  }
+  .toc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .toc h2 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin: 0 0 10px;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+  }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section h2 {
+    font-size: 1.08rem;
+    margin: 4px 0 10px;
+    padding-top: 8px;
+    scroll-margin-top: 16px;
+  }
+  section p, section li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  section p { margin: 0 0 14px; }
+  ul { padding-left: 1.2rem; margin: 0 0 14px; }
+  li { margin-bottom: 8px; }
+  strong { font-weight: 600; }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 16px;
+    font-size: 0.88rem;
+  }
+  table.data-table th, table.data-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.data-table th {
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  a.contact-link {
+    color: var(--accent);
+    word-break: break-word;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-to-top {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header id="top">
+    <div class="logo">🔒</div>
+    <h1>Política de Privacidad de Botoogle</h1>
+    <div class="updated">Última actualización: 26 de julio de 2026</div>
+  </header>
+
+  <nav class="toc" aria-label="Tabla de contenido">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#introduccion">Introducción</a></li>
+      <li><a href="#info-recopilada">Información que recopilamos</a></li>
+      <li><a href="#uso-info">Cómo usamos la información</a></li>
+      <li><a href="#visibilidad">Visibilidad dentro de la comunidad</a></li>
+      <li><a href="#terceros">Compartición con terceros</a></li>
+      <li><a href="#permisos">Permisos del dispositivo</a></li>
+      <li><a href="#seguridad">Seguridad de los datos</a></li>
+      <li><a href="#retencion">Retención y eliminación de datos</a></li>
+      <li><a href="#menores">Privacidad de menores</a></li>
+      <li><a href="#cambios">Cambios a esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </nav>
+
+  <section class="card" id="introduccion">
+    <h2>1. Introducción</h2>
+    <p>
+      Botoogle ("la app", "nosotros") es una aplicación para gestionar el testeo de apps en Google Play:
+      permite registrar apps en fase de pruebas, encontrar testers, enviar feedback y coordinar la
+      reciprocidad entre desarrolladores. Esta política explica qué información recopilamos, cómo la
+      usamos y qué opciones tienes al respecto.
+    </p>
+    <p>
+      Al crear una cuenta y usar Botoogle, aceptas las prácticas descritas en este documento.
+    </p>
+  </section>
+
+  <section class="card" id="info-recopilada">
+    <h2>2. Información que recopilamos</h2>
+    <span class="badge">Datos de cuenta</span>
+    <p>
+      Para crear una cuenta pedimos tu <strong>correo electrónico</strong>, una <strong>contraseña</strong>
+      y un <strong>nombre a mostrar</strong>. Si vinculas tu cuenta con Telegram (opcional, para usar el bot),
+      almacenamos tu <strong>ID de usuario de Telegram, nombre de usuario y nombre</strong> asociados.
+    </p>
+
+    <span class="badge">Contenido que generas</span>
+    <p>
+      Al registrar una app o enviar feedback, guardamos la información que ingresas: nombre de la app,
+      enlace de Google Play, descripción, comentarios de feedback y, si lo decides, una
+      <strong>imagen adjunta</strong> (tomada con la cámara o elegida de tu galería) como evidencia de la
+      prueba. También guardamos los <strong>mensajes directos</strong> que envías a otros usuarios dentro
+      de la app para coordinar pruebas o reciprocidad.
+    </p>
+
+    <span class="badge">Datos técnicos</span>
+    <p>
+      Para poder enviarte notificaciones (nuevos testers, feedback, recordatorios) tu dispositivo genera un
+      <strong>token de Firebase Cloud Messaging</strong>, que asociamos a tu cuenta. El servidor registra
+      además datos técnicos básicos de conexión (como la dirección IP) únicamente con fines de seguridad y
+      funcionamiento del servicio.
+    </p>
+
+    <table class="data-table">
+      <tr><th>Dato</th><th>¿Obligatorio?</th><th>Propósito</th></tr>
+      <tr><td>Correo y contraseña</td><td>Sí</td><td>Crear e iniciar sesión en tu cuenta</td></tr>
+      <tr><td>Nombre a mostrar</td><td>Sí</td><td>Identificarte ante otros usuarios</td></tr>
+      <tr><td>Cuenta de Telegram</td><td>No</td><td>Vincular tu perfil con el bot de Telegram</td></tr>
+      <tr><td>Feedback e imágenes</td><td>No</td><td>Registrar pruebas y comunicarlas al owner de la app</td></tr>
+      <tr><td>Mensajes directos</td><td>No</td><td>Coordinar reciprocidad entre testers y developers</td></tr>
+      <tr><td>Token de notificaciones</td><td>No</td><td>Enviarte avisos push relevantes</td></tr>
+    </table>
+
+    <p>
+      <strong>No recopilamos:</strong> ubicación precisa, contactos, mensajes SMS, registros de llamadas,
+      datos de pago ni información de salud. Botoogle no incluye publicidad ni SDKs de analítica de
+      terceros.
+    </p>
+  </section>
+
+  <section class="card" id="uso-info">
+    <h2>3. Cómo usamos la información</h2>
+    <ul>
+      <li>Crear, autenticar y administrar tu cuenta.</li>
+      <li>Conectar developers con testers y hacer seguimiento del ciclo de pruebas de cada app.</li>
+      <li>Mostrar tu feedback al owner de la app correspondiente para que pueda revisarlo.</li>
+      <li>Enviar notificaciones push relevantes a tu actividad dentro de la plataforma.</li>
+      <li>Detectar abuso, mantener la seguridad de la cuenta y prevenir comportamiento fraudulento.</li>
+      <li>Mejorar el funcionamiento general del servicio.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="visibilidad">
+    <h2>4. Visibilidad dentro de la comunidad</h2>
+    <p>
+      Botoogle es una plataforma comunitaria: parte de la información que compartes es visible para otros
+      usuarios por el propio funcionamiento del servicio. Por ejemplo:
+    </p>
+    <ul>
+      <li>Tu nombre de usuario aparece en las listas de "testers activos" y "testers confiables" que ven
+        otros miembros de la comunidad.</li>
+      <li>El feedback que envías es visible para el owner de la app correspondiente.</li>
+      <li>Los mensajes directos solo son visibles para el remitente y el destinatario.</li>
+      <li>Las apps registradas (nombre, estado, cantidad de testers) son visibles públicamente dentro del
+        directorio de apps disponibles.</li>
+    </ul>
+    <p>
+      No vendemos ni compartimos tu información con anunciantes ni con terceros para fines de marketing.
+    </p>
+  </section>
+
+  <section class="card" id="terceros">
+    <h2>5. Compartición con terceros</h2>
+    <p>
+      Usamos <strong>Firebase Cloud Messaging (Google)</strong> únicamente para enviar notificaciones push.
+      Google procesa el token del dispositivo conforme a su propia
+      <a class="contact-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.
+    </p>
+    <p>
+      Botoogle no integra redes publicitarias, SDKs de analítica de terceros ni herramientas de rastreo.
+      No compartimos tus datos con terceros salvo cuando la ley lo exija.
+    </p>
+  </section>
+
+  <section class="card" id="permisos">
+    <h2>6. Permisos del dispositivo</h2>
+    <table class="data-table">
+      <tr><th>Permiso</th><th>¿Cuándo se solicita?</th></tr>
+      <tr><td>Cámara</td><td>Solo al tocar "Tomar foto" al enviar feedback. Es opcional: puedes adjuntar una imagen de tu galería en su lugar, o no adjuntar ninguna.</td></tr>
+      <tr><td>Notificaciones</td><td>Al abrir la app por primera vez (Android 13+). Puedes rechazarlo y seguir usando la app sin recibir push.</td></tr>
+    </table>
+    <p>
+      La galería se accede mediante el selector nativo del sistema, que no requiere ningún permiso adicional.
+    </p>
+  </section>
+
+  <section class="card" id="seguridad">
+    <h2>7. Seguridad de los datos</h2>
+    <ul>
+      <li>Las contraseñas se almacenan cifradas (hash), nunca en texto plano.</li>
+      <li>La comunicación entre la app y el servidor viaja por HTTPS.</li>
+      <li>El acceso a los datos está restringido a lo necesario para operar el servicio.</li>
+    </ul>
+    <p>
+      Ningún sistema es 100% infalible; trabajamos para proteger tu información pero no podemos garantizar
+      seguridad absoluta.
+    </p>
+  </section>
+
+  <section class="card" id="retencion">
+    <h2>8. Retención y eliminación de datos</h2>
+    <p>
+      Conservamos tu información mientras tu cuenta esté activa. Puedes solicitar la eliminación de tu
+      cuenta y de los datos asociados (feedback, mensajes, apps registradas) desde el panel web de Botoogle,
+      en la sección de Perfil, o escribiéndonos directamente (ver sección de Contacto). Procesamos las
+      solicitudes de eliminación en un plazo razonable.
+    </p>
+  </section>
+
+  <section class="card" id="menores">
+    <h2>9. Privacidad de menores</h2>
+    <p>
+      Botoogle no está dirigida a menores de 13 años y no recopilamos intencionalmente información de
+      niños. Si detectamos una cuenta creada por un menor de esa edad, la eliminaremos.
+    </p>
+  </section>
+
+  <section class="card" id="cambios">
+    <h2>10. Cambios a esta política</h2>
+    <p>
+      Podemos actualizar esta política ocasionalmente. Publicaremos cualquier cambio en esta misma página
+      junto con la fecha de "Última actualización" en la parte superior.
+    </p>
+  </section>
+
+  <section class="card" id="contacto">
+    <h2>11. Contacto</h2>
+    <p>
+      Si tienes preguntas sobre esta política o quieres ejercer tus derechos sobre tus datos, escríbenos a:
+    </p>
+    <p>
+      <a class="contact-link" href="mailto:rjjrsoluciones@gmail.com">ricardo2charris@gmail.com</a>
+    </p>
+    <p style="margin-top:-4px;"><a class="back-to-top" href="#top">↑ Volver arriba</a></p>
+  </section>
+
+  <footer>
+    Botoogle — Política de Privacidad
+  </footer>
+
+</div>
+</body>
+</html>
