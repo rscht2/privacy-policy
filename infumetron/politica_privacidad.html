@@ -396,7 +396,7 @@
       <li><a href="#datos">Datos que recopilamos</a></li>
       <li><a href="#uso">Cómo usamos los datos</a></li>
       <li><a href="#terceros">Terceros</a></li>
-      <li><a href="#retencion">Retención</a></li>
+      <li><a href="#retencion">Retención y eliminación</a></li>
       <li><a href="#derechos">Tus derechos</a></li>
       <li><a href="#menores">Menores de edad</a></li>
       <li><a href="#cambios">Cambios a esta política</a></li>
@@ -411,7 +411,7 @@
     <div class="highlight">
       <strong>Ricardo Charris</strong><br>
       Desarrollador independiente<br>
-      Correo: <a href="mailto:rjjrsoluciones@gmail.com" style="color:var(--teal);">rjjrsoluciones@gmail.com</a>
+      Correo: <a href="mailto:ricardo2charris@gmail.com" style="color:var(--teal);">ricardo2charris@gmail.com</a>
     </div>
     <p>Esta política describe qué datos recopila la aplicación, cómo se usan, con quién se comparten y qué derechos tiene el usuario sobre ellos.</p>
   </section>
@@ -529,11 +529,32 @@
     <h2>5. Retención y eliminación de datos</h2>
     <p>Los datos en la nube se conservan mientras el usuario mantenga su cuenta activa en la app. Los datos locales permanecen en el dispositivo hasta que se desinstale la aplicación o el usuario los elimine manualmente.</p>
 
+    <h3>Cómo eliminar tu cuenta y todos tus datos</h3>
+    <p>Puedes borrar permanentemente tu cuenta y todos los datos asociados directamente desde la app, sin necesidad de contactar al desarrollador:</p>
+    <ol style="margin: 0.5rem 0 1rem 1.4rem; font-size: 0.945rem; line-height: 1.9;">
+      <li>Abre <strong>Infumetron</strong> y toca <strong>Historial</strong> en la pantalla principal.</li>
+      <li>Si aún no has iniciado sesión, toca <strong>Continuar con Google</strong> y accede con tu cuenta.</li>
+      <li>Desplázate hasta la sección <strong>Zona de privacidad</strong> al final de la pantalla.</li>
+      <li>Toca <strong>Eliminar todos mis datos</strong> y confirma la acción en el diálogo.</li>
+    </ol>
+
     <div class="highlight">
-      <strong>Eliminar todos mis datos:</strong> La app incluye una función en la pantalla de Historial que permite borrar de forma permanente e inmediata todos los datos almacenados: historial de Firestore, sesión de Firebase Auth, preferencias locales e infusiones activas. Esta acción es irreversible.
+      <strong>Qué se borra de forma inmediata e irreversible:</strong>
+      <ul style="margin-top: 0.5rem; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.8;">
+        <li>Historial de infusiones almacenado en la nube (Firestore)</li>
+        <li>Cuenta de autenticación en Firebase Auth</li>
+        <li>Infusiones activas guardadas localmente en el dispositivo</li>
+        <li>Preferencias y configuración de la app</li>
+      </ul>
     </div>
 
-    <p>Si el borrado de la cuenta de Firebase Auth falla por requerir autenticación reciente (política de seguridad de Google), la sesión se cierra de todas formas y los datos de Firestore quedan eliminados. La cuenta huérfana no contiene información personal adicional.</p>
+    <h3>Datos que no pueden borrarse desde la app</h3>
+    <p>Los datos de publicidad gestionados por <strong>Google AdMob</strong> (identificador de publicidad, datos de uso para anuncios) son administrados directamente por Google y no están bajo el control de esta app. Para gestionarlos, visita <a href="https://myaccount.google.com" target="_blank" rel="noopener" style="color:var(--teal);">myaccount.google.com</a> o consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--teal);">Política de Privacidad de Google</a>.</p>
+
+    <h3>Si no puedes acceder a la app</h3>
+    <p>Si no es posible completar el proceso desde la app, puedes solicitar la eliminación de tus datos enviando un correo a <a href="mailto:ricardo2charris@gmail.com" style="color:var(--teal);">ricardo2charris@gmail.com</a> con el asunto <em>"Solicitud de eliminación de datos — Infumetron"</em> indicando el correo de tu cuenta Google.</p>
+
+    <p style="margin-top:1rem;">Si el borrado de la cuenta de Firebase Auth falla por requerir autenticación reciente (política de seguridad de Google), la sesión se cierra de todas formas y los datos de Firestore quedan eliminados. La cuenta resultante no contiene información personal adicional.</p>
   </section>
 
   <!-- 6. Derechos -->
@@ -596,14 +617,14 @@
       </div>
       <div>
         <div class="label">Correo electrónico</div>
-        <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a>
+        <a href="mailto:ricardo2charris@gmail.com">ricardo2charris@gmail.com</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="doc-footer">
-    <span>© 2026 Infumetron · RJ&JR</span>
+    <span>© 2026 Infumetron · Ricardo Charris</span>
     <span>Todos los derechos reservados</span>
   </footer>
 
