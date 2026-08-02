@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Infumetron</title>
+  <style>
+    /* ── Tokens ──────────────────────────────────────────────────────── */
+    :root {
+      --teal:       #1A8FA0;
+      --teal-deep:  #0B5163;
+      --ink:        #172B33;
+      --ink-soft:   #52737D;
+      --ink-faint:  #8AABB5;
+      --surface:    #F4F9FB;
+      --card:       #FFFFFF;
+      --border:     #C5DDE4;
+      --rule:       #0B5163;
+
+      --text-base:  var(--ink);
+      --text-soft:  var(--ink-soft);
+      --text-faint: var(--ink-faint);
+      --bg:         var(--surface);
+      --bg-card:    var(--card);
+      --border-col: var(--border);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-base:  #D8EDF2;
+        --text-soft:  #7BAAB6;
+        --text-faint: #4F7A87;
+        --bg:         #0D1E24;
+        --bg-card:    #122830;
+        --border-col: #1E3F4C;
+        --teal:       #2BAFBF;
+        --rule:       #2BAFBF;
+      }
+    }
+
+    /* ── Reset ───────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Base ────────────────────────────────────────────────────────── */
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-base);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                   Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 1rem 5rem;
+    }
+
+    /* ── Shell ───────────────────────────────────────────────────────── */
+    .shell {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────── */
+    .doc-header {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border-col);
+      margin-bottom: 2.5rem;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .app-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .app-icon svg { display: block; }
+
+    .app-name {
+      font-family: Georgia, 'Palatino Linotype', Palatino, serif;
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: var(--teal);
+      letter-spacing: 0.02em;
+    }
+
+    .doc-header h1 {
+      font-family: Georgia, 'Palatino Linotype', Palatino, serif;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: normal;
+      line-height: 1.25;
+      color: var(--text-base);
+      text-wrap: balance;
+      margin-bottom: 0.85rem;
+    }
+
+    .doc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      letter-spacing: 0.01em;
+    }
+
+    .doc-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* ── TOC ──────────────────────────────────────────────────────────── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-col);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .toc-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-faint);
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 2rem;
+    }
+
+    @media (max-width: 520px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li {
+      counter-increment: toc;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .toc a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .toc a:hover { text-decoration: underline; }
+
+    /* ── Sections ─────────────────────────────────────────────────────── */
+    .section {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-col);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section h2 {
+      font-family: Georgia, 'Palatino Linotype', Palatino, serif;
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: var(--text-base);
+      padding-left: 1rem;
+      border-left: 3px solid var(--rule);
+      margin-bottom: 1.1rem;
+      line-height: 1.35;
+    }
+
+    .section h3 {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .section p {
+      font-size: 0.945rem;
+      color: var(--text-base);
+      margin-bottom: 0.9rem;
+      max-width: 65ch;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Data table ───────────────────────────────────────────────────── */
+    .data-table-wrap { overflow-x: auto; margin: 1rem 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    thead th {
+      text-align: left;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      font-weight: 600;
+      padding: 0.55rem 0.85rem;
+      border-bottom: 2px solid var(--border-col);
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 0.7rem 0.85rem;
+      vertical-align: top;
+      color: var(--text-base);
+      border-bottom: 1px solid var(--border-col);
+      line-height: 1.5;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td { background: var(--bg); }
+
+    td:first-child { font-weight: 500; white-space: nowrap; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .badge-local { background: #E8F5E9; color: #2E7D32; }
+    .badge-cloud { background: #E3F2FD; color: #1565C0; }
+    .badge-third { background: #FFF8E1; color: #F57F17; }
+
+    @media (prefers-color-scheme: dark) {
+      .badge-local { background: #1B3A1E; color: #81C784; }
+      .badge-cloud { background: #0D2540; color: #64B5F6; }
+      .badge-third { background: #332200; color: #FFB74D; }
+    }
+
+    /* ── Highlight box ───────────────────────────────────────────────── */
+    .highlight {
+      background: var(--bg-card);
+      border: 1px solid var(--border-col);
+      border-radius: 6px;
+      padding: 1.1rem 1.3rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .highlight strong { color: var(--teal); }
+
+    /* ── Rights list ─────────────────────────────────────────────────── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 480px) { .rights-grid { grid-template-columns: 1fr; } }
+
+    .right-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-col);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .right-item .right-title {
+      font-weight: 600;
+      color: var(--text-base);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .right-item p { font-size: 0.83rem; color: var(--text-soft); margin: 0; }
+
+    /* ── Contact card ────────────────────────────────────────────────── */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-col);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-card .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-card a {
+      color: var(--teal);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ──────────────────────────────────────────────────────── */
+    .doc-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-col);
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Header -->
+  <header class="doc-header">
+    <div class="app-badge">
+      <div class="app-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 2L11 5M11 17L11 20M5.5 5.5L7.6 7.6M14.4 14.4L16.5 16.5M2 11H5M17 11H20M5.5 16.5L7.6 14.4" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="4" stroke="white" stroke-width="1.8"/>
+          <circle cx="11" cy="11" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <span class="app-name">Infumetron</span>
+    </div>
+    <h1>Política de Privacidad</h1>
+    <div class="doc-meta">
+      <span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 2v2M11 2v2M2 7h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Vigente desde 2 de agosto de 2026
+      </span>
+      <span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M8 5v3.5l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Última actualización: 2 de agosto de 2026
+      </span>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Tabla de contenidos">
+    <div class="toc-label">Contenido</div>
+    <ol>
+      <li><a href="#responsable">Responsable</a></li>
+      <li><a href="#datos">Datos que recopilamos</a></li>
+      <li><a href="#uso">Cómo usamos los datos</a></li>
+      <li><a href="#terceros">Terceros</a></li>
+      <li><a href="#retencion">Retención</a></li>
+      <li><a href="#derechos">Tus derechos</a></li>
+      <li><a href="#menores">Menores de edad</a></li>
+      <li><a href="#cambios">Cambios a esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. Responsable -->
+  <section id="responsable" class="section">
+    <h2>1. Responsable del tratamiento</h2>
+    <p>Infumetron es una aplicación móvil de apoyo clínico para el monitoreo de infusiones intravenosas, desarrollada de forma independiente. El responsable del tratamiento de los datos personales es:</p>
+    <div class="highlight">
+      <strong>Ricardo Charris</strong><br>
+      Desarrollador independiente<br>
+      Correo: <a href="mailto:rjjrsoluciones@gmail.com" style="color:var(--teal);">rjjrsoluciones@gmail.com</a>
+    </div>
+    <p>Esta política describe qué datos recopila la aplicación, cómo se usan, con quién se comparten y qué derechos tiene el usuario sobre ellos.</p>
+  </section>
+
+  <!-- 2. Datos -->
+  <section id="datos" class="section">
+    <h2>2. Datos que recopilamos</h2>
+    <p>Infumetron recopila únicamente los datos necesarios para sus funciones. Ningún dato clínico de pacientes es transmitido ni almacenado de forma identificable en servicios externos.</p>
+
+    <div class="data-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dato</th>
+            <th>Origen</th>
+            <th>Almacenamiento</th>
+            <th>Propósito</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Correo electrónico y nombre de cuenta</td>
+            <td>Google Sign-In (opcional)</td>
+            <td><span class="badge badge-cloud">Nube</span></td>
+            <td>Identificar la cuenta para sincronizar el historial</td>
+          </tr>
+          <tr>
+            <td>Historial de infusiones completadas</td>
+            <td>Generado por el usuario</td>
+            <td><span class="badge badge-cloud">Nube</span></td>
+            <td>Recuperar el historial entre dispositivos</td>
+          </tr>
+          <tr>
+            <td>Infusiones activas</td>
+            <td>Generado por el usuario</td>
+            <td><span class="badge badge-local">Local</span></td>
+            <td>Persistir el monitoreo al cerrar la app</td>
+          </tr>
+          <tr>
+            <td>Preferencias de la app (p. ej. aviso de uso)</td>
+            <td>Interacción con la app</td>
+            <td><span class="badge badge-local">Local</span></td>
+            <td>Recordar la aceptación del aviso médico</td>
+          </tr>
+          <tr>
+            <td>Identificador de publicidad y datos de uso</td>
+            <td>SDK de AdMob (Google)</td>
+            <td><span class="badge badge-third">Google</span></td>
+            <td>Mostrar anuncios relevantes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Lo que no recopilamos</h3>
+    <p>La app <strong>no recopila</strong> nombres de pacientes, números de historia clínica, diagnósticos ni ningún dato de salud identificable. Los campos de "cama" y "paciente" que el usuario ingresa permanecen en el dispositivo y, si se activa la sincronización, se guardan asociados únicamente al UID de su cuenta Google.</p>
+  </section>
+
+  <!-- 3. Uso -->
+  <section id="uso" class="section">
+    <h2>3. Cómo usamos los datos</h2>
+
+    <h3>Autenticación y sincronización</h3>
+    <p>Si el usuario inicia sesión con Google, utilizamos su correo y nombre para identificar su cuenta en Firebase. El historial de infusiones completadas se sincroniza en la nube para permitir el acceso desde distintos dispositivos.</p>
+
+    <h3>Funcionamiento local</h3>
+    <p>Las infusiones activas y las preferencias se almacenan únicamente en el dispositivo mediante Android DataStore. No son accesibles para terceros ni para el desarrollador.</p>
+
+    <h3>Publicidad</h3>
+    <p>La app integra el SDK de Google AdMob para mostrar banners e intersticiales. AdMob puede recopilar el identificador de publicidad del dispositivo y datos de uso para personalizar anuncios, conforme a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--teal);">Política de Privacidad de Google</a>.</p>
+
+    <h3>Notificaciones</h3>
+    <p>Con el permiso <code>POST_NOTIFICATIONS</code>, la app envía alertas locales al dispositivo (5 minutos antes del fin de una infusión y al completarse). Estas notificaciones no implican transmisión de datos a servidores externos.</p>
+  </section>
+
+  <!-- 4. Terceros -->
+  <section id="terceros" class="section">
+    <h2>4. Servicios de terceros</h2>
+    <p>Infumetron utiliza los siguientes servicios externos, cada uno con su propia política de privacidad:</p>
+
+    <div class="data-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Proveedor</th>
+            <th>Función</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Firebase Authentication</td>
+            <td>Google LLC</td>
+            <td>Autenticación con cuenta Google</td>
+          </tr>
+          <tr>
+            <td>Cloud Firestore</td>
+            <td>Google LLC</td>
+            <td>Almacenamiento en nube del historial</td>
+          </tr>
+          <tr>
+            <td>Google AdMob</td>
+            <td>Google LLC</td>
+            <td>Publicidad dentro de la app</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Puede consultar la política de privacidad de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--teal);">policies.google.com/privacy</a>.</p>
+  </section>
+
+  <!-- 5. Retención -->
+  <section id="retencion" class="section">
+    <h2>5. Retención y eliminación de datos</h2>
+    <p>Los datos en la nube se conservan mientras el usuario mantenga su cuenta activa en la app. Los datos locales permanecen en el dispositivo hasta que se desinstale la aplicación o el usuario los elimine manualmente.</p>
+
+    <div class="highlight">
+      <strong>Eliminar todos mis datos:</strong> La app incluye una función en la pantalla de Historial que permite borrar de forma permanente e inmediata todos los datos almacenados: historial de Firestore, sesión de Firebase Auth, preferencias locales e infusiones activas. Esta acción es irreversible.
+    </div>
+
+    <p>Si el borrado de la cuenta de Firebase Auth falla por requerir autenticación reciente (política de seguridad de Google), la sesión se cierra de todas formas y los datos de Firestore quedan eliminados. La cuenta huérfana no contiene información personal adicional.</p>
+  </section>
+
+  <!-- 6. Derechos -->
+  <section id="derechos" class="section">
+    <h2>6. Tus derechos</h2>
+    <p>Dependiendo de su jurisdicción, puede ejercer los siguientes derechos sobre sus datos personales:</p>
+
+    <div class="rights-grid">
+      <div class="right-item">
+        <span class="right-title">Acceso</span>
+        <p>Solicitar qué datos tenemos asociados a su cuenta.</p>
+      </div>
+      <div class="right-item">
+        <span class="right-title">Rectificación</span>
+        <p>Corregir datos inexactos. La mayoría es editable directamente en la app.</p>
+      </div>
+      <div class="right-item">
+        <span class="right-title">Eliminación</span>
+        <p>Borrar todos sus datos mediante la función integrada o por correo.</p>
+      </div>
+      <div class="right-item">
+        <span class="right-title">Portabilidad</span>
+        <p>Solicitar una copia de su historial en formato legible.</p>
+      </div>
+      <div class="right-item">
+        <span class="right-title">Oposición</span>
+        <p>Oponerse al tratamiento de sus datos con fines publicitarios.</p>
+      </div>
+      <div class="right-item">
+        <span class="right-title">Retirar consentimiento</span>
+        <p>Cerrar sesión en cualquier momento para dejar de sincronizar datos.</p>
+      </div>
+    </div>
+
+    <p>Para ejercer cualquiera de estos derechos, contáctenos en la dirección indicada en la sección de contacto.</p>
+  </section>
+
+  <!-- 7. Menores -->
+  <section id="menores" class="section">
+    <h2>7. Menores de edad</h2>
+    <p>Infumetron está diseñada exclusivamente para profesionales de la salud adultos. No recopilamos intencionalmente datos personales de personas menores de 13 años. Si tiene conocimiento de que un menor ha proporcionado datos a través de la app, contáctenos para eliminarlos.</p>
+  </section>
+
+  <!-- 8. Cambios -->
+  <section id="cambios" class="section">
+    <h2>8. Cambios a esta política</h2>
+    <p>Podemos actualizar esta política ocasionalmente. Cuando los cambios sean significativos, lo notificaremos a través de la app. La fecha de "última actualización" en el encabezado refleja siempre la versión vigente. El uso continuado de la aplicación tras la publicación de cambios constituye su aceptación.</p>
+  </section>
+
+  <!-- 9. Contacto -->
+  <section id="contacto" class="section">
+    <h2>9. Contacto</h2>
+    <p>Para preguntas sobre esta política o para ejercer sus derechos de privacidad, escríbanos a:</p>
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="16" height="12" rx="2" stroke="white" stroke-width="1.5"/>
+          <path d="M2 7L10 12L18 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="label">Correo electrónico</div>
+        <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="doc-footer">
+    <span>© 2026 Infumetron · RJ&JR</span>
+    <span>Todos los derechos reservados</span>
+  </footer>
+
+</div>
+</body>
+</html>
