@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidad — Mercamejor</title>
+<style>
+  /* ── Tokens ── */
+  :root {
+    --bg:          #F6F9F6;
+    --surface:     #FFFFFF;
+    --text:        #1C2B1C;
+    --muted:       #50685A;
+    --accent:      #27703E;
+    --accent-soft: #EBF4EE;
+    --border:      #D2E4D8;
+    --rule:        #C5DAC9;
+    --shadow:      0 1px 4px rgba(30,60,35,.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:          #0D1710;
+      --surface:     #131E15;
+      --text:        #DCF0E0;
+      --muted:       #7AA882;
+      --accent:      #52C170;
+      --accent-soft: #152219;
+      --border:      #263A2A;
+      --rule:        #1F3224;
+      --shadow:      0 1px 4px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:          #F6F9F6;
+    --surface:     #FFFFFF;
+    --text:        #1C2B1C;
+    --muted:       #50685A;
+    --accent:      #27703E;
+    --accent-soft: #EBF4EE;
+    --border:      #D2E4D8;
+    --rule:        #C5DAC9;
+    --shadow:      0 1px 4px rgba(30,60,35,.08);
+  }
+  :root[data-theme="dark"] {
+    --bg:          #0D1710;
+    --surface:     #131E15;
+    --text:        #DCF0E0;
+    --muted:       #7AA882;
+    --accent:      #52C170;
+    --accent-soft: #152219;
+    --border:      #263A2A;
+    --rule:        #1F3224;
+    --shadow:      0 1px 4px rgba(0,0,0,.35);
+  }
+
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Base ── */
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a:hover { text-decoration: none; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 40px;
+  }
+  .app-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+  .app-mark-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .app-mark-icon svg { display: block; }
+  .app-mark-name {
+    font-family: Georgia, 'Times New Roman', ui-serif, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -.01em;
+  }
+  .header-title {
+    font-family: Georgia, 'Times New Roman', ui-serif, serif;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .header-meta {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: .01em;
+  }
+  .header-meta span {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--accent-soft);
+    border-radius: 4px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow);
+  }
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 32px;
+  }
+  @media (max-width: 540px) {
+    .toc ol { grid-template-columns: 1fr; }
+  }
+  .toc li {
+    counter-increment: toc;
+    font-size: 14px;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 11px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .toc a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ── Sections ── */
+  .policy-section {
+    margin-bottom: 44px;
+    scroll-margin-top: 24px;
+  }
+  .section-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .section-heading {
+    font-family: Georgia, 'Times New Roman', ui-serif, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .policy-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .policy-section p:last-child { margin-bottom: 0; }
+  .policy-section ul, .policy-section ol {
+    padding-left: 20px;
+    margin-bottom: 14px;
+  }
+  .policy-section li {
+    margin-bottom: 6px;
+  }
+  .policy-section li:last-child { margin-bottom: 0; }
+
+  /* ── Table ── */
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--accent-soft); }
+
+  /* ── Note box ── */
+  .note {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  /* ── Contact card ── */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .contact-card p { margin-bottom: 6px; }
+  .contact-card p:last-child { margin-bottom: 0; }
+  .contact-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: Georgia, 'Times New Roman', ui-serif, serif;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="app-mark" href="#">
+      <div class="app-mark-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h14M3 6l1.5 9h11L17 6M3 6l-.5-2H1M7 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M8 11h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="app-mark-name">Mercamejor</span>
+    </a>
+    <h1 class="header-title">Política de Privacidad</h1>
+    <p class="header-meta">Última actualización: <span>Agosto 2026</span></p>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Tabla de contenidos">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#responsable">Responsable del tratamiento</a></li>
+      <li><a href="#datos">Datos que recopilamos</a></li>
+      <li><a href="#uso">Cómo usamos la información</a></li>
+      <li><a href="#terceros">Servicios de terceros</a></li>
+      <li><a href="#publicidad">Publicidad</a></li>
+      <li><a href="#compartir">Compartir información</a></li>
+      <li><a href="#derechos">Derechos del usuario</a></li>
+      <li><a href="#seguridad">Seguridad</a></li>
+      <li><a href="#menores">Menores de edad</a></li>
+      <li><a href="#legal">Base legal</a></li>
+      <li><a href="#cambios">Cambios a esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </nav>
+
+  <!-- Intro -->
+  <p style="margin-bottom: 44px; color: var(--text);">
+    Mercamejor es una aplicación de consulta y registro colaborativo de precios en supermercados de Colombia. Esta política explica qué información recopilamos cuando usted usa la aplicación, cómo la usamos y qué derechos tiene sobre ella. Le pedimos que la lea con atención antes de usar la app.
+  </p>
+
+  <!-- 1 -->
+  <section class="policy-section" id="responsable">
+    <span class="section-number">01</span>
+    <h2 class="section-heading">Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de los datos personales recopilados a través de Mercamejor es el desarrollador independiente de la aplicación, identificado como <strong>Ricardo Charris</strong>, con correo electrónico de contacto <a href="mailto:ricardo2charris@gmail.com">ricardo2charris@gmail.com</a>.</p>
+    <p>La aplicación está disponible exclusivamente en Google Play Store y opera bajo la legislación colombiana de protección de datos personales.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="policy-section" id="datos">
+    <span class="section-number">02</span>
+    <h2 class="section-heading">Datos que recopilamos</h2>
+    <p>Recopilamos únicamente la información necesaria para que la aplicación funcione correctamente:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Datos</th>
+            <th>Cuándo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cuenta de Google</strong></td>
+            <td>Nombre, correo electrónico y foto de perfil</td>
+            <td>Al iniciar sesión con Google</td>
+          </tr>
+          <tr>
+            <td><strong>Ubicación aproximada</strong></td>
+            <td>Coordenadas GPS de baja precisión</td>
+            <td>Solo al detectar la ciudad activa, con permiso previo</td>
+          </tr>
+          <tr>
+            <td><strong>Precios registrados</strong></td>
+            <td>Código de barras, precio, supermercado, ciudad y fecha</td>
+            <td>Al registrar un precio manualmente</td>
+          </tr>
+          <tr>
+            <td><strong>Fotos de productos</strong></td>
+            <td>Imágenes tomadas con la cámara del dispositivo</td>
+            <td>Al editar o crear un producto</td>
+          </tr>
+          <tr>
+            <td><strong>Datos de uso y errores</strong></td>
+            <td>Eventos de uso anónimos y registros de errores</td>
+            <td>Automáticamente (Firebase Analytics y Crashlytics)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      El escaneo de códigos de barras se procesa <strong>exclusivamente en el dispositivo</strong>. El código de barras leído no se transmite a ningún servidor externo a menos que el usuario registre un precio.
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="policy-section" id="uso">
+    <span class="section-number">03</span>
+    <h2 class="section-heading">Cómo usamos la información</h2>
+    <ul>
+      <li><strong>Autenticación:</strong> el correo y perfil de Google se usan para identificar al usuario dentro de la app y asociar sus registros de precios.</li>
+      <li><strong>Precios locales:</strong> la ubicación aproximada se usa para determinar la ciudad activa y mostrar precios relevantes. No se almacena la ubicación exacta.</li>
+      <li><strong>Contenido colaborativo:</strong> los precios y fotos registrados por usted son visibles para otros usuarios dentro de la misma ciudad.</li>
+      <li><strong>Estabilidad y mejoras:</strong> los datos de errores (Crashlytics) nos permiten detectar y corregir fallos sin identificar al usuario.</li>
+      <li><strong>Publicidad:</strong> AdMob puede usar identificadores del dispositivo para mostrar anuncios relevantes (ver sección 5).</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section class="policy-section" id="terceros">
+    <span class="section-number">04</span>
+    <h2 class="section-heading">Servicios de terceros</h2>
+    <p>Mercamejor utiliza los siguientes proveedores externos, cada uno con sus propias políticas de privacidad:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Proveedor</th>
+            <th>Finalidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Firebase Auth</td>
+            <td>Google LLC</td>
+            <td>Autenticación con cuenta de Google</td>
+          </tr>
+          <tr>
+            <td>Cloud Firestore</td>
+            <td>Google LLC</td>
+            <td>Almacenamiento de precios y supermercados</td>
+          </tr>
+          <tr>
+            <td>Firebase Storage</td>
+            <td>Google LLC</td>
+            <td>Almacenamiento de fotos de productos</td>
+          </tr>
+          <tr>
+            <td>Firebase Crashlytics</td>
+            <td>Google LLC</td>
+            <td>Detección y reporte de errores</td>
+          </tr>
+          <tr>
+            <td>Firebase Analytics</td>
+            <td>Google LLC</td>
+            <td>Métricas de uso anónimas</td>
+          </tr>
+          <tr>
+            <td>Google AdMob</td>
+            <td>Google LLC</td>
+            <td>Mostrar anuncios en la app</td>
+          </tr>
+          <tr>
+            <td>Google Play Services</td>
+            <td>Google LLC</td>
+            <td>Detección de ubicación aproximada</td>
+          </tr>
+          <tr>
+            <td>Open Food Facts</td>
+            <td>Open Food Facts</td>
+            <td>Información de productos por código de barras</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Puede consultar la política de privacidad de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a> y la de Open Food Facts en <a href="https://world.openfoodfacts.org/privacy" target="_blank" rel="noopener">world.openfoodfacts.org/privacy</a>.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="policy-section" id="publicidad">
+    <span class="section-number">05</span>
+    <h2 class="section-heading">Publicidad</h2>
+    <p>La aplicación muestra anuncios gestionados por <strong>Google AdMob</strong>. AdMob puede usar el identificador de publicidad de su dispositivo (GAID en Android) para mostrar anuncios personalizados basados en sus intereses.</p>
+    <p>Usted puede limitar la publicidad personalizada o restablecer el identificador de publicidad desde <strong>Ajustes del dispositivo → Google → Anuncios</strong>.</p>
+    <p>Mercamejor no vende datos a anunciantes ni tiene acceso a la información que AdMob utiliza para la personalización de anuncios.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="policy-section" id="compartir">
+    <span class="section-number">06</span>
+    <h2 class="section-heading">Compartir información</h2>
+    <p><strong>No vendemos sus datos personales.</strong> La información personal (correo, foto de perfil) no se comparte con terceros distintos a los proveedores listados en la sección 4, únicamente en la medida necesaria para el funcionamiento de la app.</p>
+    <p>Los datos de precios registrados son públicos dentro de la app por diseño: cualquier usuario de la misma ciudad puede consultarlos. No incluyen información personal identificable.</p>
+    <p>Podríamos divulgar información si así lo exige la ley colombiana o una orden judicial.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="policy-section" id="derechos">
+    <span class="section-number">07</span>
+    <h2 class="section-heading">Derechos del usuario</h2>
+    <p>De acuerdo con la Ley 1581 de 2012 y sus decretos reglamentarios, usted tiene derecho a:</p>
+    <ul>
+      <li><strong>Conocer</strong> los datos personales que hemos recopilado sobre usted.</li>
+      <li><strong>Actualizar o corregir</strong> sus datos cuando sean inexactos o incompletos.</li>
+      <li><strong>Solicitar la supresión</strong> de sus datos cuando no sea necesario conservarlos.</li>
+      <li><strong>Revocar la autorización</strong> otorgada para el tratamiento de sus datos.</li>
+      <li><strong>Presentar quejas</strong> ante la Superintendencia de Industria y Comercio (SIC).</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escríbanos a <a href="mailto:ricardo2charris@gmail.com">ricardo2charris@gmail.com</a> con el asunto "Derechos HABEAS DATA". Responderemos en un plazo máximo de diez (10) días hábiles.</p>
+    <p>Puede eliminar su cuenta directamente desde <strong>Configuración → Eliminar cuenta</strong> dentro de la aplicación. Esto removerá sus datos de autenticación y los precios que haya registrado.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="policy-section" id="seguridad">
+    <span class="section-number">08</span>
+    <h2 class="section-heading">Seguridad</h2>
+    <p>Implementamos medidas técnicas razonables para proteger su información:</p>
+    <ul>
+      <li>Toda la comunicación entre la app y los servidores se realiza sobre <strong>HTTPS/TLS</strong>. La app no permite tráfico en texto claro.</li>
+      <li>Los datos se almacenan en <strong>Firebase</strong>, que cumple con estándares como ISO 27001, SOC 2 Tipo II y las regulaciones del GDPR europeo.</li>
+      <li>El acceso a Firestore y Storage está protegido mediante reglas de seguridad que restringen la lectura y escritura según el usuario autenticado.</li>
+    </ul>
+    <p>Ningún sistema es completamente infalible. Si detecta algún uso indebido de sus datos, contáctenos de inmediato.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="policy-section" id="menores">
+    <span class="section-number">09</span>
+    <h2 class="section-heading">Menores de edad</h2>
+    <p>Mercamejor no está dirigida a menores de 13 años. No recopilamos conscientemente información personal de niños. Si usted es padre o tutor y cree que su hijo ha proporcionado datos personales, contáctenos para eliminarlos de inmediato.</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="policy-section" id="legal">
+    <span class="section-number">10</span>
+    <h2 class="section-heading">Base legal</h2>
+    <p>El tratamiento de datos personales en Mercamejor se rige por la <strong>Ley Estatutaria 1581 de 2012</strong> (Ley de Protección de Datos Personales de Colombia) y sus decretos reglamentarios, en particular el Decreto 1377 de 2013.</p>
+    <p>Al crear una cuenta y usar la aplicación, usted otorga su autorización libre, previa, expresa e informada para el tratamiento de sus datos personales con las finalidades descritas en esta política.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="policy-section" id="cambios">
+    <span class="section-number">11</span>
+    <h2 class="section-heading">Cambios a esta política</h2>
+    <p>Podemos actualizar esta política de privacidad cuando cambie la forma en que operamos o cuando la ley así lo requiera. La fecha de "última actualización" en la parte superior de este documento indicará cuándo ocurrió la revisión más reciente.</p>
+    <p>Cambios significativos serán notificados dentro de la aplicación. El uso continuo de Mercamejor después de la publicación de cambios constituye su aceptación de la política actualizada.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="policy-section" id="contacto">
+    <span class="section-number">12</span>
+    <h2 class="section-heading">Contacto</h2>
+    <p>Para preguntas, solicitudes de derechos HABEAS DATA o cualquier inquietud sobre esta política:</p>
+    <div class="contact-card">
+      <p><span class="contact-label">Desarrollador</span></p>
+      <p>Ricardo Charris</p>
+      <p style="margin-top: 14px;"><span class="contact-label">Correo electrónico</span></p>
+      <p><a href="mailto:ricardo2charris@gmail.com">ricardo2charris@gmail.com</a></p>
+      <p style="margin-top: 14px;"><span class="contact-label">Aplicación</span></p>
+      <p>Mercamejor — disponible en Google Play Store</p>
+      <p style="margin-top: 14px;"><span class="contact-label">País de operación</span></p>
+      <p>Colombia</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <span class="footer-logo">Mercamejor</span>
+    <span>Política de Privacidad · Versión 1.0 · Agosto 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
