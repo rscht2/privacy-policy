@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <title>Política de Privacidad — Botoogle</title>
+    <meta name="description" content="Política de privacidad de Botoogle: qué datos recopilamos, cómo los usamos y cómo puedes eliminarlos.">
+    <link rel="canonical" href="https://botoogle.onrender.com/web/privacy">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://botoogle.onrender.com/web/privacy">
+    <meta property="og:title" content="Política de Privacidad — Botoogle">
+    <meta property="og:description" content="Política de privacidad de Botoogle.">
+    <meta property="og:image" content="https://botoogle.onrender.com/web/static/imag/512x512.png">
+    <meta property="og:site_name" content="Botoogle">
+
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" sizes="32x32" href="/web/static/imag/32x32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/web/static/imag/512x512.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/web/static/imag/512x512.png">
+    <link rel="manifest" href="/web/static/manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/web/static/css/style.css?v=4.4">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        .privacy-container {
+            max-width: 760px;
+            margin: 60px auto;
+            padding: 0 20px 80px;
+        }
+        .privacy-header {
+            margin-bottom: 40px;
+        }
+        .privacy-header .brand {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary, #7c6af7);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+        }
+        .privacy-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .privacy-header .updated {
+            color: var(--text-secondary, #94a3b8);
+            font-size: 0.9rem;
+        }
+        .privacy-section {
+            margin-bottom: 36px;
+        }
+        .privacy-section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary, #7c6af7);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color, #334155);
+        }
+        .privacy-section p {
+            line-height: 1.75;
+            color: var(--text-secondary, #94a3b8);
+            margin-bottom: 10px;
+        }
+        .privacy-section ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+        .privacy-section ul li {
+            line-height: 1.75;
+            color: var(--text-secondary, #94a3b8);
+            margin-bottom: 6px;
+        }
+        .privacy-section a {
+            color: var(--primary, #7c6af7);
+            text-decoration: none;
+        }
+        .privacy-section a:hover {
+            text-decoration: underline;
+        }
+        .privacy-footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color, #334155);
+            color: var(--text-secondary, #94a3b8);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .privacy-footer a {
+            color: var(--primary, #7c6af7);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <div class="theme-toggle" id="theme-toggle" title="Cambiar tema">
+            <span class="theme-icon theme-icon-dark">🌙</span>
+            <div class="theme-toggle-switch"></div>
+            <span class="theme-icon theme-icon-light">☀️</span>
+        </div>
+    </div>
+
+    <div class="privacy-container">
+        <div class="privacy-header">
+            <a href="/web/" class="brand">🤖 Botoogle</a>
+            <h1>Política de Privacidad</h1>
+            <p class="updated">Última actualización: agosto 2025</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>1. Información que recopilamos</h2>
+            <p>Botoogle recopila la siguiente información cuando usas nuestra plataforma:</p>
+            <ul>
+                <li><strong>Datos de Telegram:</strong> nombre de usuario, identificador de usuario y nombre visible, obtenidos a través del bot de Telegram.</li>
+                <li><strong>Datos de registro web/app:</strong> dirección de correo electrónico y nombre para mostrar, cuando te registras en la plataforma web o la aplicación Android.</li>
+                <li><strong>Información de aplicaciones:</strong> nombre, descripción, URL de Play Store, instrucciones y logo de las apps que registras para pruebas.</li>
+                <li><strong>Historial de interacciones:</strong> feedback enviado, apps probadas y reputación acumulada dentro de la plataforma.</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>2. Cómo usamos la información</h2>
+            <p>Usamos tus datos exclusivamente para:</p>
+            <ul>
+                <li>Conectar desarrolladores de Android con testers voluntarios.</li>
+                <li>Enviar notificaciones sobre nuevas apps disponibles para probar.</li>
+                <li>Calcular y mostrar estadísticas de reputación dentro de la plataforma.</li>
+                <li>Publicar fichas de apps en nuestra página y grupo de Facebook para ampliar el alcance de cada app registrada.</li>
+                <li>Mejorar la experiencia de la plataforma.</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>3. Compartición de datos</h2>
+            <p>No vendemos ni cedemos tus datos personales a terceros. Los datos públicos de las apps registradas (nombre, descripción, enlace a Play Store) se publican en nuestra página de Facebook y grupo de la comunidad como parte del servicio acordado al registrar una app.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>4. Retención de datos</h2>
+            <p>Conservamos tus datos mientras tu cuenta esté activa. Puedes solicitar la eliminación de tu cuenta y datos en cualquier momento contactándonos a través de los medios indicados más adelante.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>5. Seguridad</h2>
+            <p>Aplicamos medidas de seguridad razonables para proteger tu información. Las contraseñas se almacenan cifradas mediante bcrypt y nunca se guardan en texto plano.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>6. Tus derechos</h2>
+            <p>Tienes derecho a acceder, corregir o eliminar tus datos personales. Para ejercerlos contáctanos en:</p>
+            <ul>
+                <li>Correo: <a href="mailto:rjjrsoluciones@gmail.com">rjjrsoluciones@gmail.com</a></li>
+                <li>Telegram: <a href="https://t.me/BotoogleBot" target="_blank" rel="noopener">@BotoogleBot</a></li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>7. Eliminación de datos</h2>
+            <p>Para solicitar la eliminación completa de tus datos, contáctanos a través de los medios indicados en la sección anterior o usa la opción de eliminación de cuenta disponible en la configuración de tu perfil dentro de la plataforma.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>8. Cookies</h2>
+            <p>Utilizamos una cookie de sesión estrictamente necesaria para mantener tu sesión iniciada. No usamos cookies de seguimiento, análisis de terceros ni publicidad.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>9. Cambios a esta política</h2>
+            <p>Podemos actualizar esta política ocasionalmente. Los cambios relevantes serán notificados a través del bot de Telegram o la plataforma web.</p>
+        </div>
+
+        <div class="privacy-footer">
+            <span>&copy; 2025 Botoogle</span>
+            <a href="/web/">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        }
+    </script>
+</body>
+</html>
