@@ -9,39 +9,104 @@
         h1, h2 { color: #2c3e50; }
         p { margin-bottom: 1em; }
         ul { margin-bottom: 1em; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background: #f5f5f5; }
+        code { background: #f5f5f5; padding: 2px 5px; border-radius: 3px; }
     </style>
 </head>
 <body>
     <h1>Política de Privacidad</h1>
-    <p><strong>Última actualización:</strong> 5 de marzo de 2026</p>
-    
+    <p><strong>Última actualización:</strong> 19 de septiembre de 2026</p>
+
     <h2>1. Información General</h2>
-    <p>La aplicación "¿Qué cocino hoy?" (en adelante, "la App") respeta y protege su privacidad. Esta Política de Privacidad explica nuestras prácticas sobre la no-recopilación de información.</p>
+    <p>Esta política explica qué datos trata la aplicación "¿Qué cocino hoy?" (en adelante, "la App"), con qué finalidad y con quién se comparten. La App se ofrece de forma gratuita y sin publicidad.</p>
 
-    <h2>2. Datos Personales y Privacidad</h2>
-    <p>La App <strong>NO</strong> recopila, almacena, ni comparte información personal de los usuarios. No empleamos SDKs de análisis de uso ni enviamos datos sobre las búsquedas a servidores externos en la nube.</p>
+    <h2>2. Datos que se recopilan</h2>
+    <p>La App puede tratar los siguientes datos:</p>
 
-    <h2>3. Uso de Servicios Externos</h2>
-    <p>Para proporcionar un catálogo actualizado de recetas, la App realiza descargas de contenido (archivos de solo lectura) utilizando Google Drive de manera programática.</p>
-    <p>Al utilizar esta función, la API de Google Drive puede recopilar información técnica estándar (como dirección IP y metadatos de la solicitud) necesaria para la transmisión segura de datos, conforme a la <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google</a>. La App no tiene acceso a, ni almacena, credenciales de usuario de Google ni archivos personales fuera de la carpeta pública de recetas.</p>
+    <table>
+        <tr>
+            <th>Dato</th>
+            <th>Cuándo</th>
+            <th>Para qué</th>
+        </tr>
+        <tr>
+            <td>Identificador de cuenta, nombre y dirección de correo de Google</td>
+            <td>Solo si decides iniciar sesión para aportar o denunciar contenido</td>
+            <td>Atribuir tus aportes, evitar duplicados y poder bloquear cuentas que publiquen contenido abusivo</td>
+        </tr>
+        <tr>
+            <td>Identificador de publicidad (Advertising ID) e identificadores de dispositivo</td>
+            <td>Siempre que la App está en uso</td>
+            <td>Estadísticas de uso agregadas mediante Google Analytics para Firebase</td>
+        </tr>
+        <tr>
+            <td>Informes de fallos: modelo de dispositivo, versión del sistema y traza del error</td>
+            <td>Cuando la App se cierra inesperadamente</td>
+            <td>Diagnosticar y corregir errores (Firebase Crashlytics)</td>
+        </tr>
+        <tr>
+            <td>Métricas de rendimiento: tiempos de arranque y de red</td>
+            <td>Durante el uso</td>
+            <td>Detectar lentitud (Firebase Performance Monitoring)</td>
+        </tr>
+        <tr>
+            <td>Contenido que envías: nombres de ingredientes y recetas</td>
+            <td>Solo si decides aportar</td>
+            <td>Publicarlo en el catálogo compartido con el resto de usuarios</td>
+        </tr>
+    </table>
 
-    <h2>4. Permisos de la Aplicación</h2>
-    <p>La App requiere permisos mínimos e indispensables para su funcionamiento:</p>
+    <p><strong>La App no pide, no almacena y no transmite tu contraseña de Google.</strong> El inicio de sesión lo gestiona el propio sistema Android mediante Credential Manager; la App solo recibe la confirmación de tu identidad.</p>
+
+    <p>Los ingredientes que seleccionas para buscar recetas <strong>no salen de tu dispositivo</strong>: se procesan en local.</p>
+
+    <h2>3. Uso de servicios de Google</h2>
+    <p>La App utiliza los siguientes servicios de Google, sujetos a la <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad de Google</a>:</p>
     <ul>
-        <li><strong>Conexión a Internet (INTERNET):</strong> Necesaria exclusivamente para la sincronización y descarga de recetas actualizadas.</li>
-        <li><strong>Estado de Red (ACCESS_NETWORK_STATE):</strong> Necesario para comprobar la disponibilidad de conexión antes de iniciar descargas y ahorrar recursos.</li>
+        <li><strong>Cloud Firestore</strong>: aloja el catálogo de ingredientes y recetas que la App descarga.</li>
+        <li><strong>Firebase Authentication</strong>: gestiona el inicio de sesión con cuenta de Google.</li>
+        <li><strong>Google Analytics para Firebase</strong>: estadísticas de uso agregadas.</li>
+        <li><strong>Firebase Crashlytics</strong>: informes de fallos.</li>
+        <li><strong>Firebase Performance Monitoring</strong>: métricas de rendimiento.</li>
+    </ul>
+    <p>Estos servicios pueden recibir información técnica como la dirección IP y metadatos de la solicitud, necesaria para la transmisión.</p>
+
+    <h2>4. Contenido aportado por usuarios</h2>
+    <p>La App permite que los usuarios con sesión iniciada publiquen ingredientes y recetas en un catálogo compartido. Debes saber que:</p>
+    <ul>
+        <li>Lo que publiques será <strong>visible para todos los usuarios</strong> de la App.</li>
+        <li>Se guarda tu identificador de cuenta junto al aporte. <strong>No se publica tu nombre ni tu correo</strong> junto al contenido.</li>
+        <li>Cualquier usuario puede denunciar contenido inapropiado desde el menú de cada receta.</li>
+        <li>El contenido que acumula tres denuncias se retira automáticamente del catálogo.</li>
+        <li>No se permite publicar contenido ofensivo, ilegal, publicitario o que infrinja derechos de terceros.</li>
     </ul>
 
-    <h2>5. Privacidad de los Menores</h2>
-    <p>Nuestros servicios no están dirigidos a personas menores de 13 años. No recopilamos a sabiendas información de identificación personal de niños. Si usted es un padre o tutor y tiene conocimiento de que su hijo nos ha proporcionado datos personales, por favor contáctenos. Si tenemos conocimiento de que hemos recopilado datos personales de menores sin verificación del consentimiento parental, tomamos medidas para eliminar esa información de nuestros servidores.</p>
+    <h2>5. Permisos de la Aplicación</h2>
+    <table>
+        <tr><th>Permiso</th><th>Para qué</th></tr>
+        <tr><td><code>INTERNET</code></td><td>Descargar el catálogo y enviar aportes.</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Lo requieren las bibliotecas de Firebase para detectar cambios de conectividad.</td></tr>
+        <tr><td><code>AD_ID</code>, <code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code></td><td>Los añade Google Analytics para Firebase. La App <strong>no muestra publicidad</strong>.</td></tr>
+        <tr><td><code>WAKE_LOCK</code>, <code>BIND_GET_INSTALL_REFERRER_SERVICE</code></td><td>Los añaden las bibliotecas de Firebase para enviar datos en segundo plano.</td></tr>
+    </table>
 
-    <h2>6. Cookies y Tecnologías de Rastreo</h2>
-    <p>La App no utiliza "cookies" ni tecnologías de seguimiento similares para rastrear la actividad del usuario. El almacenamiento local se utiliza estrictamente para guardar las preferencias de la aplicación (como recetas favoritas o ingredientes seleccionados) en su dispositivo y no se comparte con terceros.</p>
+    <h2>6. Conservación y eliminación de datos</h2>
+    <p>Puedes cerrar sesión en cualquier momento desde la pantalla "Aportar al catálogo".</p>
+    <p>Si quieres que eliminemos tu cuenta y los datos asociados, escribe a la dirección de la sección 9 indicando el correo con el que iniciaste sesión. Los aportes que ya hayas publicado pueden mantenerse en el catálogo de forma anónima, sin vínculo con tu cuenta, ya que forman parte del contenido compartido de la App.</p>
+    <p>Desinstalar la App elimina todos los datos guardados en tu dispositivo.</p>
 
-    <h2>7. Cambios a la Política</h2>
-    <p>Nos reservamos el derecho de actualizar esta Política en cualquier momento para reflejar cambios en la App o exigencias legales. Cualquier modificación será efectiva inmediatamente después de su publicación en esta página.</p>
+    <h2>7. Almacenamiento local</h2>
+    <p>La App guarda en tu dispositivo una copia del catálogo de recetas para funcionar sin conexión, y un número de versión para saber si debe actualizarla. Esta información no se comparte con terceros y no incluye datos personales.</p>
 
-    <h2>8. Contacto</h2>
-    <p>Si tiene alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dude en contactarnos a través del correo electrónico de soporte indicado en la ficha de la aplicación en Google Play Store.</p>
+    <h2>8. Privacidad de los Menores</h2>
+    <p>La App no está dirigida a menores de 13 años y no recopila conscientemente sus datos. Si eres padre, madre o tutor y crees que tu hijo nos ha facilitado datos personales, contáctanos y los eliminaremos.</p>
+
+    <h2>9. Contacto</h2>
+    <p>Para cualquier consulta sobre esta política, sobre un contenido publicado o para solicitar la eliminación de tus datos, escribe a: <strong>ricardo2charris@gmail.com</strong></p>
+
+    <h2>10. Cambios en esta política</h2>
+    <p>Si esta política cambia, se actualizará la fecha del encabezado y se publicará la nueva versión en esta misma dirección.</p>
 </body>
 </html>
