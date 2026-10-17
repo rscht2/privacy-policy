@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Verdecitos</title>
+  <style>
+    :root {
+      --green: #1a6e3c;
+      --green-light: #e8f5ee;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #dde8e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: #f9fdfb;
+      line-height: 1.7;
+    }
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 6px; }
+    header p  { opacity: .85; font-size: .95rem; }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+    h2 {
+      color: var(--green);
+      font-size: 1.2rem;
+      margin: 36px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 {
+      font-size: 1rem;
+      margin: 20px 0 6px;
+      color: var(--text);
+    }
+    p, li { font-size: .97rem; color: var(--text); margin-bottom: 8px; }
+    ul { padding-left: 22px; margin-bottom: 8px; }
+    li { margin-bottom: 4px; }
+    .highlight {
+      background: var(--green-light);
+      border-left: 4px solid var(--green);
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin: 16px 0;
+    }
+    .highlight p { margin: 0; }
+    .badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 99px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: .93rem;
+    }
+    th {
+      background: var(--green);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+    }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) td { background: var(--green-light); }
+    .delete-box {
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .delete-box h3 { color: var(--green); margin-top: 0; }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .step-num {
+      background: var(--green);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: .85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    a { color: var(--green); }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌿 Verdecitos</h1>
+  <p>Política de Privacidad</p>
+  <p style="margin-top:6px;font-size:.85rem;">Última actualización: octubre 2026</p>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="highlight">
+    <p>Verdecitos es una aplicación de compraventa de divisas entre personas. Esta política explica qué datos
+    recopilamos, cómo los usamos y cómo puedes eliminarlos en cualquier momento.</p>
+  </div>
+
+  <!-- 1. RESPONSABLE -->
+  <h2>1. Responsable del tratamiento</h2>
+  <p><strong>Verdecitos</strong> — Aplicación móvil para Android.<br>
+  Contacto: <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a></p>
+
+  <!-- 2. DATOS QUE RECOPILAMOS -->
+  <h2>2. Datos que recopilamos</h2>
+
+  <table>
+    <tr>
+      <th>Dato</th>
+      <th>Origen</th>
+      <th>Para qué se usa</th>
+    </tr>
+    <tr>
+      <td>Nombre completo</td>
+      <td>Tu cuenta de Google / ingreso manual</td>
+      <td>Mostrar en tus publicaciones para que te contacten</td>
+    </tr>
+    <tr>
+      <td>Número de teléfono</td>
+      <td>Ingreso manual</td>
+      <td>Que otros usuarios te contacten por WhatsApp</td>
+    </tr>
+    <tr>
+      <td>Foto de perfil</td>
+      <td>Tu cuenta de Google (opcional)</td>
+      <td>Mostrar tu avatar en las publicaciones</td>
+    </tr>
+    <tr>
+      <td>Ciudad</td>
+      <td>Ingreso manual</td>
+      <td>Filtrar ofertas por ubicación</td>
+    </tr>
+    <tr>
+      <td>Publicaciones (ofertas)</td>
+      <td>Creadas por ti</td>
+      <td>Mostrarlas a otros usuarios de la app</td>
+    </tr>
+    <tr>
+      <td>Token FCM</td>
+      <td>Generado por el dispositivo</td>
+      <td>Enviar notificaciones push de nuevas ofertas</td>
+    </tr>
+    <tr>
+      <td>Datos de uso (Analytics)</td>
+      <td>Firebase Analytics</td>
+      <td>Mejorar la app (anónimo y solo con consentimiento)</td>
+    </tr>
+  </table>
+
+  <div class="highlight">
+    <p>⚠️ <strong>Tu número de teléfono es visible para otros usuarios autenticados</strong> cuando publicas
+    una oferta. Úsalo solo si estás cómodo compartiendo esa información.</p>
+  </div>
+
+  <!-- 3. BASE LEGAL -->
+  <h2>3. Base legal del tratamiento</h2>
+  <ul>
+    <li><strong>Ejecución de un contrato:</strong> nombre, teléfono y ciudad son necesarios para usar el
+    servicio de publicación de ofertas.</li>
+    <li><strong>Consentimiento:</strong> datos de uso y publicidad personalizada (Analytics y AdMob) se
+    activan solo si aceptas cuando la app te lo solicita.</li>
+    <li><strong>Interés legítimo:</strong> seguridad de la plataforma y prevención de fraude.</li>
+  </ul>
+
+  <!-- 4. COMPARTICIÓN -->
+  <h2>4. ¿Compartimos tus datos?</h2>
+  <ul>
+    <li><span class="badge">Sí</span> <strong>Nombre y teléfono</strong> — visibles para otros usuarios
+    autenticados cuando publicas una oferta.</li>
+    <li><span class="badge">Sí</span> <strong>Google / Firebase</strong> — usamos Firebase Auth, Firestore,
+    Messaging, Analytics y Crashlytics de Google. Consulta la
+    <a href="https://policies.google.com/privacy" target="_blank">política de privacidad de Google</a>.</li>
+    <li><span class="badge">Sí</span> <strong>Google AdMob</strong> — mostramos anuncios. Solo con
+    consentimiento previo. Consulta las
+    <a href="https://support.google.com/admob/answer/6128543" target="_blank">políticas de AdMob</a>.</li>
+    <li><span class="badge">No</span> No vendemos ni cedemos tus datos a terceros con fines comerciales.</li>
+    <li><span class="badge">No</span> No transferimos datos fuera del EEE salvo a través de los servicios
+    de Google mencionados (sujetos a las cláusulas contractuales estándar de la UE).</li>
+  </ul>
+
+  <!-- 5. RETENCIÓN -->
+  <h2>5. Retención de datos</h2>
+  <ul>
+    <li>Tu <strong>perfil</strong> se conserva mientras tengas cuenta activa en la app.</li>
+    <li>Las <strong>ofertas</strong> se desactivan automáticamente a las 48 horas de publicadas.</li>
+    <li>Al <strong>eliminar tu cuenta</strong>, todos tus datos se borran permanentemente (ver sección 7).</li>
+    <li>Los <strong>reportes</strong> de abuso se conservan 90 días para gestión de moderación.</li>
+  </ul>
+
+  <!-- 6. DERECHOS -->
+  <h2>6. Tus derechos</h2>
+  <p>Tienes derecho a:</p>
+  <ul>
+    <li><strong>Acceder</strong> a los datos que tenemos sobre ti.</li>
+    <li><strong>Rectificar</strong> datos incorrectos desde la pantalla "Editar perfil".</li>
+    <li><strong>Eliminar</strong> tu cuenta y todos tus datos (ver sección 7).</li>
+    <li><strong>Retirar el consentimiento</strong> de publicidad en cualquier momento desde
+    <em>Perfil → Privacidad de anuncios</em>.</li>
+    <li><strong>Oponerte</strong> al uso de Analytics desactivándolo desde los ajustes de tu dispositivo.</li>
+    <li><strong>Portar</strong> tus datos solicitándolo a <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a>.</li>
+  </ul>
+  <p>Para ejercer cualquier derecho escríbenos a <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a>.
+  Responderemos en un plazo máximo de 30 días.</p>
+
+  <!-- 7. ELIMINACIÓN -->
+  <h2>7. Eliminación de cuenta y datos</h2>
+
+  <div class="delete-box">
+    <h3>🗑️ Cómo eliminar tu cuenta desde la app</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <p>Abre la app e inicia sesión con tu cuenta.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p>Toca la pestaña <strong>Perfil</strong> en la barra inferior.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p>Desplázate hasta el final de la pantalla.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <p>Toca <strong>"Eliminar mi cuenta"</strong> (texto en rojo).</p>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <p>Confirma en el diálogo que aparece.</p>
+    </div>
+  </div>
+
+  <h3>¿Qué se borra exactamente?</h3>
+  <ul>
+    <li>✅ Tu perfil (nombre, teléfono, ciudad, foto, métodos de pago, token FCM).</li>
+    <li>✅ Todas tus ofertas publicadas (activas e inactivas).</li>
+    <li>✅ Tu cuenta de autenticación (Firebase Auth).</li>
+    <li>✅ Tus suscripciones a notificaciones push (temas FCM).</li>
+  </ul>
+
+  <h3>¿Qué NO se borra inmediatamente?</h3>
+  <ul>
+    <li>⏳ Los reportes de abuso que hayas enviado o recibido (se eliminan a los 90 días).</li>
+    <li>⏳ Registros anónimos de Firebase Analytics (no vinculados a tu identidad tras el borrado).</li>
+  </ul>
+
+  <div class="highlight">
+    <p>Si no puedes acceder a la app, puedes solicitar la eliminación de tu cuenta enviando un correo a
+    <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a> con el asunto
+    <strong>"Eliminar cuenta"</strong> y el email de tu cuenta de Google. Procesaremos la solicitud en
+    un plazo máximo de 7 días hábiles.</p>
+  </div>
+
+  <!-- 8. SEGURIDAD -->
+  <h2>8. Seguridad</h2>
+  <ul>
+    <li>Todos los datos se transmiten cifrados mediante HTTPS/TLS.</li>
+    <li>Los datos se almacenan en Google Cloud Firestore con reglas de seguridad que restringen el
+    acceso a cada usuario solo a sus propios datos.</li>
+    <li>La autenticación se realiza mediante Google Sign-In (OAuth 2.0). No almacenamos contraseñas.</li>
+    <li>Crashlytics recopila informes de errores anónimos para mejorar la estabilidad de la app.</li>
+  </ul>
+
+  <!-- 9. PUBLICIDAD -->
+  <h2>9. Publicidad (AdMob)</h2>
+  <p>Verdecitos muestra anuncios a través de <strong>Google AdMob</strong>. Los anuncios pueden ser
+  personalizados en función de tus intereses si otorgas consentimiento en el formulario que aparece
+  al iniciar la app.</p>
+  <ul>
+    <li>Puedes cambiar tu preferencia de publicidad en cualquier momento desde
+    <em>Perfil → Privacidad de anuncios</em>.</li>
+    <li>Si rechazas la personalización, seguirás viendo anuncios contextuales no personalizados.</li>
+  </ul>
+
+  <!-- 10. MENORES -->
+  <h2>10. Menores de edad</h2>
+  <p>Verdecitos está dirigida a personas mayores de 18 años. No recopilamos intencionalmente datos de
+  menores de edad. Si detectamos que un usuario es menor, eliminaremos su cuenta y datos.</p>
+
+  <!-- 11. CAMBIOS -->
+  <h2>11. Cambios en esta política</h2>
+  <p>Notificaremos cualquier cambio significativo mediante una notificación en la app o por correo
+  electrónico. La fecha de "Última actualización" al inicio del documento siempre indicará la versión
+  vigente. El uso continuado de la app tras la notificación implica la aceptación de los cambios.</p>
+
+  <!-- 12. CONTACTO -->
+  <h2>12. Contacto</h2>
+  <p>Para cualquier consulta sobre esta política de privacidad:</p>
+  <ul>
+    <li>📧 Email: <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a></li>
+  </ul>
+
+</main>
+
+<footer>
+  <p>© 2026 Verdecitos · <a href="mailto:soporte@verdecitos.app">soporte@verdecitos.app</a></p>
+  <p style="margin-top:4px;">Esta política está disponible en español.</p>
+</footer>
+
+</body>
+</html>
