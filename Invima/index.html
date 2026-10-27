@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b6bcb">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="INVIMA">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Consulta INVIMA</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:#f3f5f8; --card:#ffffff; --ink:#1c2430; --mut:#5d6878; --acc:#0b6bcb; --acc-ink:#ffffff;
+    --ok:#0a7a3d; --warn:#b54708; --err:#b42318; --bd:#dde2e9; --field:#f7f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#0f1318; --card:#1a2029; --ink:#e8ecf1; --mut:#9aa4b2; --acc:#5aa9ff; --acc-ink:#07121f;
+      --ok:#4cc38a; --warn:#f5a45b; --err:#ff7b72; --bd:#2b3441; --field:#12171e;
+    }
+  }
+  * { box-sizing:border-box }
+  html { -webkit-text-size-adjust:100% }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    padding:max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+            max(28px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  }
+  main { max-width:980px; margin:0 auto; display:grid; gap:12px }
+  h1 { font-size:20px; margin:0 }
+  h2 { font-size:16px; margin:0 0 10px }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap }
+  .topr { display:flex; align-items:center; gap:8px }
+  .card { background:var(--card); border:1px solid var(--bd); border-radius:14px; padding:14px }
+  label { display:block; font-size:13px; color:var(--mut); margin-bottom:4px }
+  input, select, button, .btn {
+    font:inherit; font-size:16px; min-height:46px; padding:9px 12px; border-radius:10px;
+    border:1px solid var(--bd); background:var(--field); color:var(--ink); touch-action:manipulation;
+  }
+  input[type=text], input[type=number], select { width:100% }
+  input[type=checkbox] { min-height:0; width:20px; height:20px; padding:0; accent-color:var(--acc) }
+  button, .btn {
+    background:var(--acc); color:var(--acc-ink); border:0; cursor:pointer; font-weight:600;
+    display:inline-flex; align-items:center; justify-content:center; text-align:center; text-decoration:none;
+  }
+  button.sec, .btn.sec { background:transparent; color:var(--acc); border:1.5px solid var(--acc); font-weight:600 }
+  button.sm { min-height:36px; padding:4px 12px; font-size:14px }
+  button:disabled { opacity:.5; cursor:default }
+  button:active, .btn:active { filter:brightness(.92) }
+  .actions { display:flex; gap:8px; flex-wrap:wrap }
+  .actions > * { flex:1 1 150px }
+  .fields { display:grid; gap:10px; grid-template-columns:1fr }
+  .note { font-size:13px; color:var(--mut) }
+  .tag { font-size:12px; padding:2px 9px; border-radius:99px; border:1px solid var(--bd); color:var(--mut); white-space:nowrap }
+  .ok { color:var(--ok) } .err { color:var(--err) } .warn { color:var(--warn) }
+  details > summary { cursor:pointer; padding:6px 0; font-weight:600; font-size:15px; list-style-position:inside }
+  details.card > summary { padding:0 }
+
+  /* escáner */
+  .cam { position:relative; height:clamp(230px, 46vh, 420px); background:#000; border-radius:12px; overflow:hidden; margin:10px 0 }
+  .cam video { width:100%; height:100%; object-fit:cover; display:block }
+  .roi { position:absolute; left:5%; width:90%; top:40%; height:20%; border:2px solid #fff; border-radius:8px;
+         box-shadow:0 0 0 9999px rgba(0,0,0,.5); pointer-events:none }
+  .roi.hit { border-color:#4cc38a }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px }
+  .chip { display:inline-flex; align-items:center; gap:2px; border:1px solid var(--bd); border-radius:99px; background:var(--field); overflow:hidden }
+  .chip button { min-height:38px; background:transparent; color:var(--ink); border-radius:0; padding:4px 12px; font-weight:500; font-variant-numeric:tabular-nums }
+  .chip button.cp { color:var(--acc); padding:4px 10px; border-left:1px solid var(--bd) }
+  .setrow { display:flex; align-items:center; gap:10px; margin:10px 0 }
+  .setrow label { margin:0; color:var(--ink); font-size:15px }
+
+  /* datasets */
+  #dsList { max-height:260px; overflow:auto; border:1px solid var(--bd); border-radius:10px; padding:6px; display:grid; gap:2px; margin:8px 0 }
+  #dsList label { display:flex; gap:10px; align-items:flex-start; margin:0; color:var(--ink); font-size:14px; padding:7px 4px; border-radius:8px }
+  #dsList label:active { background:var(--field) }
+  #dsList input { margin-top:2px; flex:none }
+  #dsList .meta { display:block; font-size:12px; color:var(--mut) }
+
+  /* resultados */
+  h3 { margin:14px 0 4px; font-size:14px; display:flex; flex-wrap:wrap; gap:6px; align-items:center }
+  details.res { border:1px solid var(--bd); border-radius:10px; margin-top:8px; overflow:hidden; background:var(--card) }
+  details.res > summary { padding:10px 12px; font-weight:400; list-style:none; display:block }
+  details.res > summary::-webkit-details-marker { display:none }
+  details.res .l1 { display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+  details.res .l1 b { font-weight:700; overflow-wrap:anywhere }
+  details.res .l2 { margin-top:2px; overflow-wrap:anywhere }
+  details.res .body { border-top:1px solid var(--bd); padding:8px 12px 12px }
+  .badge { font-size:11px; padding:1px 8px; border-radius:99px; border:1px solid currentColor; white-space:nowrap }
+  .kv { overflow-x:auto }
+  table { border-collapse:collapse; width:100%; font-size:13px }
+  th, td { text-align:left; padding:6px 6px; border-bottom:1px solid var(--bd); vertical-align:top; overflow-wrap:anywhere }
+  th { color:var(--mut); font-weight:600; width:38% }
+  .skipped { margin-top:12px; font-size:13px; color:var(--warn) }
+
+  /* mapeo de columnas */
+  .maps { display:grid; gap:8px; margin-top:8px }
+  .maps .m { border:1px solid var(--bd); border-radius:10px; padding:10px }
+  .mapgrid { display:grid; gap:8px; grid-template-columns:1fr; margin-top:6px }
+  .mapgrid select { min-height:40px; font-size:14px; padding:6px 8px }
+
+  #log { font:12px/1.5 ui-monospace,Menlo,monospace; white-space:pre-wrap; max-height:220px; overflow:auto; color:var(--mut); margin-top:8px; overflow-wrap:anywhere }
+  #toast { position:fixed; left:50%; bottom:max(18px, env(safe-area-inset-bottom)); transform:translateX(-50%) translateY(20px);
+           background:#1c2430; color:#fff; padding:10px 16px; border-radius:99px; font-size:14px; opacity:0;
+           transition:.25s; pointer-events:none; max-width:90vw; text-align:center; z-index:10 }
+  #toast.on { opacity:1; transform:translateX(-50%) }
+  a { color:var(--acc) }
+  [hidden] { display:none !important }
+
+  @media (min-width:560px) {
+    .fields { grid-template-columns:1fr 1fr }
+    .mapgrid { grid-template-columns:repeat(3, 1fr) }
+    .actions > * { flex:0 1 auto; min-width:170px }
+  }
+  @media (min-width:900px) {
+    body { padding-top:24px }
+    .fields { grid-template-columns:repeat(4, 1fr) }
+    .mapgrid { grid-template-columns:repeat(5, 1fr) }
+    h1 { font-size:22px }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>Consulta INVIMA</h1>
+    <div class="topr">
+      <button id="btnInstall" class="sec sm" type="button" hidden>Instalar app</button>
+      <span class="tag" id="status">listo</span>
+    </div>
+  </header>
+
+  <!-- 1 · ESCÁNER -->
+  <section class="card" id="scanCard">
+    <h2>1 · Escanear registro sanitario</h2>
+    <div class="actions">
+      <button id="btnScan" type="button">Escanear con cámara</button>
+      <label class="btn sec" for="photo" style="margin:0">Tomar foto</label>
+      <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+    </div>
+
+    <div id="scanPanel" hidden>
+      <div class="cam">
+        <video id="cam" playsinline muted autoplay></video>
+        <div class="roi" id="roi"></div>
+      </div>
+      <p id="scanMsg" class="note" role="status">Iniciando…</p>
+      <div class="actions">
+        <button id="btnTorch" class="sec" type="button" hidden>Linterna</button>
+        <button id="btnStop" class="sec" type="button">Detener</button>
+      </div>
+    </div>
+
+    <div id="hist" class="chips" aria-label="Códigos leídos"></div>
+
+    <details style="margin-top:8px">
+      <summary>Ajustes del escáner</summary>
+      <label for="siglas" style="margin-top:6px">Siglas aceptadas (separadas por coma; vacío = cualquier sigla de 2–3 letras)</label>
+      <input type="text" id="siglas" value="DM, EBC" autocapitalize="characters" autocomplete="off">
+      <div class="setrow"><input type="checkbox" id="strict" checked><label for="strict">Exigir guion (2023EBC-0007834)</label></div>
+      <div class="setrow"><input type="checkbox" id="autoQ" checked><label for="autoQ">Consultar automáticamente al detectar</label></div>
+      <button id="btnClearHist" class="sec sm" type="button">Borrar historial</button>
+    </details>
+  </section>
+
+  <!-- 2 · CONSULTA -->
+  <section class="card">
+    <h2>2 · Consultar</h2>
+    <form id="f" autocomplete="off">
+      <div class="fields">
+        <div><label for="reg">N.º de registro sanitario</label>
+          <input type="text" id="reg" placeholder="2010-EBC-0005674" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="search"></div>
+        <div><label for="equ">Equipo / producto</label>
+          <input type="text" id="equ" placeholder="monitor signos vitales" enterkeyhint="search"></div>
+        <div><label for="mar">Marca</label>
+          <input type="text" id="mar" placeholder="philips" enterkeyhint="search"></div>
+        <div><label for="mod">Modelo</label>
+          <input type="text" id="mod" placeholder="MX450" enterkeyhint="search"></div>
+      </div>
+      <p class="note">Los campos vacíos se omiten; los que tengan texto se combinan (AND). El registro se compara sin importar guiones, espacios ni el prefijo INVIMA. Equipo, marca y modelo aceptan varias palabras en cualquier orden.</p>
+
+      <details id="dsBox">
+        <summary>Datasets: <span id="dsCount" class="note">cargando…</span></summary>
+        <input type="text" id="dsFilter" placeholder="Filtrar la lista…" aria-label="Filtrar datasets">
+        <div id="dsList"><span class="note">Cargando catálogo…</span></div>
+        <div class="fields" style="margin-top:6px">
+          <div><label for="lim">Máx. filas por dataset</label><input type="number" id="lim" value="50" min="1" max="500" inputmode="numeric"></div>
+          <div style="align-self:end"><button id="btnCat" class="sec" type="button" style="width:100%">Actualizar catálogo</button></div>
+        </div>
+      </details>
+
+      <div class="actions" style="margin-top:12px">
+        <button id="btnQ" type="submit" disabled>Consultar</button>
+        <button id="btnClear" class="sec" type="button">Limpiar</button>
+      </div>
+    </form>
+
+    <details id="mapBox" style="margin-top:10px" hidden>
+      <summary>Columnas detectadas por dataset (corrígelas si alguna quedó mal)</summary>
+      <div class="maps" id="maps"></div>
+    </details>
+  </section>
+
+  <section class="card" id="resCard" hidden>
+    <h2>Resultados</h2>
+    <div id="out"></div>
+  </section>
+
+  <details class="card">
+    <summary>Registro técnico <span class="tag" id="status2" style="margin-left:6px">—</span></summary>
+    <div id="log"></div>
+  </details>
+
+  <p class="note">
+    Los datasets devuelven los <i>datos</i> del registro en JSON, no el PDF de la resolución. Para el PDF usa la
+    <a href="https://consultaregistro.invima.gov.co/Consultas/consultas/consreg_encabcum.jsp" target="_blank" rel="noopener">consulta oficial del INVIMA</a>.
+  </p>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* =====================================================================
+   Utilidades
+   ===================================================================== */
+const BASE = "https://www.datos.gov.co";
+const CATALOG = "https://api.us.socrata.com/api/catalog/v1";
+const TESS_URL = "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("invima." + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("invima." + k, JSON.stringify(v)); } catch {} }
+};
+const log = (m, cls) => {
+  const t = new Date().toLocaleTimeString();
+  $("log").innerHTML += `<span class="${cls || ""}">[${t}] ${esc(m)}</span>\n`;
+  $("log").scrollTop = 1e9;
+};
+const setStatus = (t, cls) => {
+  for (const id of ["status", "status2"]) { $(id).textContent = t; $(id).className = "tag " + (cls || ""); }
+};
+let toastT;
+const toast = m => { const t = $("toast"); t.textContent = m; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), 2600); };
+async function copyText(txt) {
+  try { await navigator.clipboard.writeText(txt); toast("Copiado: " + txt); }
+  catch {
+    const ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast("Copiado: " + txt); } catch { toast("No se pudo copiar"); }
+    ta.remove();
+  }
+}
+async function getJSON(url) {
+  log("GET " + url);
+  const t0 = performance.now();
+  const r = await fetch(url, { headers: { "Accept": "application/json" } });
+  log(`→ HTTP ${r.status} (${Math.round(performance.now() - t0)} ms)`, r.ok ? "ok" : "err");
+  if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
+  return r.json();
+}
+
+/* =====================================================================
+   Formato del registro  (4 dígitos + 2-3 letras + guion + 7 dígitos)
+   Funciones puras: parseCodes / parseReg
+   ===================================================================== */
+const norm = s => String(s ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "").replace(/^INVIMA/, "");
+function parseReg(raw) {
+  const n = norm(raw);
+  const m = n.match(/(\d{3,})$/);               // consecutivo final (p. ej. 0005674)
+  return { norm: n, tail: m ? m[1] : n };
+}
+
+const SIM = { "0":"DOQ", "O":"0DQ", "D":"0OQ", "Q":"0OD", "8":"B", "B":"8", "5":"S", "S":"5", "1":"IL", "I":"1L", "L":"1I", "2":"Z", "Z":"2", "6":"G", "G":"6" };
+const sameish = (a, b) => a === b || (SIM[a] || "").includes(b);
+const fixDigits = s => s.replace(/[OQD]/g, "0").replace(/[IL|]/g, "1").replace(/S/g, "5").replace(/B/g, "8").replace(/Z/g, "2").replace(/G/g, "6");
+const fixLetters = s => s.replace(/0/g, "O").replace(/1/g, "I").replace(/5/g, "S").replace(/8/g, "B").replace(/2/g, "Z").replace(/6/g, "G");
+
+function matchSigla(raw, allowed) {
+  if (!allowed.length) { const f = fixLetters(raw); return /^[A-Z]{2,3}$/.test(f) ? f : null; }
+  let best = null, bestD = 9;
+  for (const a of allowed) {
+    if (a.length !== raw.length) continue;
+    let d = 0, ok = true;
+    for (let i = 0; i < a.length; i++) {
+      if (raw[i] === a[i]) continue;
+      if (sameish(raw[i], a[i])) d++; else { ok = false; break; }
+    }
+    if (ok && d <= 1 && d < bestD) { best = a; bestD = d; }
+  }
+  return best;
+}
+
+function parseCodes(text, o = {}) {
+  const allowed = (o.siglas || []).map(s => s.toUpperCase().trim()).filter(Boolean);
+  const t = String(text || "").toUpperCase()
+    .replace(/[‐-―−_~]/g, "-")
+    .replace(/[\r\n\t]+/g, " ").replace(/ +/g, " ");
+  const sep = o.strict ? "\\s?-\\s?" : "[\\s\\-.:]{0,3}";
+  const re = new RegExp("([0-9OQDILSBZG|]{4})[\\s-]?([A-Z0-9]{2,3})" + sep + "([0-9OQDILSBZG|]{7})(?!\\d)", "g");
+  const out = [], maxYear = new Date().getFullYear() + 1;
+  let m;
+  while ((m = re.exec(t))) {
+    const y = fixDigits(m[1]), n = fixDigits(m[3]), s = matchSigla(m[2], allowed);
+    if (!s || !/^\d{4}$/.test(y) || !/^\d{7}$/.test(n)) continue;
+    if (+y < 1990 || +y > maxYear) continue;
+    const code = `${y}${s}-${n}`;
+    if (!out.includes(code)) out.push(code);
+    re.lastIndex = m.index + 1;                     // permite solapes
+  }
+  return out;
+}
+
+/* =====================================================================
+   Catálogo de datasets
+   ===================================================================== */
+const state = { names: {}, cols: {}, catalog: [] };
+const INV = /invima|vigilancia de medicamentos/i;
+const POS = /dispositivos m|equipos biom|rs y nso|no obligatoriedad|permiso de comercializaci/i;
+const NEG = /establecimientos|actas|visitas|seguridad|vitales|c[oó]digo [uú]nico|vacunas|suplementos|homeop|fitoter|entidades qu|llamados/i;
+const isDefault = i => INV.test(i.owner + " " + i.name) && POS.test(i.name) && !NEG.test(i.name);
+
+function selectedIds() { return [...document.querySelectorAll("#dsList input:checked")].map(i => i.value); }
+function updateDsCount() {
+  const n = selectedIds().length;
+  $("dsCount").textContent = state.catalog.length ? `${n} seleccionado${n === 1 ? "" : "s"} de ${state.catalog.length}` : "sin catálogo";
+  $("btnQ").disabled = n === 0;
+  store.set("sel", selectedIds());
+}
+function renderCatalog() {
+  const saved = store.get("sel", null);
+  const set = new Set(saved && saved.length ? saved : state.catalog.filter(isDefault).map(i => i.id));
+  $("dsList").innerHTML = state.catalog.map(i =>
+    `<label data-t="${esc((i.name + " " + i.owner).toLowerCase())}"><input type="checkbox" value="${esc(i.id)}" ${set.has(i.id) ? "checked" : ""}>
+      <span>${esc(i.name)}<span class="meta">${esc(i.owner)} · act. ${esc(i.updated)}</span></span></label>`).join("");
+  $("dsList").querySelectorAll("input").forEach(c => c.onchange = updateDsCount);
+  updateDsCount();
+}
+async function loadCatalog(force) {
+  setStatus("cargando catálogo…");
+  const cached = store.get("cat", null);
+  if (!force && cached && Date.now() - cached.t < 7 * 864e5 && cached.items.length) {
+    state.catalog = cached.items; state.catalog.forEach(i => state.names[i.id] = i.name);
+    renderCatalog(); setStatus("listo", "ok"); log("Catálogo desde caché local."); return;
+  }
+  try {
+    const queries = [...new Set(["invima registros sanitarios dispositivos médicos", "invima equipos biomédicos", "invima permiso comercialización equipos biomédicos controlados"])];
+    const res = await Promise.allSettled(queries.map(q =>
+      getJSON(`${CATALOG}?domains=www.datos.gov.co&search_context=www.datos.gov.co&only=datasets&q=${encodeURIComponent(q)}&limit=25`)));
+    const byId = new Map();
+    res.forEach(r => {
+      if (r.status !== "fulfilled") return;
+      (r.value.results || []).forEach(x => {
+        if (!byId.has(x.resource.id)) byId.set(x.resource.id, {
+          id: x.resource.id, name: x.resource.name,
+          owner: (x.owner && x.owner.display_name) || (x.resource.attribution || ""),
+          updated: (x.resource.data_updated_at || "").slice(0, 10)
+        });
+      });
+    });
+    const items = [...byId.values()];
+    if (!items.length) throw new Error("El catálogo no devolvió datasets.");
+    items.sort((a, b) => isDefault(b) - isDefault(a) || (INV.test(b.owner + b.name) - INV.test(a.owner + a.name)));
+    state.catalog = items; items.forEach(i => state.names[i.id] = i.name);
+    store.set("cat", { t: Date.now(), items });
+    if (force) store.set("sel", null);
+    renderCatalog();
+    log(`${items.length} datasets en el catálogo.`, "ok");
+    setStatus("listo", "ok");
+  } catch (e) {
+    log("ERROR catálogo: " + e.message, "err");
+    if (cached && cached.items.length) {
+      state.catalog = cached.items; state.catalog.forEach(i => state.names[i.id] = i.name);
+      renderCatalog(); setStatus("sin red · caché", "warn");
+    } else {
+      $("dsList").innerHTML = `<span class="err">No se pudo cargar el catálogo (${esc(e.message)}). Revisa la conexión y toca «Actualizar catálogo».</span>`;
+      $("dsBox").open = true; setStatus("falló catálogo", "err");
+    }
+  }
+}
+
+/* =====================================================================
+   Detección de columnas
+   ===================================================================== */
+const KEYS = ["registro", "equipo", "marca", "modelo", "estado"];
+const RX = {
+  registro: [/registro.*sanitario/i, /rsynso|rs.?y.?nso/i, /^registro/i, /permiso/i, /expediente/i],
+  equipo:   [/(nombre|descripci).*(producto|dispositivo|equipo)|(producto|dispositivo|equipo).*(nombre|descripci)/i, /prod?cuto|producto/i, /equipo/i, /dispositivo/i, /descripci/i],
+  marca:    [/marca/i],
+  modelo:   [/modelo/i, /referencia/i],
+  estado:   [/estado.?registro|estadoregistro/i, /vigencia/i, /estado/i]
+};
+const BAD = /fecha|estado|vigencia|titular|fabricante|riesgo|clase|ciudad|pais|departamento/i;
+const MODELO_FB = [/presentaci/i, /descripci/i, /observaci/i];       // si el dataset no tiene columna de modelo
+
+function guessMap(all) {
+  const textCols = all.filter(c => !c.type || c.type === "text");
+  const map = {}, fb = {};
+  for (const key of KEYS) {
+    map[key] = "";
+    for (const rx of RX[key]) {
+      const c = textCols.find(c => rx.test(c.f + " " + c.name) && (key === "estado" || !BAD.test(c.f + " " + c.name)));
+      if (c) { map[key] = c.f; break; }
+    }
+  }
+  if (!map.modelo) {
+    for (const rx of MODELO_FB) {
+      const c = textCols.find(c => rx.test(c.f + " " + c.name) && c.f !== map.equipo);
+      if (c) { map.modelo = c.f; fb.modelo = true; break; }
+    }
+  }
+  return { map, fb };
+}
+async function loadCols(id) {
+  if (state.cols[id]) return state.cols[id];
+  let all;
+  try {
+    const v = await getJSON(`${BASE}/api/views/${id}.json`);
+    all = (v.columns || []).filter(c => !String(c.fieldName).startsWith(":")).map(c => ({ f: c.fieldName, name: c.name, type: c.dataTypeName }));
+  } catch (e) {
+    log("Metadatos no disponibles, infiriendo columnas desde una fila…", "warn");
+    const r = await getJSON(`${BASE}/resource/${id}.json?$limit=1`);
+    all = Object.keys(r[0] || {}).map(k => ({ f: k, name: k, type: "text" }));
+  }
+  const g = guessMap(all);
+  const saved = store.get("map:" + id, null);
+  if (saved) {
+    for (const k of KEYS) if (k in saved && (saved[k] === "" || all.some(c => c.f === saved[k]))) { g.map[k] = saved[k]; if (k === "modelo") g.fb.modelo = false; }
+  }
+  return state.cols[id] = { all, map: g.map, fb: g.fb };
+}
+function renderMaps(ids) {
+  $("maps").innerHTML = ids.map(id => {
+    const c = state.cols[id];
+    const opts = sel => `<option value="">— ninguna —</option>` + c.all.filter(x => !x.type || x.type === "text")
+      .map(x => `<option value="${esc(x.f)}" ${x.f === sel ? "selected" : ""}>${esc(x.name)}</option>`).join("");
+    return `<div class="m"><b>${esc(state.names[id] || id)}</b>
+      <div class="mapgrid">${KEYS.map(k =>
+        `<div><label>${k}${k === "modelo" && c.fb.modelo ? " (aprox.)" : ""}</label><select data-id="${esc(id)}" data-k="${k}">${opts(c.map[k])}</select></div>`).join("")}</div></div>`;
+  }).join("");
+  $("mapBox").hidden = false;
+  $("maps").querySelectorAll("select").forEach(s => s.onchange = () => {
+    const c = state.cols[s.dataset.id]; c.map[s.dataset.k] = s.value; if (s.dataset.k === "modelo") c.fb.modelo = false;
+    store.set("map:" + s.dataset.id, c.map);
+  });
+}
+
+/* =====================================================================
+   Consulta
+   ===================================================================== */
+const sq = v => String(v).toUpperCase().replace(/'/g, "''");
+const tokensWhere = (col, text) => text.trim().split(/\s+/).filter(Boolean).map(t => `upper(${col}) like '%${sq(t)}%'`);
+
+function buildQuery(id, f) {
+  const c = state.cols[id], map = c.map, conds = [];
+  let qText = null;
+  const label = { equipo: "equipo", marca: "marca", modelo: "modelo" };
+  for (const k of ["equipo", "marca", "modelo"]) {       // campo vacío => se omite
+    if (!f[k]) continue;
+    if (!map[k]) return { skip: `no tiene columna de ${label[k]}` };
+    conds.push(...tokensWhere(map[k], f[k]));
+  }
+  if (f.reg) {
+    const r = parseReg(f.reg);
+    if (map.registro) conds.push(`upper(${map.registro}) like '%${sq(r.tail)}%'`);
+    else qText = r.tail;
+  }
+  const p = [];
+  if (conds.length) p.push("$where=" + encodeURIComponent(conds.join(" AND ")));
+  if (qText) p.push("$q=" + encodeURIComponent(qText));
+  return { params: p };
+}
+const estadoCls = v => /vigente|activo/i.test(v) ? "ok" : /vencid|cancel|suspend|inactiv|negad/i.test(v) ? "err" : "warn";
+
+let querying = false;
+async function runQuery() {
+  if (querying) return;
+  const ids = selectedIds();
+  const f = { reg: $("reg").value.trim(), equipo: $("equ").value.trim(), marca: $("mar").value.trim(), modelo: $("mod").value.trim() };
+  if (!ids.length) { toast("Marca al menos un dataset"); $("dsBox").open = true; return; }
+  if (!f.reg && !f.equipo && !f.marca && !f.modelo) { toast("Escribe al menos un criterio"); return; }
+  store.set("lim", $("lim").value);
+  querying = true; $("btnQ").disabled = true;
+  setStatus("consultando…");
+  $("out").innerHTML = ""; $("resCard").hidden = false;
+  $("out").innerHTML = `<p class="note">Consultando ${ids.length} dataset(s)…</p>`;
+  try {
+    await Promise.allSettled(ids.map(loadCols));
+    const ok = ids.filter(id => state.cols[id]);
+    renderMaps(ok);
+    const lim = Math.min(500, Math.max(1, +$("lim").value || 50));
+    const regN = f.reg ? parseReg(f.reg).norm : "";
+    const skipped = [];
+    const jobs = ok.map(async id => {
+      const name = state.names[id] || id;
+      const q = buildQuery(id, f);
+      if (q.skip) { skipped.push(`${name}: ${q.skip}`); log(`${name}: omitido (${q.skip}).`, "warn"); return null; }
+      if (f.modelo && state.cols[id].fb.modelo) log(`${name}: sin columna de modelo, se busca en «${state.cols[id].map.modelo}».`, "warn");
+      const rows = await getJSON(`${BASE}/resource/${id}.json?${q.params.concat("$limit=" + lim).join("&")}`);
+      log(`${name}: ${rows.length} fila(s).`, rows.length ? "ok" : "");
+      return { id, name, rows };
+    });
+    const settled = await Promise.allSettled(jobs);
+    const failed = [];
+    settled.forEach((s, i) => { if (s.status === "rejected") { failed.push(`${state.names[ok[i]] || ok[i]}: ${s.reason.message}`); log("ERROR: " + s.reason.message, "err"); } });
+
+    let total = 0, html = "";
+    for (const s of settled) {
+      if (s.status !== "fulfilled" || !s.value || !s.value.rows.length) continue;
+      const { id, name, rows } = s.value, map = state.cols[id].map;
+      const items = rows.map(r => ({ r, exact: regN && map.registro ? norm(r[map.registro]).includes(regN) : null }));
+      if (regN && map.registro) items.sort((a, b) => (b.exact === true) - (a.exact === true));
+      total += items.length;
+      const ex = items.filter(i => i.exact === true).length;
+      html += `<h3>${esc(name)} <span class="tag">${items.length} resultado(s)${regN && map.registro ? ` · ${ex} exacto(s)` : ""}</span></h3>`;
+      html += items.map(({ r, exact }) => {
+        const g = k => map[k] ? r[map[k]] : "";
+        const badge = exact === true ? `<span class="badge ok">exacto</span>`
+          : exact === false ? `<span class="badge warn">mismo consecutivo, otro prefijo/año</span>` : "";
+        const est = g("estado") ? `<span class="badge ${estadoCls(g("estado"))}">${esc(g("estado"))}</span>` : "";
+        const regTxt = g("registro");
+        return `<details class="res"><summary>
+            <div class="l1">${badge}<b>${esc(regTxt || "(sin registro)")}</b>${est}</div>
+            <div class="l2">${esc(g("equipo"))}</div>
+            <div class="note">${esc(g("marca"))}${g("modelo") && !state.cols[id].fb.modelo ? " · " + esc(g("modelo")) : ""}</div></summary>
+          <div class="body">
+            ${regTxt ? `<button type="button" class="sec sm" data-copy="${esc(regTxt)}" style="margin-bottom:8px">Copiar registro</button>` : ""}
+            <div class="kv"><table>${Object.entries(r).map(([k, v]) =>
+              `<tr><th>${esc(k)}</th><td>${esc(typeof v === "object" ? JSON.stringify(v) : v)}</td></tr>`).join("")}</table></div></div></details>`;
+      }).join("");
+    }
+    if (skipped.length) html += `<p class="skipped"><b>No consultados:</b><br>${skipped.map(esc).join("<br>")}</p>`;
+    if (failed.length) html += `<p class="skipped err"><b>Con error:</b><br>${failed.map(esc).join("<br>")}</p>`;
+    if (!total) {
+      $("out").innerHTML = `<p class="err"><b>Sin resultados</b> con esos criterios en los datasets marcados.</p>
+        <p class="note">Prueba con menos campos, otra ortografía, o marca más datasets en «Datasets» (los equipos biomédicos controlados «EBC» pueden estar en otro). Revisa también las columnas detectadas.</p>` + html;
+      setStatus("sin resultados", "err");
+    } else {
+      $("out").innerHTML = html;
+      setStatus(`OK · ${total} fila(s)`, "ok");
+    }
+    $("resCard").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (e) {
+    log("ERROR: " + e.message, "err");
+    $("out").innerHTML = `<p class="err">Error: ${esc(e.message)}</p>`;
+    setStatus("falló consulta", "err");
+  } finally { querying = false; updateDsCount(); }
+}
+
+/* =====================================================================
+   Escáner OCR (Tesseract.js, carga perezosa)
+   ===================================================================== */
+const SC = { stream: null, worker: null, timer: null, track: null, counts: {}, torch: false, canvas: null, loadingWorker: null };
+const ROI = { x: 0.05, y: 0.40, w: 0.90, h: 0.20 };               // igual que .roi en CSS
+const setScanMsg = (m, cls) => { $("scanMsg").textContent = m; $("scanMsg").className = "note " + (cls || ""); };
+const opts = () => ({ siglas: $("siglas").value.split(/[,\s;]+/).filter(Boolean), strict: $("strict").checked });
+
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => rej(new Error("No se pudo cargar " + src)); document.head.appendChild(s);
+  });
+}
+async function getWorker() {
+  if (SC.worker) return SC.worker;
+  if (SC.loadingWorker) return SC.loadingWorker;
+  SC.loadingWorker = (async () => {
+    if (!window.Tesseract) await loadScript(window.TESS_SRC || TESS_URL);
+    const cfg = window.TESS_CFG || {};
+    const w = await Tesseract.createWorker("eng", 1, cfg);
+    await w.setParameters({
+      tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- ",
+      tessedit_pageseg_mode: "6",
+      preserve_interword_spaces: "1"
+    });
+    SC.worker = w; return w;
+  })();
+  try { return await SC.loadingWorker; } finally { SC.loadingWorker = null; }
+}
+
+function enhance(ctx, w, h) {
+  const im = ctx.getImageData(0, 0, w, h), d = im.data, hist = new Uint32Array(256);
+  for (let i = 0; i < d.length; i += 4) { const g = (d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114) | 0; d[i] = g; hist[g]++; }
+  const tot = w * h; let acc = 0, lo = 0, hi = 255;
+  for (let i = 0; i < 256; i++) { acc += hist[i]; if (acc > tot * 0.02) { lo = i; break; } }
+  acc = 0; for (let i = 255; i >= 0; i--) { acc += hist[i]; if (acc > tot * 0.02) { hi = i; break; } }
+  const range = Math.max(24, hi - lo);
+  for (let i = 0; i < d.length; i += 4) {
+    let v = (d[i] - lo) * 255 / range; v = v < 0 ? 0 : v > 255 ? 255 : v;
+    d[i] = d[i + 1] = d[i + 2] = v;
+  }
+  ctx.putImageData(im, 0, 0);
+}
+function drawToCanvas(src, sx, sy, sw, sh, maxW) {
+  const tw = Math.min(maxW, Math.max(640, sw)), k = tw / sw;
+  const c = SC.canvas || (SC.canvas = document.createElement("canvas"));
+  c.width = Math.round(sw * k); c.height = Math.round(sh * k);
+  const ctx = c.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(src, sx, sy, sw, sh, 0, 0, c.width, c.height);
+  enhance(ctx, c.width, c.height);
+  return c;
+}
+function grabRoi() {
+  const v = $("cam"), vw = v.videoWidth, vh = v.videoHeight;
+  if (!vw || !vh) return null;
+  const W = v.clientWidth, H = v.clientHeight;
+  if (!W || !H) return null;                                                   // video oculto
+  const s = Math.max(W / vw, H / vh);                                          // object-fit: cover
+  const ox = (vw * s - W) / 2, oy = (vh * s - H) / 2;
+  const x = W * ROI.x, y = H * ROI.y, w = W * ROI.w, h = H * ROI.h;
+  return drawToCanvas(v, (x + ox) / s, (y + oy) / s, w / s, h / s, 1000);
+}
+
+function stopScan() {
+  clearTimeout(SC.timer); SC.timer = null;
+  if (SC.stream) SC.stream.getTracks().forEach(t => t.stop());
+  SC.stream = null; SC.track = null; SC.torch = false; SC.counts = {};
+  $("cam").srcObject = null; $("scanPanel").hidden = true; $("btnScan").textContent = "Escanear con cámara";
+}
+async function startScan() {
+  if (SC.stream) { stopScan(); return; }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    toast("La cámara requiere HTTPS. Usa «Tomar foto» o escribe el código."); return;
+  }
+  $("scanPanel").hidden = false; $("roi").classList.remove("hit");
+  document.querySelector(".cam").hidden = false;               // pudo quedar oculto tras leer una foto
+  $("btnScan").textContent = "Cerrar cámara";
+  setScanMsg("Abriendo cámara…");
+  try {
+    SC.stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false
+    });
+  } catch (e) {
+    log("Cámara: " + e.name + " " + e.message, "err");
+    setScanMsg(e.name === "NotAllowedError" ? "Permiso de cámara denegado. Actívalo en los ajustes del navegador o usa «Tomar foto»." : "No se pudo abrir la cámara (" + e.name + ").", "err");
+    stopScan(); $("scanPanel").hidden = false; return;
+  }
+  const v = $("cam"); v.srcObject = SC.stream;
+  try { await v.play(); } catch {}
+  SC.track = SC.stream.getVideoTracks()[0];
+  try { $("btnTorch").hidden = !(SC.track.getCapabilities && SC.track.getCapabilities().torch); } catch { $("btnTorch").hidden = true; }
+  setScanMsg("Cargando lector de texto (la primera vez tarda unos segundos)…");
+  try { await getWorker(); }
+  catch (e) { log("OCR: " + e.message, "err"); setScanMsg("No se pudo cargar el lector OCR (¿sin conexión la primera vez?). Escribe el código a mano.", "err"); return; }
+  if (!SC.stream) return;
+  setScanMsg("Encuadra el código dentro del recuadro, con buena luz y sin mover mucho.");
+  tick();
+}
+async function tick() {
+  if (!SC.stream) return;
+  try {
+    const c = grabRoi();
+    if (c) {
+      const r = await SC.worker.recognize(c);
+      const codes = parseCodes(r.data.text, opts());
+      if (codes.length) {
+        $("roi").classList.add("hit");
+        for (const code of codes) {
+          SC.counts[code] = (SC.counts[code] || 0) + 1;
+          setScanMsg("Leyendo… " + code);
+          if (SC.counts[code] >= 2) { onCode(code); return; }
+        }
+      } else $("roi").classList.remove("hit");
+    }
+  } catch (e) { log("OCR frame: " + e.message, "warn"); }
+  if (SC.stream) SC.timer = setTimeout(tick, 150);
+}
+
+function onCode(code) {
+  if (navigator.vibrate) try { navigator.vibrate(90); } catch {}
+  stopScan();
+  acceptCode(code);
+}
+function acceptCode(code) {
+  addHistory(code);
+  $("reg").value = code;
+  toast("Detectado: " + code);
+  $("reg").scrollIntoView({ block: "center", behavior: "smooth" });
+  if ($("autoQ").checked) runQuery();
+}
+
+async function scanPhoto(file) {
+  if (!file) return;
+  if (SC.stream) stopScan();
+  setStatus("leyendo foto…"); $("scanPanel").hidden = false; document.querySelector(".cam").hidden = true;
+  $("btnTorch").hidden = true; setScanMsg("Cargando lector de texto…");
+  try {
+    const w = await getWorker();
+    const bmp = await createImageBitmap(file);
+    await w.setParameters({ tessedit_pageseg_mode: "11" });
+    setScanMsg("Leyendo la foto…");
+    let codes = [];
+    const full = drawToCanvas(bmp, 0, 0, bmp.width, bmp.height, 1800);
+    codes = parseCodes((await w.recognize(full)).data.text, opts());
+    if (!codes.length) {                                   // segundo intento, en bloque
+      await w.setParameters({ tessedit_pageseg_mode: "6" });
+      codes = parseCodes((await w.recognize(full)).data.text, opts());
+    }
+    await w.setParameters({ tessedit_pageseg_mode: "6" });
+    if (codes.length) { setScanMsg("Detectado: " + codes.join(", ")); acceptCode(codes[0]); codes.slice(1).forEach(addHistory); }
+    else { setScanMsg("No se encontró un código con el formato esperado. Acércate, mejora la luz o escríbelo a mano.", "err"); toast("Sin código en la foto"); }
+    setStatus("listo", "ok");
+  } catch (e) {
+    log("Foto: " + e.message, "err"); setScanMsg("No se pudo leer la foto: " + e.message, "err"); setStatus("falló OCR", "err");
+  } finally { $("photo").value = ""; }
+}
+
+/* historial */
+function addHistory(code) {
+  const h = store.get("hist", []).filter(c => c !== code);
+  h.unshift(code); store.set("hist", h.slice(0, 20)); renderHistory();
+}
+function renderHistory() {
+  const h = store.get("hist", []);
+  $("hist").innerHTML = h.map(c =>
+    `<span class="chip"><button type="button" data-use="${esc(c)}">${esc(c)}</button><button type="button" class="cp" data-copy="${esc(c)}" aria-label="Copiar ${esc(c)}">Copiar</button></span>`).join("");
+}
+
+/* =====================================================================
+   Eventos
+   ===================================================================== */
+$("f").addEventListener("submit", e => { e.preventDefault(); runQuery(); });
+$("btnClear").onclick = () => {
+  for (const id of ["reg", "equ", "mar", "mod"]) $(id).value = "";
+  $("out").innerHTML = ""; $("resCard").hidden = true; setStatus("listo", "ok"); $("reg").focus();
+};
+$("btnCat").onclick = () => loadCatalog(true);
+$("dsFilter").oninput = e => {
+  const q = e.target.value.toLowerCase().trim();
+  $("dsList").querySelectorAll("label").forEach(l => l.hidden = q && !l.dataset.t.includes(q));
+};
+$("btnScan").onclick = startScan;
+$("btnStop").onclick = stopScan;
+$("photo").onchange = e => scanPhoto(e.target.files[0]);
+$("btnTorch").onclick = async () => {
+  try { SC.torch = !SC.torch; await SC.track.applyConstraints({ advanced: [{ torch: SC.torch }] }); }
+  catch { toast("Linterna no disponible"); SC.torch = false; }
+};
+$("btnClearHist").onclick = () => { store.set("hist", []); renderHistory(); };
+document.addEventListener("click", e => {
+  const c = e.target.closest("[data-copy]"); if (c) { e.preventDefault(); copyText(c.dataset.copy); return; }
+  const u = e.target.closest("[data-use]"); if (u) { $("reg").value = u.dataset.use; $("reg").scrollIntoView({ block: "center", behavior: "smooth" }); }
+});
+document.addEventListener("visibilitychange", () => { if (document.hidden && SC.stream) stopScan(); });
+for (const id of ["siglas"]) $(id).onchange = () => store.set(id, $(id).value);
+for (const id of ["strict", "autoQ"]) $(id).onchange = () => store.set(id, $(id).checked);
+
+/* PWA */
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e; $("btnInstall").hidden = false; });
+window.addEventListener("appinstalled", () => { $("btnInstall").hidden = true; toast("App instalada"); });
+$("btnInstall").onclick = async () => { if (!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; $("btnInstall").hidden = true; };
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(e => log("SW: " + e.message, "warn")));
+}
+
+/* inicio */
+$("siglas").value = store.get("siglas", "DM, EBC");
+$("strict").checked = store.get("strict", true);
+$("autoQ").checked = store.get("autoQ", true);
+$("lim").value = store.get("lim", "50");
+renderHistory();
+loadCatalog(false);
+</script>
+</body>
+</html>
