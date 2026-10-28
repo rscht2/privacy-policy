@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#00695C" />
+  <title>Política de Privacidad — Cada Paso</title>
+  <style>
+    :root {
+      --primary: #00695C;
+      --primary-light: #E0F2F1;
+      --text: #212121;
+      --muted: #616161;
+      --border: #E0E0E0;
+      --bg: #FAFAFA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: clamp(24px, 6vw, 40px) clamp(16px, 5vw, 24px) clamp(20px, 5vw, 32px);
+      text-align: center;
+    }
+    header h1 { font-size: clamp(1.3rem, 5vw, 1.8rem); font-weight: 700; }
+    header p  { margin-top: 8px; opacity: .85; font-size: clamp(.85rem, 3.5vw, .95rem); }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .8rem;
+      margin-top: 12px;
+    }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(20px, 5vw, 32px) clamp(16px, 5vw, 24px) 64px;
+    }
+    section { margin-bottom: clamp(24px, 6vw, 36px); }
+    h2 {
+      font-size: clamp(1rem, 4vw, 1.15rem);
+      font-weight: 700;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      margin-bottom: 14px;
+    }
+    p { margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: var(--primary-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      font-size: clamp(.88rem, 3.5vw, .95rem);
+    }
+    .highlight strong { color: var(--primary); }
+
+    /* Tabla responsive */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; border-radius: 8px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: clamp(.82rem, 3vw, .9rem); min-width: 420px; }
+    th { background: var(--primary); color: #fff; padding: 10px 14px; text-align: left; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--primary-light); }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: .82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      body { font-size: 15px; }
+      ul { padding-left: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Política de Privacidad</h1>
+  <p>Cada Paso — Aplicación de consulta de guías para equipos biomédicos</p>
+  <span class="badge">Última actualización: marzo 2026</span>
+</header>
+
+<main>
+
+  <section>
+    <h2>1. Información general</h2>
+    <p>
+      Cada Paso es una aplicación Android diseñada para que operadores, auxiliares de enfermería
+      y personal técnico consulten guías paso a paso para el manejo de equipos biomédicos.
+      Adicionalmente, los usuarios pueden enviar solicitudes al técnico biomédico para registrar
+      equipos que no estén disponibles aún.
+    </p>
+    <div class="highlight">
+      <strong>Sin registro de usuarios:</strong> Cada Paso no requiere crear una cuenta
+      ni iniciar sesión. Las solicitudes se identifican por el dispositivo de forma anónima.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Datos que recopilamos</h2>
+    <p>La aplicación realiza las siguientes operaciones de red:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Operación</th><th>Finalidad</th><th>Dato transmitido</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Consulta a Firebase Firestore</td>
+            <td>Obtener lista de equipos y guías</td>
+            <td>Ningún dato personal — solo lectura de contenido</td>
+          </tr>
+          <tr>
+            <td>Descarga de imágenes</td>
+            <td>Mostrar fotos de los pasos de cada guía</td>
+            <td>Ningún dato personal — solo descarga de imágenes</td>
+          </tr>
+          <tr>
+            <td>Envío de solicitud de guía</td>
+            <td>Notificar al técnico biomédico sobre un equipo no registrado</td>
+            <td>Texto descriptivo del equipo, foto opcional, identificador anónimo del dispositivo (Android ID)</td>
+          </tr>
+          <tr>
+            <td>Subida de foto de solicitud</td>
+            <td>Adjuntar imagen del equipo a la solicitud</td>
+            <td>Imagen seleccionada por el usuario — sin metadatos de identidad</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      No se recopilan datos de ubicación, identidad personal, contactos ni historial de navegación.
+      El identificador de dispositivo (Android ID) es anónimo y se usa únicamente para mostrar
+      al usuario el estado de sus propias solicitudes.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Permisos de la aplicación</h2>
+    <ul>
+      <li><strong>INTERNET:</strong> necesario para descargar guías y enviar solicitudes a Firebase.</li>
+      <li><strong>CAMERA:</strong> opcional — solo se solicita si el usuario decide tomar una foto del equipo al enviar una solicitud. No se usa para ningún otro fin.</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE:</strong> opcional — solo se solicita si el usuario decide adjuntar una foto de la galería a una solicitud.</li>
+    </ul>
+    <p>Los permisos de cámara y galería son opcionales. La app funciona completamente sin ellos.</p>
+  </section>
+
+  <section>
+    <h2>4. Caché local (modo sin conexión)</h2>
+    <p>
+      Para permitir el uso sin conexión a internet, Cada Paso almacena en el dispositivo
+      una copia local de los datos de Firestore (hasta 50 MB) y de las imágenes descargadas
+      (hasta 100 MB). Este contenido:
+    </p>
+    <ul>
+      <li>No contiene datos personales.</li>
+      <li>Es solo el contenido de las guías (texto e imágenes de equipos médicos).</li>
+      <li>Se almacena en el directorio de caché privado de la app y no es accesible por otras apps.</li>
+      <li>Se elimina automáticamente cuando el sistema necesita liberar espacio o al desinstalar la app.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Solicitudes de guías</h2>
+    <p>
+      Cuando un usuario envía una solicitud de guía, se almacena en Firebase Firestore el siguiente contenido:
+    </p>
+    <ul>
+      <li>Nombre del equipo, marca, modelo, área y descripción proporcionados por el usuario.</li>
+      <li>Foto del equipo (opcional), almacenada en Firebase Storage.</li>
+      <li>Identificador anónimo del dispositivo (Android ID) para mostrar el estado de la solicitud al mismo usuario.</li>
+      <li>Fecha y hora de envío.</li>
+    </ul>
+    <p>
+      Esta información es visible únicamente para el técnico biomédico administrador del sistema.
+      No se comparte con terceros. El usuario puede ver el estado de sus solicitudes desde la app.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Uso de servicios de terceros</h2>
+    <p>La aplicación utiliza los siguientes servicios de Google / Firebase:</p>
+    <ul>
+      <li><strong>Firebase Firestore:</strong> base de datos en la nube (lectura de guías y gestión de solicitudes).</li>
+      <li><strong>Firebase Storage:</strong> almacenamiento de imágenes de guías y fotos de solicitudes.</li>
+    </ul>
+    <p>
+      Estos servicios están sujetos a la
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.
+      No se comparten datos con ningún otro tercero.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Seguridad</h2>
+    <ul>
+      <li>Toda la comunicación con Firebase se realiza mediante HTTPS. La app bloquea explícitamente el tráfico HTTP.</li>
+      <li>Las reglas de seguridad de Firebase permiten escritura de solicitudes sin autenticación, pero solo el administrador puede leer y gestionar todas las solicitudes.</li>
+      <li>El backup automático de Android está deshabilitado.</li>
+      <li>El código de producción está ofuscado con R8/ProGuard.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Privacidad de menores</h2>
+    <p>
+      Cada Paso está destinada a profesionales de la salud y personal técnico. No está
+      dirigida a menores de 13 años y no recopila conscientemente información de menores.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Cambios en esta política</h2>
+    <p>
+      Cualquier actualización a esta política se reflejará en esta página con una nueva fecha
+      de actualización. Se recomienda revisarla periódicamente.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Contacto</h2>
+    <p>
+      Para cualquier consulta relacionada con la privacidad de esta aplicación, puedes
+      escribir a: <strong>ricardo2charris@gmail.com</strong>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Cada Paso · Todos los derechos reservados
+</footer>
+
+</body>
+</html>
